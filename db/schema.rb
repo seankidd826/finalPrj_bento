@@ -11,13 +11,35 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150424174404) do
+ActiveRecord::Schema.define(version: 20150425013902) do
+
+  create_table "likes", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "menus", force: :cascade do |t|
     t.string   "title"
     t.text     "contents"
     t.integer  "price"
     t.integer  "user_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "likes_count", default: 0
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "menu_id"
+    t.integer  "user_id"
+    t.integer  "total_price", default: 0
+    t.integer  "menu_count",  default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "user_menus", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "menu_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
