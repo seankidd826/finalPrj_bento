@@ -6,7 +6,10 @@ class OrdersController < ApplicationController
 
 
   private
-  def
+  def order
+  end
+
+
 
 
 end

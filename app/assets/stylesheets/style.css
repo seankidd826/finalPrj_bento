@@ -27,3 +27,12 @@
 .menu {
   margin-top: 150px;
 }
+.form-width {
+  width: auto;
+}
+.form-width-small {
+  width: 50px;
+}
+.text-align {
+  display: inline-block;
+}

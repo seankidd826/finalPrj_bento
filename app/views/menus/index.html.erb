@@ -28,8 +28,6 @@
               <% end %>
             </div>
           </div>
-
-
           <!-- For really book button -->
           <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
@@ -38,27 +36,64 @@
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                   <h2 class="modal-title" id="myModalLabel">訂購資料</h2>
                 </div>
+                <!-- guest訂購資料 -->
                 <div class="modal-body text-center">
                   <% @menus.each do |m| %>
                   <%= form_for @order,:url => menu_orders_path(m) do |order| %>
                   <%= m.title %>
-                  <%= order.label :name,"姓名" %>
-                  <%= order.text_field order.name,:placeholder => "Your name" %>
-                  <%#= order.label :phone,"電話" %>
-                  <%#= order.text_field :order.phonw, :placeholder => "Your phone" %>
-                  <%#= order.label :address,"住址" %>
-                  <%#= order.text_field :order.address, :placeholder => "Your address" %>
-                  <%#= order.label :menu_count,"數量" %>
-                  <%#= order.text_field :menu_count %>
-                  <%#= order.label :total_price,"總價" %>
-                  <%#= order.total_price %>
+                  <div class="form-group">
+                    <div class="text-left">
+                      <%= order.label :order_name,"姓名"%>
+                    </div>
+                    <%= order.text_field :order_name,:placeholder => "您的名字",:class => "form-control form-width" %>
+                  </div>
+                  <div class="form-group">
+                    <div class="text-left">
+                      <%= order.label :order_phone,"電話"%>
+                    </div>
+                    <%= order.text_field :order_phone,:placeholder => "您的電話",:class => "form-control form-width" %>
+                  </div>
+                  <div class="form-group">
+                    <div class="text-left">
+                      <%= order.label :order_address,"運送地址"%>
+                    </div>
+                    <%= order.text_area :order_address,:rows => 3, :placeholder => "",:class => "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <div class="text-left">
+                      <%= order.label :menu_count,"便當數量"%>
+                    </div>
+                    <%= order.text_field :menu_count,:placeholder => "",:class => "form-control form-width-small" %>
+                  </div>
+                  <div class="form-group">
+                    <div class="text-left">
+                      <%= order.label :total_price,"便當總價"%>
+                    </div>
+                    <div class="form-group text-left"><%= m.price %></div>
+                  </div>
                 </div>
                 <div class="modal-footer">
                   <div class="text-left">
-                    <!-- <span class="h2"> <%#= order.submit "送出訂單", :class => "btn btn-primary" %></span> -->
+                    <div class="text-align">
+                      <%= order.submit "送出訂單", :class => "btn btn-success" %>
+                    </div>
+                    <div class="text-align">
+                    </div>
+                    <div class="text-align">
+                      <% if current_user %>
+                      <%= link_to('登出', destroy_user_session_path, :method => :delete) %>  <%= link_to('修改密碼', edit_registration_path(:user)) %>
+                      <% else %>
+                      <%= link_to('註冊', new_registration_path(:user),:class=>"btn btn-primary text-align") %>
+                      <%= link_to('登入', new_session_path(:user),:class=>"btn btn-primary text-align") %>
+                      <div class="text-align">
+                        <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-social btn-facebook" do %>
+                        <p class="social-icon">f</p>
+                        Log in with facebook
+                        <% end %>
+                      </div>
+                      <% end %>
+                    </div>
                   </div>
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
                 </div>
                 <% end %>
                 <% end %>

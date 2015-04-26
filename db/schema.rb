@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150425013902) do
+ActiveRecord::Schema.define(version: 20150426150011) do
 
   create_table "likes", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -31,10 +31,14 @@ ActiveRecord::Schema.define(version: 20150425013902) do
   create_table "orders", force: :cascade do |t|
     t.integer  "menu_id"
     t.integer  "user_id"
-    t.integer  "total_price", default: 0
-    t.integer  "menu_count",  default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "total_price",   default: 0
+    t.integer  "menu_count",    default: 0
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "order_name"
+    t.string   "order_phone"
+    t.text     "order_address"
+    t.string   "order_email"
   end
 
   create_table "user_menus", force: :cascade do |t|
