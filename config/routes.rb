@@ -9,6 +9,10 @@ end
   # You can have the root of your site routed with "root"
   root 'menus#index'
   resources :users
+  resources :menus do
+    resources :orders
+  end
+
 
 
   # Example of regular route:
