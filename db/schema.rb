@@ -11,21 +11,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426150011) do
+ActiveRecord::Schema.define(version: 20150430084035) do
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "likes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "line_items", force: :cascade do |t|
+    t.integer  "menu_id"
+    t.integer  "cart_id"
+    t.integer  "gty"
+    t.integer  "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id"
+  add_index "line_items", ["menu_id"], name: "index_line_items_on_menu_id"
+  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id"
+
   create_table "menus", force: :cascade do |t|
     t.string   "title"
     t.text     "contents"
     t.integer  "price"
     t.integer  "user_id"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "likes_count", default: 0
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.integer  "likes_count",         default: 0
+    t.integer  "in_stock_qty",        default: 10
+    t.string   "mompic_file_name"
+    t.string   "mompic_content_type"
+    t.integer  "mompic_file_size"
+    t.datetime "mompic_updated_at"
+    t.string   "mominfo"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -39,6 +63,17 @@ ActiveRecord::Schema.define(version: 20150426150011) do
     t.string   "order_phone"
     t.text     "order_address"
     t.string   "order_email"
+  end
+
+  create_table "storys", force: :cascade do |t|
+    t.string   "momheader"
+    t.text     "momcontents"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "pic_file_name"
+    t.string   "pic_content_type"
+    t.integer  "pic_file_size"
+    t.datetime "pic_updated_at"
   end
 
   create_table "user_menus", force: :cascade do |t|

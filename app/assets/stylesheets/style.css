@@ -24,7 +24,7 @@
   background-color: pink;
   min-height: 800px;
 }
-.menu {
+.mompic {
   margin-top: 150px;
 }
 .form-width {
@@ -35,4 +35,12 @@
 }
 .text-align {
   display: inline-block;
+}
+.menu_head {
+  font-size: 50px;
+  font-weight: bold;
+}
+.menu_title {
+  font-size: 30px;
+  font-weight: bold;
 }

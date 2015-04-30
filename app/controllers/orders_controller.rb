@@ -1,12 +1,20 @@
 class OrdersController < ApplicationController
 
   def create
-    @order = @menu.orders.new(comment_params)
+    @menu = Menu.find(params[:menu_id])
+    @order = @menu.orders.new(order_params)
+    if @order.save
+       redirect_to menu_path(@menu)
+    else
+       render :template => :back
+    end
+
   end
 
 
   private
-  def order
+  def order_params
+    params.require(:order).permit(:order_name,:order_phone,:order_address,:menu_count)
   end
 
 

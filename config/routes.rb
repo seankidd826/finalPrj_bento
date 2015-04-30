@@ -12,6 +12,7 @@ end
   resources :menus do
     resources :orders
   end
+  resource :cart
 
 
 

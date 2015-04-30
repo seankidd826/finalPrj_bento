@@ -10,5 +10,18 @@ class Menu < ActiveRecord::Base
   # create one to many (orders) relation
   has_many :orders, :dependent => :destroy
 
+  # add paperclip for mompic
+  validates_presence_of :mompic
+  has_attached_file :mompic, :styles => { :large => "600x600>", :medium => "300x300>", :thumb => "100x100>",:special => "500x300>" }, :default_url => "/images/:style/missing.png"
+  validates_attachment_content_type :mompic, :content_type => /\Aimage\/.*\Z/
+
+
+  def menu_date
+    @month = self.created_at.strftime("%_m")
+    @day = self.created_at.strftime("%d")
+    @date = @month +"月"+@day+"號"
+  end
+
+
 
 end
