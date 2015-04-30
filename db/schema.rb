@@ -11,12 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430084035) do
+ActiveRecord::Schema.define(version: 20150430135450) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "confirms", force: :cascade do |t|
+    t.string   "confirm_name"
+    t.string   "confirm_phone"
+    t.text     "confirm_address"
+    t.integer  "confirm_menu_count"
+    t.integer  "confirm_menu_id"
+    t.integer  "confirm_user_id"
+    t.integer  "confirm_total_price"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "confirms", ["confirm_menu_id"], name: "index_confirms_on_confirm_menu_id"
+  add_index "confirms", ["confirm_user_id"], name: "index_confirms_on_confirm_user_id"
 
   create_table "likes", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -26,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150430084035) do
   create_table "line_items", force: :cascade do |t|
     t.integer  "menu_id"
     t.integer  "cart_id"
-    t.integer  "gty"
+    t.integer  "qty"
     t.integer  "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
