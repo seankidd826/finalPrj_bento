@@ -4,7 +4,7 @@ class MenusController < ApplicationController
   def index
     @menus = Menu.all
     @menu = Menu.all.last
-    @confirm = Confirm.new
+    @order = Order.new
   end
 
   def new

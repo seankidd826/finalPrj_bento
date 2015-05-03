@@ -1,0 +1,13 @@
+$('#mymodal').append("<%= j(<div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"><div class="modal-dialog"><div class="modal-content"><div class="modal-header"><h4 class="modal-title" id="myModalLabel">請確認您的訂單</h4></div><div class="modal-body"><h1><%= @menu.title %></h1><%= form_for @order, :url => menu_orders_path(@menu) do |order| %><h1><%= @menu.title %></h1><h3><%= @menu.contents %></h3><div class="form-group"><div class="text-left"><%= order.label :order_name,"姓名"%></div><%= order.order_name %><%= order.hidden_field :order_name,:value => order.order_name%></div><div class="form-group"><div class="text-left"><%= order.label :order_phone,"電話"%></div><%= order.order_phone %><%= order.hidden_field :order_phone,:value => order.order_phone%></div><div class="form-group"><div class="text-left"><%= order.label :order_address,"運送地址"%></div><%= order.order_address %><%= order.hidden_area :order_address,:value =>order.order_address%></div><div class="form-group"><div class="text-left"><%= order.label :menu_count,"便當數量"%></div><%= order.text_field :menu_count,:placeholder => "",:class => "form-control form-width-small" %></div><% end %></div><div class="modal-footer"><%= order.submit "送出訂單", :class => "btn btn-primary" %><button type="button" class="btn btn-default" data-dismiss="modal">放棄訂單</button></div></div></div></div>)  %>")
+
+
+
+
+  // <!-- No need for total price !? -->
+  //                <!--  <div class="form-group">
+  //                   <div class="text-left">
+                      <%#= confirm.label :confirm_total_price,"便當總價"%>
+                //     </div>
+                //     <div class="form-group text-left"><%= @menu.price %></div>
+                //   </div>
+                // </div>

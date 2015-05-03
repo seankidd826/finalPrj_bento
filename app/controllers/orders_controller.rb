@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
 
+
   def create
     @menu = Menu.find(params[:menu_id])
     @order = @menu.orders.new(order_params)
@@ -8,8 +9,19 @@ class OrdersController < ApplicationController
     else
        render :template => :back
     end
+  end
+
+  def confirm
+    @menu = Menu.find(params[:menu_id])
+    @order = @menu.orders.new(order_params)
+      respond_to do |format|
+      format.html {redirect_to :back}
+      format.js {
+        render :template => "orders/confirm"
+      }
 
   end
+
 
 
   private

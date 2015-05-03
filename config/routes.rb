@@ -9,11 +9,14 @@ end
   # You can have the root of your site routed with "root"
   root 'menus#index'
   resources :users
-  resources :menus
-  resources :orders
+  resources :menus do
+    resources :orders do
+      post :confirm, :on => :collection
+    end
+  end
 
   resource :cart
-  resources :confirm
+  # resources :confirms
 
 
   # Example of regular route:
