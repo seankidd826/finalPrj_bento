@@ -5,17 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+$('#mymodal').html("<%= j(render :partial => "confirm",:locals => {:menu => @menu,:order => @order})%>")
 :data=>{:confirm=>"確定要刪除?"}
-AJAX
-不用多一個 controller，放到 OrdersController 就好了
 
-ihower [9:12 PM]
-resources :orders do
- post :confirm, :on => :collection
-end
-
-ihower [9:12 PM]
-:url => confirm_orders_path
 1. 填表單 new action
 
 <%= form_for @order %>
@@ -38,3 +30,16 @@ ihower [9:12 PM]
 
 
 3. create action
+
+<%= if Rails.env.production? %>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-62568825-1', 'auto');
+    ga('send', 'pageview');
+    </script>
+    <% end %>
+
+

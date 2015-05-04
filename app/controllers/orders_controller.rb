@@ -15,11 +15,11 @@ class OrdersController < ApplicationController
     @menu = Menu.find(params[:menu_id])
     @order = @menu.orders.new(order_params)
       respond_to do |format|
-      format.html {redirect_to :back}
+      format.html {redirect_to :template => "menus/wrong"}
       format.js {
         render :template => "orders/confirm"
       }
-
+    end
   end
 
 
