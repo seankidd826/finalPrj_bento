@@ -10,7 +10,8 @@ ask :branch,proc {`git rev-parse --abbrev-ref HEAD`.chomp}.call
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, '/home/deploy/bento_banto'
-
+set :passenger_restart_command, -> { "touch #{fetch(:deploy_to)}/current/tmp/restart.txt" }
+set :passenger_restart_options, ""
 # Default value for :scm is :git
 # set :scm, :git
 
