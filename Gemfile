@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Pg is the Ruby interface to the {PostgreSQL RDBMS}
-gem 'rails_12factor', group: :production
+#gem 'rails_12factor', group: :production
 # Use sqlite3 as the database for Active Record
 gem 'capistrano-rails', :group => :development
 gem 'capistrano-passenger', :group => :development
