@@ -31,14 +31,12 @@
         <br>
         總價: <%= @order.total %>
       </div>
-
-      </div>
-      <div class="modal-footer">
-       <div class="text-left">
-        <%= order.submit "確認訂單",:class => "btn btn-success" %>
-         <%= link_to "放棄訂單", root_path, :class=>"btn btn-default",:id =>"dismiss_confirm" %>
+      <hr>
+      <div class="text-left">
+      <%= order.submit "確認訂單",:class => "btn btn-success" %>
+       <%= link_to "放棄訂單", root_path, :class=>"btn btn-default",:id =>"dismiss_confirm" %>
        </div>
-      <% end %>
+       <% end %>
       </div>
     </div>
   </div>

@@ -45,11 +45,12 @@
                 </ul>
                 <br>
                 <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-primary" do %>
-                <%= icon("pencil") %>Book
+                <%= icon("pencil") %>訂購
                 <% end %>
                 <div class="text-align">
                     <% if current_user %>
-                    <%= link_to('登出', destroy_user_session_path, :method => :delete) %>
+                    <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
+                    <%= image_tag( current_user.fb_image,:class => "img-circle" ) %>
                     <!-- disable 修改密碼選項 -->
                     <%#= link_to('修改密碼', edit_registration_path(:user)) %>
                     <% else %>
@@ -109,10 +110,10 @@
                     </div>
                     <%= order.text_field :menu_count,:placeholder => "",:class => "form-control form-width-small" %>
                   </div>
-                </div>
-                <div class="modal-footer">
-                  <div class="text-left">
+                  <hr>
                     <%= order.submit "建立訂單",:class => "btn btn-success",:id =>"dismiss"%>
+                   <% end %>
+                </div>
                     <% if @order.errors.any? %>
                     <ul>
                     <% @order.errors.full_messages.each do |msg| %>
@@ -132,9 +133,7 @@
                       <%# end %>
                     <!-- </div> -->
                     <!-- Normal user login disable -->
-                  </div>
-                </div>
-                <% end %> <!--form_for_order_end end-->
+               <!--form_for_order_end end-->
                 <%# end %>   <!--menu end-->
               </div>
             </div>
