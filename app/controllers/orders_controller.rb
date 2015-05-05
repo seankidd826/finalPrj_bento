@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
     if @order.save
        redirect_to menu_path(@menu)
     else
-       render :template => :back
+       render :template => "menus/show"
     end
   end
 

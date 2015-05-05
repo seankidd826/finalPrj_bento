@@ -38,9 +38,9 @@
                 <ul>
                 <!-- 可以將內容分段並排版 -->
                   <li><%= @menu.contents.at(0..4) %></li>
-                  <li><%= @menu.contents.at(4..7) %></li>
-                  <li><%= @menu.contents.at(7..12) %></li>
-                  <li><%= @menu.contents.at(12..17) %></li>
+                  <li><%= @menu.contents.at(5..7) %></li>
+                  <li><%= @menu.contents.at(8..12) %></li>
+                  <li><%= @menu.contents.at(13..17) %></li>
                   <!--  -->
                 </ul>
                 <br>
@@ -68,7 +68,6 @@
 
         <!-- above is for menu content format -->
 
-          <div id="test"></div>
           <!-- For book button -->
           <div id="modal_container">
           <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -103,15 +102,6 @@
                     <%= order.text_area :order_address,:rows => 3, :placeholder => "",:class => "form-control" %>
                   </div>
                   <!-- Dropdown menu -->
-                  <!--  <div class="dropdown">
-                    <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown trigger
-                    <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-                      ...
-                    </ul>
-                  </div> -->
                   <!-- End of Drop down menu -->
                   <div class="form-group">
                     <div class="text-left">
@@ -119,17 +109,10 @@
                     </div>
                     <%= order.text_field :menu_count,:placeholder => "",:class => "form-control form-width-small" %>
                   </div>
-                  <!-- No need for total price !? -->
-                 <!--  <div class="form-group">
-                    <div class="text-left">
-                      <%#= confirm.label :confirm_total_price,"便當總價"%>
-                    </div>
-                    <div class="form-group text-left"><%= @menu.price %></div>
-                  </div> -->
                 </div>
                 <div class="modal-footer">
                   <div class="text-left">
-                    <%= order.submit "訂購", :class => "btn btn-success",:id =>"dismiss"%>
+                    <%= order.submit "建立訂單",:class => "btn btn-success",:id =>"dismiss"%>
                     <% if @order.errors.any? %>
                     <ul>
                     <% @order.errors.full_messages.each do |msg| %>
@@ -161,10 +144,3 @@
     </div>
   </div>
 </div>
-<!-- Modal -->
-
-<script>
-$("#dismiss").click(function(){
-// $("#mymodal").modal('toggle');
-});
-</script>

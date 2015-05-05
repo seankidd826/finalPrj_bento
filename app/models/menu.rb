@@ -13,7 +13,7 @@ class Menu < ActiveRecord::Base
   # add paperclip for mompic
   # validates_presence_of :mompic
   has_attached_file :mompic, :styles => { :large => "600x600>", :medium => "300x300>", :thumb => "100x100>",:special => "500x300>" }, :default_url => "/images/:style/missing.png"
-  # validates_attachment_content_type :mompic, :content_type => /\Aimage\/.*\Z/
+  validates_attachment_content_type :mompic, :content_type => /\Aimage\/.*\Z/
   # validates_numericality_of :in_stock_qty, :only_integer => true
   # validates_numericality_of :price, :only_integer => true, :greater_than => 1
 

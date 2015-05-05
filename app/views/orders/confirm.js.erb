@@ -1,18 +1,3 @@
-// $("#mymodal").modal('show')
-// $("#mymodal").modal('toggle')
 $('#modal_container').html("<%= j(render :partial => "confirm")%>");
 $('.modal-backdrop.fade.in').remove();
 $('#modal_container #myconfirmModal').modal('show');
-//
-// $('#mymodal').modal('hide');/
-
-
-
-  // <!-- No need for total price !? -->
-  //                <!--  <div class="form-group">
-  //                   <div class="text-left">
-                      <%#= confirm.label :confirm_total_price,"便當總價"%>
-                //     </div>
-                //     <div class="form-group text-left"><%= @menu.price %></div>
-                //   </div>
-                // </div>

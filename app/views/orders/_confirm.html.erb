@@ -4,20 +4,47 @@
 <!-- <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myconfirmModal">
   Launch demo modal
 </button> -->
-<div class="modal fade" id="myconfirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myconfirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h4 class="modal-title menu_title" id="myModalLabel"><%= @menu.title %></h4>
       </div>
       <div class="modal-body">
-        ...
+      <%= form_for @order,:url => menu_orders_path(@menu) do |order| %>
+      <div class="confirm">
+        <%= order.label :order_name, "您的姓名:" %>
+        <%= @order.order_name %>
+        <%= order.hidden_field :order_name %>
+        <br>
+        <%= order.label :order_phone, "您的電話:" %>
+        <%= @order.order_phone %>
+        <%= order.hidden_field :order_phone %>
+        <br>
+        <%= order.label :order_address, "您的住址:" %>
+        <%= @order.order_address %>
+        <%= order.hidden_field :order_address %>
+        <br>
+        <%= order.label :order_name, "訂購數量:" %>
+        <%= @order.menu_count %>
+        <%= order.hidden_field :menu_count %>
+        <br>
+        總價: <%= @order.total %>
+      </div>
+
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+       <div class="text-left">
+        <%= order.submit "確認訂單",:class => "btn btn-success" %>
+         <%= link_to "放棄訂單", root_path, :class=>"btn btn-default",:id =>"dismiss_confirm" %>
+       </div>
+      <% end %>
       </div>
     </div>
   </div>
 </div>
+<script>
+ $('#dismiss_confirm').click(function(){
+  $("#myconfirmModal").remove();
+ });
+</script>
