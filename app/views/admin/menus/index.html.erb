@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+<h1>後台菜單管理頁面</h1>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>便當名稱</th>
+        <th>便當內容</th>
+        <th>便當價格</th>
+        <th>喜歡的人數</th>
+        <th>便當庫存</th>
+        <th>媽媽資訊</th>
+        <th>媽媽圖片</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @admin_menus.each do |admin_menu| %>
+        <tr>
+          <td><%= admin_menu.title %></td>
+          <td><%= admin_menu.contents %></td>
+          <td><%= admin_menu.price %></td>
+          <td><%= admin_menu.likes_count %></td>
+          <td><%= admin_menu.in_stock_qty %></td>
+          <td><%= admin_menu.mominfo %></td>
+          <td><%= admin_menu.mompic_file_name %></td>
+          <!-- <td><%#= admin_menu.file_field :mompic %></td> -->
+          <td><%= link_to 'Show', admin_menu,:class => "btn btn-primary"  %>
+              <%= link_to 'Edit', edit_admin_menu_path(admin_menu),:class => "btn btn-primary"  %>
+              <%= link_to 'Destroy', admin_menu, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-danger"  %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to '新增便當', new_admin_menu_path, :class => "btn btn-success" %>
+  <%= link_to '訂單管理', admin_orders_path, :class => "btn btn-primary" %>
+  <%= link_to '回到前台', root_path, :class => "btn btn-default" %>
+  </div>

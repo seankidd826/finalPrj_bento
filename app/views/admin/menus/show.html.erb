@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @admin_menu.title %>
+</p>
+
+<p>
+  <strong>Contents:</strong>
+  <%= @admin_menu.contents %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @admin_menu.price %>
+</p>
+
+<p>
+  <strong>Likes count:</strong>
+  <%= @admin_menu.likes_count %>
+</p>
+
+<p>
+  <strong>In stock qty:</strong>
+  <%= @admin_menu.in_stock_qty %>
+</p>
+
+<p>
+  <strong>Mominfo:</strong>
+  <%= @admin_menu.mominfo %>
+</p>
+
+<p>
+  <strong>Mompic:</strong>
+  <%= image_tag(@admin_menu.mompic(:medium)) %>
+</p>
+
+<%= link_to 'Edit', edit_admin_menu_path(@admin_menu) %> |
+<%= link_to 'Back', admin_menus_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150430135450) do
+ActiveRecord::Schema.define(version: 20150506084719) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -89,6 +89,9 @@ ActiveRecord::Schema.define(version: 20150430135450) do
     t.string   "pic_content_type", limit: 255
     t.integer  "pic_file_size",    limit: 4
     t.datetime "pic_updated_at"
+    t.text     "momcontents_1",    limit: 65535
+    t.text     "momcontents_2",    limit: 65535
+    t.text     "momcontents_3",    limit: 65535
   end
 
   create_table "user_menus", force: :cascade do |t|
