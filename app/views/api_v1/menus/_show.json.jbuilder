@@ -1,7 +1,8 @@
 json.url v1_menu_url(p)
+json.img_url p.mompic
 json.id p.id
 json.title p.title
-json.contents p.contents
+json.contents process(p.contents)
 json.price p.price
 json.in_stock_qty p.in_stock_qty
 json.mominfo p.mominfo
