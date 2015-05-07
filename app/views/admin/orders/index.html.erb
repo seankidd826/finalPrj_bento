@@ -6,6 +6,7 @@
   <table class="table table-bordered">
     <thead>
       <tr>
+        <th>便當編號</th>
         <th>訂單總價</th>
         <th>訂單便當個數</th>
         <th>訂購者</th>
@@ -19,6 +20,7 @@
     <tbody>
       <% @admin_orders.each do |admin_order| %>
         <tr>
+          <td><%= admin_order.menu_id %></td>
           <td><%= admin_order.total_price %></td>
           <td><%= admin_order.menu_count %></td>
           <td><%= admin_order.order_name %></td>

@@ -6,6 +6,7 @@
   <table class="table table-bordered">
     <thead>
       <tr>
+        <th>便當編號</th>
         <th>便當名稱</th>
         <th>便當內容</th>
         <th>便當價格</th>
@@ -20,6 +21,7 @@
     <tbody>
       <% @admin_menus.each do |admin_menu| %>
         <tr>
+          <td><%= admin_menu.id %></td>
           <td><%= admin_menu.title %></td>
           <td><%= admin_menu.contents %></td>
           <td><%= admin_menu.price %></td>
