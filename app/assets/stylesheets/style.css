@@ -48,3 +48,20 @@
 .confirm {
   font-size: 20px;
 }
+.border {
+  border:dimgray solid 1px;
+  border-radius: 8px;
+  width:150px;
+}
+.test {
+  margin-left:-180px;
+  margin-top:50px;
+}
+.check{
+  margin-right:40px;
+}
+.star{
+  margin-bottom: -18px;
+  font-size: 20px;
+  color:red;
+}

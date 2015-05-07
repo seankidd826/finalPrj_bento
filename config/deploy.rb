@@ -3,7 +3,7 @@
 lock '3.4.0'
 
 set :application, 'bento'
-set :repo_url, 'git@github.com:video107/bento.git'
+set :repo_url, 'git@github.com:seankidd826/finalPrj_bento.git'
 
 # Default branch is :master
 ask :branch,proc {`git rev-parse --abbrev-ref HEAD`.chomp}.call

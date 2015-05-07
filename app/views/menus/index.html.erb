@@ -55,20 +55,28 @@
             <li><h4><%= @menu.mominfo %></h4></li><br>
           </ul>
           <!-- 要加 使用者判斷式 -->
-          <%= link_to "新增媽媽故事",new_menu_path %>
-          <%= link_to "編輯媽媽故事",edit_menu_path(@menu) %>
         </div>
 
         <div class="col-xs-12 col-sm-6 myOder">
           <div class="form-group">
             <ul>
             <!-- 可以將內容分段並排版 -->
-              <li><%= @menu.contents.at(0..3) %></li>
-              <li><%= @menu.contents.at(4..7) %></li>
-              <li><%= @menu.contents.at(8..11) %></li>
-              <li><%= @menu.contents.at(12..14) %></li>
-              <li><%= @menu.contents.at(15..17) %></li>
-              <li><%= @menu.contents.at(18..19) %></li>
+              <!-- <div class="text-align"> -->
+               <div class="test">
+               <div class="star"><%= icon("star") %></div>
+                 <div class="border text-center text-align check"><%=@menu.contents.at(0..3) %></div>
+                 <div class="border text-center text-align"><%= @menu.contents.at(4..7) %></div>
+               </div>
+              <!-- </div> -->
+              <div class="test">
+
+                <div class="border text-center text-align check"><%= @menu.contents.at(8..11) %></div>
+                <div class="border text-center text-align"><%= @menu.contents.at(12..14) %></div>
+              </div>
+              <div class="test">
+                <div class="border text-center text-align check"><%= @menu.contents.at(15..17) %></div>
+                <div class="border text-center text-align"><%= @menu.contents.at(18..19) %></div>
+              </div>
               <!--  -->
             </ul>
             <%= link_to "後台", admin_menus_path,:class=>"btn btn-default" %><br>
