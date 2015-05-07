@@ -44,7 +44,7 @@ gem 'paperclip'
 # Use Unicorn as the app server
 # gem 'unicorn'
 gem "letter_opener", :group => :development
-gem 'font-awesome-sass', '~> 4.3.0'
+gem 'font-awesome-sass'
 
 
 # Use Capistrano for deployment

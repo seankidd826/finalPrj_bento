@@ -1,149 +1,250 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-12">
-      <div class="row banner">
-        <div class="col-xs-6 col-xs-offset-3">
-          <h1>Hello World!!</h1>
-        </div>
-      </div>
-      <div class="row story">
-        <div class="image col-xs-4 col-xs-offset-1"></div>
-        <div class="col-xs-4 col-xs-offset-4 descirbe"></div>
-      </div>
-      <div class="row subscribe">
-      <!-- first row for menu description and date -->
+  <section id="headNav">
+    <nav class="navbar navbar-default navbar-fixed-top hidden-sm" role="navigation">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="container">
         <div class="row">
-          <div class="col-xs-6 col-xs-offset-3">
-            <div class="menu_head text-center"><%= @menu.menu_date %> 午餐菜單</div>
-            <div class="menu_title text-center"><%= @menu.title %></div>
-          </div>
+
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="home"><%= image_tag("logo.png", :height => "10%", :width => "10%", class: "img-responsive", alt: "bento banto") %></a>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="order">我要訂便當</a></li>
+              <li><a href="info">簡單三步驟</a></li>
+              <li><a href="footer">媽媽的話</a></li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
         </div>
-        <!-- first row end -->
-        <!-- second row for mompic and menu contents... -->
-          <div class="row">
-            <div class="col-xs-4 mompic">
-              <div class="text-center">
+      </div>
+    </nav>
+  </section>
 
-                <%= image_tag( @menu.mompic(:medium) ) %>
+  <section id="home" data-type="background" data-speed="10">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-12">
+          <p class="centerLogo text-center"><%= image_tag("logo.png", :height => "20%", :width => "20%", alt: "bento banto") %></p>
+          <h1 class="mainArticle text-center">帶一份 來自家的便當</h1>
+          <br>
+          <p class="mainParagraph text-center">向媽媽們預訂豐盛、均衡的午餐，給忙碌又總是外食的你，更有溫度的選擇</p>
+          <button type="button">Click Me!</button>
+          <i class="fa fa-angle-down fa-fw"></i>
+        </div>
+      </div>
+    </div>
+  </section>
 
-              </div>
-              <h2>今日主廚</h2>
-              <h3><%= @menu.mominfo %></h3>
-              <!-- 要加 使用者判斷式 -->
-              <%= link_to "新增媽媽故事",new_menu_path %>
-              <%= link_to "編輯媽媽故事",edit_menu_path(@menu) %>
+  <section id="order">
+    <div class="container">
+      <div class="row">
+
+        <div class="col-x-12 col-sm-12 text-center orderBento">
+          <h2><%= @menu.menu_date %> 午餐菜單</h2>
+          <h3><%= @menu.title %></h3>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 todayMenu">
+          <%= image_tag( @menu.mompic(:medium), :class => "img-circle img-responsive" ) %>
+          <ul class="list-inline">
+            <li><h4>今日主廚</h4></li><br>
+            <li><h4><%= @menu.mominfo %></h4></li><br>
+          </ul>
+          <!-- 要加 使用者判斷式 -->
+          <%= link_to "新增媽媽故事",new_menu_path %>
+          <%= link_to "編輯媽媽故事",edit_menu_path(@menu) %>
+        </div>
+
+        <div class="col-xs-12 col-sm-6 myOder">
+          <div class="form-group">
+            <ul>
+            <!-- 可以將內容分段並排版 -->
+              <li class="test"><%= @menu.contents.at(0..4) %></li>
+              <li><%= @menu.contents.at(5..7) %></li>
+              <li><%= @menu.contents.at(8..12) %></li>
+              <li><%= @menu.contents.at(13..17) %></li>
               <!--  -->
-            </div>
-            <div class="col-xs-4 col-xs-offset-8">
-              <div class="form-group">
-                <ul>
-                <!-- 可以將內容分段並排版 -->
-                  <li><%= @menu.contents.at(0..4) %></li>
-                  <li><%= @menu.contents.at(5..7) %></li>
-                  <li><%= @menu.contents.at(8..12) %></li>
-                  <li><%= @menu.contents.at(13..17) %></li>
-                  <!--  -->
-                </ul>
-                <%= link_to "後台", admin_menus_path,:class=>"btn btn-default" %>
-                <br>
-                <div class="text-align"><%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-primary" do %>
-                  <%= icon("pencil") %>訂購
-                  <% end %></div>
-                <div class="text-align">
-                    <% if current_user %>
-                    <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
-                    <%= image_tag( current_user.fb_image,:class => "img-circle" ) %>
-                    <!-- disable 修改密碼選項 -->
-                    <%#= link_to('修改密碼', edit_registration_path(:user)) %>
-                    <% else %>
-                    <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-social btn-facebook" do %>
-                    <p class="social-icon">f</p>
-                    Facebook登入購買
-                    <% end %>
-                  <% end %>
-                  <p>記住寄送資訊,幫我省時間</p>
+            </ul>
+            <%= link_to "後台", admin_menus_path,:class=>"btn btn-default" %><br>
+            <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-primary" do %>
+              <%= icon("pencil") %>訂購
+            <% end %>
+            <% if current_user %>
+              <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
+              <%= image_tag( current_user.fb_image,:class => "img-circle" ) %>
+              <!-- disable 修改密碼選項 -->
+              <%#= link_to('修改密碼', edit_registration_path(:user)) %>
+              <% else %>
+                <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-social btn-facebook" do %>
+                  <p class="social-icon">f</p>
+                  Facebook登入購買
+                <% end %>
+              <% end %>
+              <p>記住寄送資訊,幫我省時間</p>
+
+<!-- above is for menu content format -->
+              <!-- For book button -->
+              <div id="modal_container">
+                <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h2 class="modal-title" id="myModalLabel">訂購資料</h2>
+                      </div>
+                      <!-- guest訂購資料 -->
+                      <div class="modal-body text-center">
+                        <%# @menus.each do |m| %>
+                        <%= form_for @order,:remote => true, :url => confirm_menu_orders_path(@menu) do |order| %>
+                        <h1><%= @menu.title %></h1>
+                        <h3><%= @menu.contents %></h3>
+                        <div class="form-group">
+                          <div class="text-left">
+                            <%= order.label :order_name,"姓名"%>
+                          </div>
+                          <%= order.text_field :order_name,:placeholder => "您的名字",:class => "form-control form-width" %>
+                        </div>
+                        <div class="form-group">
+                          <div class="text-left">
+                            <%= order.label :order_phone,"電話"%>
+                          </div>
+                          <%= order.text_field :order_phone,:placeholder => "您的電話",:class => "form-control form-width" %>
+                        </div>
+                        <div class="form-group">
+                          <div class="text-left">
+                            <%= order.label :order_address,"運送地址"%>
+                          </div>
+                          <%= order.text_area :order_address,:rows => 3, :placeholder => "",:class => "form-control" %>
+                        </div>
+                        <!-- Dropdown menu -->
+                        <!-- End of Drop down menu -->
+                        <div class="form-group">
+                          <div class="text-left">
+                            <%= order.label :menu_count,"便當數量"%>
+                          </div>
+                          <%= order.select :menu_count,['1','2','3','4','5'],:select=>'1'%>
+                        </div>
+                        <hr>
+                          <%= order.submit "建立訂單",:class => "btn btn-success",:id =>"dismiss"%>
+                         <% end %>
+                      </div>
+                          <% if @order.errors.any? %>
+                          <ul>
+                          <% @order.errors.full_messages.each do |msg| %>
+                          <li>
+                          <%= msg %>
+                          </li>
+                          <% end %>
+                          </ul>
+                          <% end %>
+                      <!-- Disable normal user login function -->
+                          <!-- <div class="text-align"> -->
+                            <%# if current_user %>
+                            <%#= link_to('登出', destroy_user_session_path, :method => :delete) %>  <%#= link_to('修改密碼', edit_registration_path(:user)) %>
+                            <%# else %>
+                            <%#= link_to('註冊', new_registration_path(:user),:class=>"btn btn-primary text-align") %>
+                            <%#= link_to('登入', new_session_path(:user),:class=>"btn btn-primary text-align") %>
+                            <%# end %>
+                          <!-- </div> -->
+                          <!-- Normal user login disable -->
+                     <!--form_for_order_end end-->
+                      <%# end %>   <!--menu end-->
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <!-- second row end -->
-
-
-
-        <!-- above is for menu content format -->
-
-          <!-- For book button -->
-          <div id="modal_container">
-          <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                  <h2 class="modal-title" id="myModalLabel">訂購資料</h2>
-                </div>
-                <!-- guest訂購資料 -->
-                <div class="modal-body text-center">
-                  <%# @menus.each do |m| %>
-                  <%= form_for @order,:remote => true, :url => confirm_menu_orders_path(@menu) do |order| %>
-                  <h1><%= @menu.title %></h1>
-                  <h3><%= @menu.contents %></h3>
-                  <div class="form-group">
-                    <div class="text-left">
-                      <%= order.label :order_name,"姓名"%>
-                    </div>
-                    <%= order.text_field :order_name,:placeholder => "您的名字",:class => "form-control form-width" %>
-                  </div>
-                  <div class="form-group">
-                    <div class="text-left">
-                      <%= order.label :order_phone,"電話"%>
-                    </div>
-                    <%= order.text_field :order_phone,:placeholder => "您的電話",:class => "form-control form-width" %>
-                  </div>
-                  <div class="form-group">
-                    <div class="text-left">
-                      <%= order.label :order_address,"運送地址"%>
-                    </div>
-                    <%= order.text_area :order_address,:rows => 3, :placeholder => "",:class => "form-control" %>
-                  </div>
-                  <!-- Dropdown menu -->
-                  <!-- End of Drop down menu -->
-                  <div class="form-group">
-                    <div class="text-left">
-                      <%= order.label :menu_count,"便當數量"%>
-                    </div>
-                    <%= order.select :menu_count,['1','2','3','4','5'],:select=>'1'%>
-                  </div>
-                  <hr>
-                    <%= order.submit "建立訂單",:class => "btn btn-success",:id =>"dismiss"%>
-                   <% end %>
-                </div>
-                    <% if @order.errors.any? %>
-                    <ul>
-                    <% @order.errors.full_messages.each do |msg| %>
-                    <li>
-                    <%= msg %>
-                    </li>
-                    <% end %>
-                    </ul>
-                    <% end %>
-                <!-- Disable normal user login function -->
-                    <!-- <div class="text-align"> -->
-                      <%# if current_user %>
-                      <%#= link_to('登出', destroy_user_session_path, :method => :delete) %>  <%#= link_to('修改密碼', edit_registration_path(:user)) %>
-                      <%# else %>
-                      <%#= link_to('註冊', new_registration_path(:user),:class=>"btn btn-primary text-align") %>
-                      <%#= link_to('登入', new_session_path(:user),:class=>"btn btn-primary text-align") %>
-                      <%# end %>
-                    <!-- </div> -->
-                    <!-- Normal user login disable -->
-               <!--form_for_order_end end-->
-                <%# end %>   <!--menu end-->
-              </div>
-            </div>
+<!-- menu content format END -->
           </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </section>
 
+  <section id="info">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12">
+          <h2 class="text-center">帶便當好輕鬆</h2>
+          <p class="text-center">簡單3步驟</p>
+          <%= image_tag("info.png", class: "img-responsive text-center storyInfo", :height => "100%", :width => "100%", alt: "bento banto") %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12">
+          <h2 class="text-center">媽媽們的料理故事</h2>
+          <p class="text-center">給孩子的愛</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 vcenter">
+          <div class="momsTalk text-center right">
+            <p class="momConts"><%= @story.momcontents %></p>
+          </div>
+          <div class="momConts1 text-center">
+            <%= @story.momcontents_1 %>
+          </div>
+          <div class="momConts2 text-center">
+            <%= @story.momcontents_2 %>
+          </div>
+        </div>
+
+        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+          <%= image_tag( @menu.mompic(:small), :class => "img-circle img-responsive" ) %>
+          <p class="storyCon"><%= @story.momcontents_3 %></p>
+        </div>
+
+        <div class="col-xs-12 text-center">
+          <a href="https://www.facebook.com/pages/Bento-Banto-%E5%B8%B6%E4%BE%BF%E7%95%B6/926937394017505" class="btn btn-primary btn-lg fa fa-facebook-official"> 更多家與料理故事</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- JavaScript gose here -->
+
+  <script>
+   $(document).ready(function(){
+     var $window = $(window);
+       $('section[data-type="background"]').each(function(){
+           var $bgobj = $(this); // assigning the object
+
+           $(window).scroll(function() {
+               var yPos = -($window.scrollTop() / $bgobj.data('speed'));
+
+               // Put together our final background position
+               var coords = '50% '+ yPos + 'px';
+
+               // Move the background
+               $bgobj.css({ backgroundPosition: coords });
+           });
+       });
+   });
+  </script>
+
+  <script>
+    $(document).on('scroll', function (e) {
+        $('.navbar-default').css('opacity', ($(document).scrollTop() / 500));
+    });
+  </script>
+
+  <script>
+    $("button").click(function() {
+        $('html,body').animate({
+            scrollTop: $("#order").offset().top},
+            'slow');
+    });
+  </script>
+
+  <!-- JavaScript END -->

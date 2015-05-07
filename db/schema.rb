@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150506084719) do
+ActiveRecord::Schema.define(version: 20150506101441) do
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -80,7 +80,7 @@ ActiveRecord::Schema.define(version: 20150506084719) do
     t.string   "order_email",   limit: 255
   end
 
-  create_table "storys", force: :cascade do |t|
+  create_table "stories", force: :cascade do |t|
     t.string   "momheader",        limit: 255
     t.text     "momcontents",      limit: 65535
     t.datetime "created_at",                     null: false

@@ -5,6 +5,7 @@ class MenusController < ApplicationController
     @menus = Menu.all
     @menu = Menu.all.last
     @order = Order.new
+    @story = Story.last
   end
 
   def new
@@ -41,7 +42,7 @@ class MenusController < ApplicationController
   private
 
   def menu_params
-    params.require(:menu).permit(:mominfo, :title, :contents, :price, :in_stock_qty,:mompic)
+    params.require(:menu).permit(:mominfo, :title, :contents, :price, :in_stock_qty,:mompic, :momcontents, :momcontents_1, :momcontents_2, :momcontents_3 )
   end
 
 

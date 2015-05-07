@@ -256,7 +256,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   devise
   faker
-  font-awesome-sass (~> 4.3.0)
+  font-awesome-sass
   jbuilder (~> 2.0)
   jquery-rails
   kaminari

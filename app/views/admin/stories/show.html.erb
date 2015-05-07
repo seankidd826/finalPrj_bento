@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Momheader:</strong>
+  <%= @admin_story.momheader %>
+</p>
+
+<p>
+  <strong>Momcontents:</strong>
+  <%= @admin_story.momcontents %>
+</p>
+
+<p>
+  <strong>Momcontents 1:</strong>
+  <%= @admin_story.momcontents_1 %>
+</p>
+
+<p>
+  <strong>Momcontents 2:</strong>
+  <%= @admin_story.momcontents_2 %>
+</p>
+
+<p>
+  <strong>Momcontents 3:</strong>
+  <%= @admin_story.momcontents_3 %>
+</p>
+
+<%= link_to 'Edit', edit_admin_story_path(@admin_story) %> |
+<%= link_to 'Back', admin_stories_path %>
