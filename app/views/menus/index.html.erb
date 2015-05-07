@@ -70,8 +70,15 @@
               <!--  -->
             </ul>
             <%= link_to "後台", admin_menus_path,:class=>"btn btn-default" %><br>
-            <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-primary btn-lg fa fa-pencil" do %>
-            訂購
+            <% qty = @menu.in_stock_qty %>
+            <% if qty == 0 %>
+              <%= link_to "#", :class => "btn btn-danger btn-lg fa fa-minus-circle",:disabled =>"disabled" do %>
+              限量是殘酷的
+              <% end %>
+            <% else %>
+              <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-primary btn-lg fa fa-pencil" do %>
+              訂購
+              <% end %>
             <% end %>
             <% if current_user %>
               <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
@@ -125,7 +132,11 @@
                           <div class="text-left">
                             <%= order.label :menu_count,"便當數量"%>
                           </div>
-                          <%= order.select :menu_count,['1','2','3','4','5'],:select=>'1'%>
+                          <select class="form-control form-width" name="order[menu_count]" id="order_menu_count">
+                          <% (1..qty).each do |i| %>
+                          <option value=<%= i %>><%= i %></option>
+                          <% end %>
+                          </select>
                         </div>
                         <hr>
                           <%= order.submit "建立訂單",:class => "btn btn-success",:id =>"dismiss"%>
