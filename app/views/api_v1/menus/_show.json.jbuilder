@@ -1,0 +1,9 @@
+json.url v1_menu_url(p)
+json.id p.id
+json.title p.title
+json.contents p.contents
+json.price p.price
+json.in_stock_qty p.in_stock_qty
+json.mominfo p.mominfo
+json.created_at p.created_at
+json.updated_at p.updated_at
