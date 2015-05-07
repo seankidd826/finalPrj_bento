@@ -22,6 +22,7 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 # pagenate plugin for rails
 gem "kaminari"
+gem "brakeman", :require => false
 # user login plugin
 gem 'devise'
 # Use jquery as the JavaScript library
