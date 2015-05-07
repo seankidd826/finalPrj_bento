@@ -1,5 +1,5 @@
 json.url v1_menu_url(p)
-json.img_url p.mompic
+json.img_url asset_url(p.mompic)
 json.id p.id
 json.title p.title
 json.contents process(p.contents)
