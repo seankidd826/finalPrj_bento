@@ -5,6 +5,6 @@ json.title p.title
 json.contents process(p.contents)
 json.price p.price
 json.in_stock_qty p.in_stock_qty
-json.mominfo p.mominfo
+json.mominfo [p.mominfo[0,1],p.mominfo[2,4]]
 json.created_at p.created_at
 json.updated_at p.updated_at
