@@ -126,7 +126,12 @@
                           <div class="text-left">
                             <%= order.label :order_address,"運送地址"%>
                           </div>
-                          <%= order.text_area :order_address,:rows => 3, :placeholder => "",:class => "form-control" %>
+                          <select class="form-control form-width" name="order[order_address_area]">
+                          <option value="大安區">大安區</option>
+                          <option value="中正區">中正區</option>
+                          <option value="文山區">文山區</option>
+                          </select>
+                          <%= order.text_area :order_address,:name =>"order[order_address_road]", :rows => 2, :placeholder => "",:class => "form-control" %>
                         </div>
                         <!-- Dropdown menu -->
                         <!-- End of Drop down menu -->
