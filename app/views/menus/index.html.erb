@@ -11,11 +11,11 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="home"><%= image_tag("logo.png", :height => "10%", :width => "10%", class: "img-responsive", alt: "bento banto") %></a>
+            <a class="navbar-brand" href="#home"><%= image_tag("logo.png", :height => "10%", :width => "10%", class: "img-responsive", alt: "bento banto") %></a>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="order">我要訂便當</a></li>
-              <li><a href="info">簡單三步驟</a></li>
-              <li><a href="footer">媽媽的話</a></li>
+              <li><a href="#order">我要訂便當</a></li>
+              <li><a href="#info">簡單三步驟</a></li>
+              <li><a href="#footer">媽媽的話</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div>
@@ -31,8 +31,9 @@
           <h1 class="mainArticle text-center">帶一份 來自家的便當</h1>
           <br>
           <p class="mainParagraph text-center">向媽媽們預訂豐盛、均衡的午餐，給忙碌又總是外食的你，更有溫度的選擇</p>
-          <button type="button">Click Me!</button>
-          <i class="fa fa-angle-down fa-fw"></i>
+                    <div class="col-xs-12 col-md-12 scroll-down">
+            <p class="btn"><i class="fa fa-angle-down fa-fw"></i></p>
+          </div>
         </div>
       </div>
     </div>
@@ -69,8 +70,8 @@
               <!--  -->
             </ul>
             <%= link_to "後台", admin_menus_path,:class=>"btn btn-default" %><br>
-            <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-primary" do %>
-              <%= icon("pencil") %>訂購
+            <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-primary btn-lg fa fa-pencil" do %>
+            訂購
             <% end %>
             <% if current_user %>
               <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
@@ -78,9 +79,8 @@
               <!-- disable 修改密碼選項 -->
               <%#= link_to('修改密碼', edit_registration_path(:user)) %>
               <% else %>
-                <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-social btn-facebook" do %>
-                  <p class="social-icon">f</p>
-                  Facebook登入購買
+                <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-lg fa fa-facebook-square" do %>
+                Facebook登入購買
                 <% end %>
               <% end %>
               <p>記住寄送資訊,幫我省時間</p>
@@ -206,7 +206,7 @@
         </div>
 
         <div class="col-xs-12 text-center">
-          <a href="https://www.facebook.com/pages/Bento-Banto-%E5%B8%B6%E4%BE%BF%E7%95%B6/926937394017505" class="btn btn-primary btn-lg fa fa-facebook-official"> 更多家與料理故事</a>
+          <a href="https://www.facebook.com/pages/Bento-Banto-%E5%B8%B6%E4%BE%BF%E7%95%B6/926937394017505" class="btn btn-primary btn-lg fa fa-facebook-square"> 更多家與料理故事</a>
         </div>
       </div>
     </div>
@@ -240,7 +240,7 @@
   </script>
 
   <script>
-    $("button").click(function() {
+    $("p").click(function() {
         $('html,body').animate({
             scrollTop: $("#order").offset().top},
             'slow');

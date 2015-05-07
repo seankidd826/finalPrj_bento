@@ -2,6 +2,8 @@
 @import "bootstrap";
 @import "bootstrap-social";
 @import "style";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
 #headNav {
 
@@ -48,7 +50,32 @@
   text-shadow: #444 0 1px 1px;
 }
 
-.centerLogo {
+.scroll-down {
+  margin-top: 550px;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.scroll-down .btn {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  border: 2px solid #fff;
+  border-radius: 100%;
+  font-size: 30px;
+  line-height: 50px;
+  letter-spacing: normal;
+  color: #fff;
+  -webkit-transition: all .5s;
+  -moz-transition: all .5s;
+  transition: all .5s;
+}
+
+.scroll-down .btn:hover {
+  border-color: rgba(255,255,255,.5);
+  outline: 0;
+  color: rgba(255,255,255,.5);
 }
 
 #order {
