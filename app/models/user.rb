@@ -17,15 +17,27 @@ class User < ActiveRecord::Base
   # create one to many (orders) relation
   has_many :orders
 
+  before_save :ensure_authentication_token
 
   def self.from_omniauth(auth)
-  where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
-    user.email = auth.info.email
-    user.password = Devise.friendly_token[0,20]
-    user.name = auth.info.name   # assuming the user model has a name
-    user.fb_image = auth.info.image # assuming the user model has an image
+    user = where( fb_uid: auth.uid ).first
+
+    unless user
+      user = self.new
+      user.fb_uid = auth.uid
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0,20]
     end
+
+    if auth.credentials
+      user.fb_access_token = auth.credentials.token
+      user.fb_expires_at = Time.at(auth.credentials.expires_at)
+    end
+
+    user.save
+    user
   end
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
@@ -33,4 +45,37 @@ class User < ActiveRecord::Base
       end
     end
   end
+
+ def self.get_facebook_user_data(access_token)
+    conn = Faraday.new(:url => 'https://graph.facebook.com/me')
+    response = conn.get "/me", { :access_token => access_token }
+    data = JSON.parse(response.body)
+
+    if response.status == 200
+      data
+    else
+      Rails.logger.warn(data)
+      nil
+    end
+  end
+
+  def generate_authentication_token
+    token = nil
+
+    loop do
+      token = Devise.friendly_token
+      break token unless User.where(authentication_token: token).first
+    end
+
+    self.authentication_token = token
+  end
+
+  protected
+
+  def ensure_authentication_token
+    if authentication_token.blank?
+      self.authentication_token = generate_authentication_token
+    end
+  end
+
 end

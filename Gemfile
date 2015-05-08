@@ -9,6 +9,9 @@ gem 'rails', '4.2.1'
 gem 'capistrano-rails', :group => :development
 gem 'capistrano-passenger', :group => :development
 gem 'mysql2'
+
+gem 'faraday'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
