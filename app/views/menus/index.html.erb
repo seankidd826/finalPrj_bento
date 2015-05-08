@@ -52,8 +52,8 @@
           <%= image_tag( @menu.mompic(:medium), :class => "img-circle img-responsive" ) %>
           <ul class="list-inline">
             <li><h4>今日主廚</h4></li><br>
-            <li><h3 class="todayChef"><%= @menu.mominfo.at(0..5) %></h3></li><br>
-            <li><h4 class="chefInfo"><%= @menu.mominfo.at(7..13) %></h4></li>
+            <li><h3 class="todayChef"><%= @menu.chef_name %></h3></li><br>
+            <li><h4 class="chefInfo"><%= @menu.chef_info %></h4></li>
           </ul>
           <!-- 要加 使用者判斷式 -->
         </div>
@@ -122,7 +122,7 @@
                       </div>
                       <!-- guest訂購資料 -->
                       <div class="modal-body text-center">
-                        <%# @menus.each do |m| %>
+
                         <%= form_for @order,:remote => true, :url => confirm_menu_orders_path(@menu) do |order| %>
                         <h1><%= @menu.title %></h1>
 <!-- ....................................................................... -->
@@ -163,12 +163,10 @@
                           <div class="text-left">
                             <%= order.label :order_address,"運送地址"%>
                           </div>
-                          <select class="form-control form-width" name="order[order_address_area]">
-                          <option value="大安區">大安區</option>
-                          <option value="中正區">中正區</option>
-                          <option value="文山區">文山區</option>
-                          </select>
-                          <%= order.text_area :order_address,:name =>"order[order_address_road]", :rows => 2, :placeholder => "",:class => "form-control" %>
+
+                         <%= order.select :address_area, %w[大安區 中正區 文山區], {}, :class => "form-control form-width" %>
+
+                          <%= order.text_area :address_road, :rows => 2, :placeholder => "",:class => "form-control" %>
                         </div>
                         <!-- Dropdown menu -->
                         <!-- End of Drop down menu -->
@@ -176,11 +174,9 @@
                           <div class="text-left">
                             <%= order.label :menu_count,"便當數量"%>
                           </div>
-                          <select class="form-control form-width" name="order[menu_count]" id="order_menu_count">
-                          <% (1..qty).each do |i| %>
-                          <option value=<%= i %>><%= i %></option>
-                          <% end %>
-                          </select>
+
+                          <%= order.select :menu_count, 1..qty, {}, :class => "form-control form-width" %>
+
                         </div>
                         <hr>
                           <%= order.submit "建立訂單",:class => "btn btn-success",:id =>"dismiss"%>
@@ -269,37 +265,43 @@
 
 <!-- JavaScript gose here -->
 
-  <script>
-   $(document).ready(function(){
-     var $window = $(window);
-       $('section[data-type="background"]').each(function(){
-           var $bgobj = $(this); // assigning the object
+<script>
+$(document).ready(function(){
 
-           $(window).scroll(function() {
-               var yPos = -($window.scrollTop() / $bgobj.data('speed'));
+  var $window = $(window);
+  $('section[data-type="background"]').each(function(){
+      var $bgobj = $(this); // assigning the object
 
-               // Put together our final background position
-               var coords = '50% '+ yPos + 'px';
+      $(window).scroll(function() {
+          var yPos = -($window.scrollTop() / $bgobj.data('speed'));
 
-               // Move the background
-               $bgobj.css({ backgroundPosition: coords });
-           });
-       });
-   });
-  </script>
+          // Put together our final background position
+          var coords = '50% '+ yPos + 'px';
 
-  <script>
-    $(document).on('scroll', function (e) {
-        $('.navbar-default').css('opacity', ($(document).scrollTop() / 500));
-    });
-  </script>
+          // Move the background
+          $bgobj.css({ backgroundPosition: coords });
+      });
+  });
 
-  <script>
-    $("p").click(function() {
-        $('html,body').animate({
-            scrollTop: $("#order").offset().top},
-            'slow');
-    });
-  </script>
+  $("p").click(function() {
+      $('html,body').animate({
+          scrollTop: $("#order").offset().top},
+          'slow');
+  });
 
-  <!-- JavaScript END -->
+  $(document).on('scroll', function (e) {
+    var navbar = $('.navbar-default');
+    navbar.css('opacity', ($(document).scrollTop() / 500));
+
+    if ( $(document).scrollTop() < 10 ) {
+      navbar.css('display', "none");
+    } else {
+      navbar.css('display', "inline-block");
+    }
+
+  });
+
+});
+</script>
+
+<!-- JavaScript END -->

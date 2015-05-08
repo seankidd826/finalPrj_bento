@@ -1,4 +1,7 @@
 class Order < ActiveRecord::Base
+
+  attr_accessor :address_area, :address_road
+
   belongs_to :user
   belongs_to :menu
   validates_presence_of :order_phone
