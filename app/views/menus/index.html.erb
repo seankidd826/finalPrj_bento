@@ -17,7 +17,7 @@
               <li><a href="#info">簡單三步驟</a></li>
               <li><a href="#footer">媽媽的話</a></li>
             </ul>
-          </div><!-- /.navbar-collapse -->
+          </div>
         </div>
       </div>
     </nav>
@@ -65,24 +65,27 @@
               <!-- <div class="text-align"> -->
                <div class="test">
                <div class="star"><%= icon("star") %></div>
-                 <div class="border text-center text-align check dish"><%=@menu.contents.at(0..3) %></div>
-                 <div class="border text-center text-align dish"><%= @menu.contents.at(4..7) %></div>
+                 <div class="border text-center text-align check dish"><%=@menu.menu_cuisine_1 %></div>
+                 <div class="border text-center text-align dish"><%= @menu.menu_cuisine_2 %></div>
                </div>
               <!-- </div> -->
               <div class="test">
                 <div class="star"><%= icon("star") %></div>
-                <div class="border text-center text-align check dish"><%= @menu.contents.at(8..11) %></div>
-                <div class="border text-center text-align dish"><%= @menu.contents.at(12..14) %></div>
+                <div class="border text-center text-align check dish"><%= @menu.menu_cuisine_3 %></div>
+                <div class="border text-center text-align dish">
+                    <%= @menu.menu_cuisine_4%>
+                </div>
               </div>
               <div class="test">
-                <div class="border text-center text-align check dish"><%= @menu.contents.at(15..17) %></div>
-                <div class="border text-center text-align dish"><%= @menu.contents.at(18..19) %></div>
+               <div class="border text-center text-align check dish">
+                   <%= @menu.menu_cuisine_5%>
+               </div>
+               <div class="border text-center text-align dish">
+                   <%= @menu.menu_cuisine_6%>
+               </div>
               </div>
-              <!--  -->
             </ul>
-
             <%= link_to "後台", admin_menus_path,:class=>"btn btn-default" %><br>
-
             <div class="col-xs-12 col-sm-4 text-center">
               <% qty = @menu.in_stock_qty %>
               <% if qty == 0 %>
@@ -122,30 +125,25 @@
                       </div>
                       <!-- guest訂購資料 -->
                       <div class="modal-body text-center">
-
                         <%= form_for @order,:remote => true, :url => confirm_menu_orders_path(@menu) do |order| %>
                         <h1><%= @menu.title %></h1>
 <!-- ....................................................................... -->
-                        <!-- <h3><%#= @menu.contents %></h3> -->
+
             <ul>
             <!-- 可以將內容分段並排版 -->
-              <!-- <div class="text-align"> -->
                <div class="test">
-                 <div class="border text-center text-align check dish"><%=@menu.contents.at(0..3) %></div>
-                 <div class="border text-center text-align dish"><%= @menu.contents.at(4..7) %></div>
+                 <div class="border text-center text-align check dish"><%= @menu.menu_cuisine_1 %></div>
+                 <div class="border text-center text-align dish"><%= @menu.menu_cuisine_2 %></div>
                </div>
-              <!-- </div> -->
               <div class="test">
-                <div class="border text-center text-align check dish"><%= @menu.contents.at(8..11) %></div>
-                <div class="border text-center text-align dish"><%= @menu.contents.at(12..14) %></div>
+                <div class="border text-center text-align check dish"><%= @menu.menu_cuisine_3 %></div>
+                <div class="border text-center text-align dish"><%= @menu.menu_cuisine_4 %></div>
               </div>
               <div class="test">
-                <div class="border text-center text-align check dish"><%= @menu.contents.at(15..17) %></div>
-                <div class="border text-center text-align dish"><%= @menu.contents.at(18..19) %></div>
+                <div class="border text-center text-align check dish"><%= @menu.menu_cuisine_5 %></div>
+                <div class="border text-center text-align dish"><%= @menu.menu_cuisine_6 %></div>
               </div>
-              <!--  -->
             </ul>
-
 <!-- ....................................................................... -->
                         <div class="form-group">
                           <div class="text-left">
@@ -163,10 +161,13 @@
                           <div class="text-left">
                             <%= order.label :order_address,"運送地址"%>
                           </div>
-
+                         <% if current_user.try(:address) %>
+                          <%= order.text_area :order_address, :rows => 2, :placeholder => "",:class => "form-control" %>
+                         <% else %>
                          <%= order.select :address_area, %w[大安區 中正區 文山區], {}, :class => "form-control form-width" %>
 
                           <%= order.text_area :address_road, :rows => 2, :placeholder => "",:class => "form-control" %>
+                          <% end %>
                         </div>
                         <!-- Dropdown menu -->
                         <!-- End of Drop down menu -->

@@ -9,7 +9,6 @@ class Order < ActiveRecord::Base
 
   before_save :setup_total
   after_create :consume_stock
-
   after_create :fill_user_data
 
   def total
@@ -34,6 +33,7 @@ class Order < ActiveRecord::Base
       u.name ||= self.order_name
       u.phone ||= self.order_phone
       u.address ||= self.order_address
+      u.save!
     end
   end
 
