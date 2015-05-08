@@ -34,24 +34,24 @@
 #home .mainArticle {
   height: 400px;
   position: absolute;
-  margin-top: 100px;
+  margin-top: 180px;
   width: 100%;
-  font-size: 72px;
+  font-size: 64px;
   color: white;
   text-shadow: #444 0 1px 1px;
 }
 
 #home .mainParagraph {
-  margin-top: 230px;
+  margin-top: 250px;
   position: absolute;
   width: 100%;
-  font-size: 32px;
+  font-size: 24px;
   color: white;
   text-shadow: #444 0 1px 1px;
 }
 
 .scroll-down {
-  margin-top: 460px;
+  margin-top: 560px;
   bottom: 20px;
   width: 100%;
   text-align: center;
@@ -80,7 +80,6 @@
 
 #order {
   padding-top: 80px;
-  background-color: #CABFA9;
 }
 
 .storyImg {
@@ -95,22 +94,33 @@
 
 .dish {
   color: white;
-  font-size: 15px;
+  font-size: 25px;
   background-color: tan;
 }
 
+.chefTitle {
+  margin-top: 2px;
+}
+
 .todayChef {
+  margin-top: 3px;
   font-weight: bolder;
-  padding-left: 60px;
 }
 
 .chefInfo {
-  padding-left: 60px;
+  margin-top: 0px;
+}
+
+#info {
+  padding-top: 80px;
+  padding-bottom: 30px;
+  background-color: #F9F1E4;
 }
 
 #footer {
+  padding-top: 80px;
   min-height: 150px;
-  background-color: #FFA500;
+  background-color: white;
   padding-bottom: 20px;
 }
 
@@ -148,7 +158,7 @@
 
 .momsTalk.right:after{
   top: 16px;
-  right: -50px;
+  right: -48px;
   bottom: auto;
   left: auto;
   border-width: 10px 0 10px 50px;

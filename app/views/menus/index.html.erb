@@ -11,11 +11,11 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#home"><%= image_tag("logo.png", :height => "10%", :width => "10%", class: "img-responsive", alt: "bento banto") %></a>
+            <a class="navbar-brand" href="#home"><%= image_tag("web_logo.png", :height => "10%", :width => "10%", class: "img-responsive", alt: "bento banto") %></a>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#order">我要訂便當</a></li>
               <li><a href="#info">簡單三步驟</a></li>
-              <li><a href="#footer">媽媽的話</a></li>
+              <li><a href="#footer">媽媽料理故事</a></li>
             </ul>
           </div><!-- /.navbar-collapse -->
         </div>
@@ -27,7 +27,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-md-12">
-          <p class="centerLogo text-center"><%= image_tag("logo.png", :height => "20%", :width => "20%", alt: "bento banto") %></p>
+          <p class="centerLogo text-center"><%= image_tag("web_logo.png", :height => "20%", :width => "20%", alt: "bento banto") %></p>
           <h1 class="mainArticle text-center">帶一份 來自家的便當</h1>
           <br>
           <p class="mainParagraph text-center">向媽媽們預訂豐盛、均衡的午餐，給忙碌又總是外食的你，更有溫度的選擇</p>
@@ -45,20 +45,20 @@
 
         <div class="col-x-12 col-sm-12 text-center orderBento">
           <h2><%= @menu.menu_date %> 午餐菜單</h2>
-          <h3><%= @menu.title %></h3>
+          <h4><%= @menu.title %></h4>
         </div>
 
-        <div class="col-xs-12 col-sm-6 todayMenu out">
+        <div class="col-xs-12 col-sm-3 col-sm-offset-1 todayMenu text-center">
           <%= image_tag( @menu.mompic(:medium), :class => "img-circle img-responsive" ) %>
           <ul class="list-inline">
-            <li><h4>今日主廚</h4></li><br>
+            <li><h4 class="chefTitle text-left">今日主廚</h4></li><br>
             <li><h3 class="todayChef"><%= @menu.chef_name %></h3></li><br>
             <li><h4 class="chefInfo"><%= @menu.chef_experience %></h4></li>
           </ul>
           <!-- 要加 使用者判斷式 -->
         </div>
 
-        <div class="col-xs-12 col-sm-6 myOder out">
+        <div class="col-xs-12 col-sm-5 col-sm-offset-3 myOder out">
           <div class="form-group">
             <ul>
             <!-- 可以將內容分段並排版 -->
@@ -70,7 +70,7 @@
                </div>
               <!-- </div> -->
               <div class="test">
-                <div class="star"><%= icon("star") %></div>
+
                 <div class="border text-center text-align check dish"><%= @menu.contents.at(8..11) %></div>
                 <div class="border text-center text-align dish"><%= @menu.contents.at(12..14) %></div>
               </div>
@@ -79,9 +79,7 @@
                 <div class="border text-center text-align dish"><%= @menu.contents.at(18..19) %></div>
               </div>
               <!--  -->
-            </ul>
-
-            <%= link_to "後台", admin_menus_path,:class=>"btn btn-default" %><br>
+            </ul><br>
 
             <div class="col-xs-12 col-sm-4 text-center">
               <% qty = @menu.in_stock_qty %>
