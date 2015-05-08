@@ -1,6 +1,6 @@
 module MenusHelper
 
-  def process(string)
+  def split_menu_content(string)
      cuisine_1 = string.at(0..3)
      cuisine_2 = string.at(4..7)
      cuisine_3 = string.at(8..11)

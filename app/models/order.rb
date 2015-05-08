@@ -4,13 +4,16 @@ class Order < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :menu
-  validates_presence_of :order_phone
+  validates_presence_of :order_name, :order_address, :order_phone, :menu_id, :menu_count
   validates_numericality_of :menu_count, :only_integer => true
-  before_validation :setup_total
+
+  before_save :setup_total
   after_create :consume_stock
 
+  after_create :fill_user_data
+
   def total
-    self.menu_count * self.menu.price
+    self.menu_count.to_i * self.menu.price
   end
 
   protected
@@ -23,6 +26,15 @@ class Order < ActiveRecord::Base
     stock = self.menu.in_stock_qty
     stock = stock - self.menu_count
     self.menu.update(:in_stock_qty => stock )
+  end
+
+  def fill_user_data
+    u = self.user
+    if u
+      u.name ||= self.order_name
+      u.phone ||= self.order_phone
+      u.address ||= self.order_address
+    end
   end
 
 end

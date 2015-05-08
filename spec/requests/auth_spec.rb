@@ -15,13 +15,17 @@ RSpec.describe "API_V1::Auth", :type => :request do
       {
         :message => "Ok",
         :auth_token => @user.authentication_token,
+        :user_name => @user.name,
+        :user_email => @user.email,
+        :user_phone => @user.phone,
+        :user_address => @user.address,
         :user_id => @user.id
       }.to_json
     )
   end
 
   example "login via facebook access_token (existing user)" do
-    fb_data  ={"id"=>"168", "email"=>"john@gmail.com", "name"=>"張文鈿" }
+    fb_data  ={"id"=>"168", "email"=>"john@gmail.com", "name"=>"John" }
     expect(User).to receive(:get_facebook_user_data).with("fb-access-token-XXX").and_return(fb_data)
 
     post "/api/v1/login", :access_token => "fb-access-token-XXX"
@@ -32,13 +36,17 @@ RSpec.describe "API_V1::Auth", :type => :request do
       {
         :message => "Ok",
         :auth_token => @user.authentication_token,
+        :user_name => @user.name,
+        :user_email => @user.email,
+        :user_phone => @user.phone,
+        :user_address => @user.address,
         :user_id => @user.id
       }.to_json
     )
   end
 
   example "login via facebook access_token (non-existing user)" do
-    fb_data  ={"id"=>"999", "email"=>"ihover@gmail.com", "name"=>"張蚊鈿" }
+    fb_data  ={"id"=>"123", "email"=>"john2@gmail.com", "name"=>"john" }
     expect(User).to receive(:get_facebook_user_data).with("fb-access-token-XXX").and_return(fb_data)
 
     post "/api/v1/login", :access_token => "fb-access-token-XXX"
@@ -50,6 +58,10 @@ RSpec.describe "API_V1::Auth", :type => :request do
       {
         :message => "Ok",
         :auth_token => user.authentication_token,
+        :user_name => user.name,
+        :user_email => user.email,
+        :user_phone => user.phone,
+        :user_address => user.address,
         :user_id => user.id
       }.to_json
     )

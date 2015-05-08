@@ -1,5 +1,7 @@
 class ApiV1::MenusController < ApiController
-  def index
-    @menus = Menu.all
+
+  def show
+    @menu = Menu.last
   end
+
 end
