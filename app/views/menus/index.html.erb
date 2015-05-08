@@ -79,7 +79,9 @@
                 <div class="border text-center text-align dish"><%= @menu.contents.at(18..19) %></div>
               </div>
               <!--  -->
-            </ul><br>
+            </ul>
+            <div class="text-center"><h3>便當價格<%= @menu.price %></h3></div>
+            <br>
 
             <div class="col-xs-12 col-sm-4 text-center">
               <% qty = @menu.in_stock_qty %>
@@ -143,6 +145,7 @@
               </div>
               <!--  -->
             </ul>
+
 
 <!-- ....................................................................... -->
                         <div class="form-group">
