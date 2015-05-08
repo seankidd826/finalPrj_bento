@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
 
   # create one to many (orders) relation
   has_many :orders
-  has_many :confirms
+
 
   def self.from_omniauth(auth)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
