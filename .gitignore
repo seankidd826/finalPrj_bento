@@ -16,3 +16,6 @@
 !/log/.keep
 /tmp
 /public/system/*
+/config/secrets.yml
+/config/database.yml
+/config/facebook.yml
