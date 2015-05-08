@@ -1,0 +1,11 @@
+development:
+  name: aaaaa
+  passwords: aaaaa
+
+test:
+  app_id:
+  secret:
+
+production:
+  name:
+  passwords:
