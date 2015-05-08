@@ -52,7 +52,8 @@
           <%= image_tag( @menu.mompic(:medium), :class => "img-circle img-responsive" ) %>
           <ul class="list-inline">
             <li><h4>今日主廚</h4></li><br>
-            <li><h4><%= @menu.mominfo %></h4></li><br>
+            <li><h3 class="todayChef"><%= @menu.mominfo.at(0..5) %></h3></li><br>
+            <li><h4 class="chefInfo"><%= @menu.mominfo.at(7..13) %></h4></li>
           </ul>
           <!-- 要加 使用者判斷式 -->
         </div>
@@ -64,43 +65,50 @@
               <!-- <div class="text-align"> -->
                <div class="test">
                <div class="star"><%= icon("star") %></div>
-                 <div class="border text-center text-align check"><%=@menu.contents.at(0..3) %></div>
-                 <div class="border text-center text-align"><%= @menu.contents.at(4..7) %></div>
+                 <div class="border text-center text-align check dish"><%=@menu.contents.at(0..3) %></div>
+                 <div class="border text-center text-align dish"><%= @menu.contents.at(4..7) %></div>
                </div>
               <!-- </div> -->
               <div class="test">
-
-                <div class="border text-center text-align check"><%= @menu.contents.at(8..11) %></div>
-                <div class="border text-center text-align"><%= @menu.contents.at(12..14) %></div>
+                <div class="star"><%= icon("star") %></div>
+                <div class="border text-center text-align check dish"><%= @menu.contents.at(8..11) %></div>
+                <div class="border text-center text-align dish"><%= @menu.contents.at(12..14) %></div>
               </div>
               <div class="test">
-                <div class="border text-center text-align check"><%= @menu.contents.at(15..17) %></div>
-                <div class="border text-center text-align"><%= @menu.contents.at(18..19) %></div>
+                <div class="border text-center text-align check dish"><%= @menu.contents.at(15..17) %></div>
+                <div class="border text-center text-align dish"><%= @menu.contents.at(18..19) %></div>
               </div>
               <!--  -->
             </ul>
+
             <%= link_to "後台", admin_menus_path,:class=>"btn btn-default" %><br>
-            <% qty = @menu.in_stock_qty %>
-            <% if qty == 0 %>
-              <%= link_to "#", :class => "btn btn-danger btn-lg fa fa-minus-circle",:disabled =>"disabled" do %>
-              限量是殘酷的
-              <% end %>
-            <% else %>
-              <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-primary btn-lg fa fa-pencil" do %>
-              訂購
-              <% end %>
-            <% end %>
-            <% if current_user %>
-              <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
-              <%= image_tag( current_user.fb_image,:class => "img-circle" ) %>
-              <!-- disable 修改密碼選項 -->
-              <%#= link_to('修改密碼', edit_registration_path(:user)) %>
+
+            <div class="col-xs-12 col-sm-4 text-center">
+              <% qty = @menu.in_stock_qty %>
+              <% if qty == 0 %>
+                <%= link_to "#", :class => "btn btn-danger btn-lg fa fa-minus-circle",:disabled =>"disabled" do %>
+                限量是殘酷的
+                <% end %>
               <% else %>
-                <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-lg fa fa-facebook-square" do %>
-                Facebook登入購買
+                <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-primary btn-lg fa fa-pencil" do %>
+                訂購
                 <% end %>
               <% end %>
-              <p>記住寄送資訊,幫我省時間</p>
+            </div>
+            <div class="col-xs-12 col-sm-6  text-center">
+              <% if current_user %>
+                <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
+                <%= image_tag( current_user.fb_image,:class => "img-circle" ) %>
+                <!-- disable 修改密碼選項 -->
+                <%#= link_to('修改密碼', edit_registration_path(:user)) %>
+                <% else %>
+                  <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-lg fa fa-facebook-square" do %>
+                  Facebook登入購買
+                  <% end %>
+                <% end %>
+                <p>記住寄送資訊,幫我省時間</p>
+            </div>
+            <div class="col-sm-2"></div>
 
 <!-- above is for menu content format -->
               <!-- For book button -->
@@ -117,7 +125,28 @@
                         <%# @menus.each do |m| %>
                         <%= form_for @order,:remote => true, :url => confirm_menu_orders_path(@menu) do |order| %>
                         <h1><%= @menu.title %></h1>
-                        <h3><%= @menu.contents %></h3>
+<!-- ....................................................................... -->
+                        <!-- <h3><%#= @menu.contents %></h3> -->
+            <ul>
+            <!-- 可以將內容分段並排版 -->
+              <!-- <div class="text-align"> -->
+               <div class="test">
+                 <div class="border text-center text-align check dish"><%=@menu.contents.at(0..3) %></div>
+                 <div class="border text-center text-align dish"><%= @menu.contents.at(4..7) %></div>
+               </div>
+              <!-- </div> -->
+              <div class="test">
+                <div class="border text-center text-align check dish"><%= @menu.contents.at(8..11) %></div>
+                <div class="border text-center text-align dish"><%= @menu.contents.at(12..14) %></div>
+              </div>
+              <div class="test">
+                <div class="border text-center text-align check dish"><%= @menu.contents.at(15..17) %></div>
+                <div class="border text-center text-align dish"><%= @menu.contents.at(18..19) %></div>
+              </div>
+              <!--  -->
+            </ul>
+
+<!-- ....................................................................... -->
                         <div class="form-group">
                           <div class="text-left">
                             <%= order.label :order_name,"姓名"%>
@@ -194,7 +223,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12">
           <h2 class="text-center">帶便當好輕鬆</h2>
-          <p class="text-center">簡單3步驟</p>
+          <h4 class="text-center">簡單3步驟</h4>
           <%= image_tag("info.png", class: "img-responsive text-center storyInfo", :height => "100%", :width => "100%", alt: "bento banto") %>
         </div>
       </div>
@@ -206,7 +235,7 @@
       <div class="row">
         <div class="col-xs-12 col-sm-12">
           <h2 class="text-center">媽媽們的料理故事</h2>
-          <p class="text-center">給孩子的愛</p>
+          <h4 class="text-center">給孩子的愛</h4>
         </div>
       </div>
     </div>

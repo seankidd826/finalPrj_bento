@@ -51,7 +51,7 @@
 }
 
 .scroll-down {
-  margin-top: 550px;
+  margin-top: 460px;
   bottom: 20px;
   width: 100%;
   text-align: center;
@@ -89,6 +89,25 @@
   -webkit-border-radius: 25px;
 }
 
+.orderBento {
+  margin-bottom: 20px;
+}
+
+.dish {
+  color: white;
+  font-size: 15px;
+  background-color: tan;
+}
+
+.todayChef {
+  font-weight: bolder;
+  padding-left: 60px;
+}
+
+.chefInfo {
+  padding-left: 60px;
+}
+
 #footer {
   min-height: 150px;
   background-color: #FFA500;
@@ -111,6 +130,7 @@
   color:#000;
   background:#FDBA2C;
   border-radius:10px;
+  text-shadow: #444 0 1px 1px;
 }
 
 .momsTalk:after{
