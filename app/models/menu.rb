@@ -18,7 +18,7 @@ class Menu < ActiveRecord::Base
   validates_numericality_of :price, :only_integer => true, :greater_than => 1
 
   def menu_date
-    self.created_at.strftime("%_m 月 %d 號")
+    self.created_at.strftime("%_m /%_d")
   end
 
   def chef_name
