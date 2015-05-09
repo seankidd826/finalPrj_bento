@@ -8,7 +8,8 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title menu_title" id="myModalLabel"><%= @menu.title %></h4>
+        <h4 class="modal-title menu_title" id="myModalLabel">
+        <%= @menu.menu_date %> 午餐菜單</h4>
       </div>
       <div class="modal-body">
       <%= form_for @order,:url => menu_orders_path(@menu) do |order| %>

@@ -49,10 +49,11 @@
         </div>
 
         <div class="col-xs-12 col-sm-3 col-sm-offset-1 todayMenu text-center">
-          <%= image_tag( @menu.mompic(:medium), :class => "img-circle img-responsive" ) %>
-          <ul class="list-inline">
-            <li><h4 class="chefTitle text-left">今日主廚</h4></li><br>
+          <%= image_tag( @menu.mompic(:medium), :class => "img-circle img-responsive text-center" ) %>
+          <ul class="list-inline text-center">
+            <li><h4 class="chefTitle">今日主廚</h4></li><br>
             <li><h3 class="todayChef"><%= @menu.chef_name %></h3></li><br>
+            <!-- <li><h4 class="chefTitle text-left">料理經驗</h4></li><br> -->
             <li><h4 class="chefInfo"><%= @menu.chef_experience %></h4></li>
           </ul>
           <!-- 要加 使用者判斷式 -->
@@ -127,11 +128,11 @@
                       <!-- guest訂購資料 -->
                       <div class="modal-body text-center">
                         <%= form_for @order,:remote => true, :url => confirm_menu_orders_path(@menu) do |order| %>
-                        <h1><%= @menu.title %></h1>
 <!-- ....................................................................... -->
 
             <ul>
             <!-- 可以將內容分段並排版 -->
+               <h2><%= @menu.menu_date %> 午餐菜單</h2>
                <div class="test">
                  <div class="border text-center text-align check dish"><%= @menu.menu_cuisine_1 %></div>
                  <div class="border text-center text-align dish"><%= @menu.menu_cuisine_2 %></div>
