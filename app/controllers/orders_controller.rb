@@ -20,11 +20,14 @@ class OrdersController < ApplicationController
     @order = @menu.orders.new(order_params)
 
     @order.user = current_user
-
-    if @order.save
-       redirect_to menu_path(@menu)
+    if @menu.in_stock_qty > 0
+     if @order.save
+      redirect_to menu_path(@menu)
+     else
+      render :template => "menus/wrong"
+     end
     else
-       render :template => "menus/wrong"
+     render :template => "menus/out_of_stock"
     end
   end
 

@@ -18,4 +18,3 @@
 /public/system/*
 /config/secrets.yml
 /config/database.yml
-/app/controllers/admin_controller.rb

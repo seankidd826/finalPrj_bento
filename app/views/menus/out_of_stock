@@ -1,0 +1,4 @@
+<h2>謝謝您</h2>
+<h2>便當已訂購完畢</h2>
+<h2>明天請早</h2>
+<%= link_to "回首頁", root_path, :class=>"btn btn-primary" %>

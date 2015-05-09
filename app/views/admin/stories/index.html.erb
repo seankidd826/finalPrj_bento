@@ -1,15 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Admin Stories</h1>
+<div class="container">
+<h1>後台媽媽故事管理頁面</h1>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th>Momheader</th>
-      <th>Momcontents</th>
-      <th>Momcontents 1</th>
-      <th>Momcontents 2</th>
-      <th>Momcontents 3</th>
+      <th>媽媽title</th>
+      <th>媽媽故事</th>
+      <th>媽媽故事第一段</th>
+      <th>媽媽故事第二段</th>
+      <th>媽媽故事第三段</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -22,9 +23,9 @@
         <td><%= admin_story.momcontents_1 %></td>
         <td><%= admin_story.momcontents_2 %></td>
         <td><%= admin_story.momcontents_3 %></td>
-        <td><%= link_to 'Show', admin_story %></td>
-        <td><%= link_to 'Edit', edit_admin_story_path(admin_story) %></td>
-        <td><%= link_to 'Destroy', admin_story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', admin_story,:class=>"btn btn-primary" %>
+            <%= link_to 'Edit', edit_admin_story_path(admin_story),:class=>"btn btn-primary"  %>
+            <%= link_to 'Destroy', admin_story, method: :delete, data: { confirm: 'Are you sure?' },:class=>"btn btn-danger"  %></td>
       </tr>
     <% end %>
   </tbody>
@@ -32,4 +33,7 @@
 
 <br>
 
-<%= link_to 'New Story', new_admin_story_path %>
+<%= link_to '新媽媽故事', new_admin_story_path, :class => "btn btn-success" %>
+<%= link_to '訂單管理', admin_orders_path, :class => "btn btn-primary" %>
+<%= link_to '菜單管理', admin_menus_path, :class => "btn btn-primary" %>
+<%= link_to '回到前台', root_path, :class => "btn btn-default" %>
