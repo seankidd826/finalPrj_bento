@@ -107,17 +107,17 @@
                 </div>
              <% else %>
               <!-- To lock the order if date is Sun/Sat or other hours than 9~11 -->
-               <% unless @Time_constraint %>
+              <!-- remember to remove below line  -->
+               <%# unless @Time_constraint %>
                 <div class="col-xs-12 col-sm-4 text-center">
                  <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-primary btn-lg fa fa-pencil" do %>
                  訂購
                  <% end %>
                  </div>
-                 <!-- End of guest order button when available -->
                  <div class="col-xs-12 col-sm-6  text-center">
                  <% if current_user %>
                   <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
-                  <%= image_tag( current_user.fb_image,:class => "img-circle" ) %>
+                  <%#= image_tag( current_user.fb_image,:class => "img-circle" ) %>
                  <% else %>
                   <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-lg fa fa-facebook-square" do %>
                   Facebook登入購買
@@ -125,12 +125,23 @@
                  <% end %>
                   <p>記住寄送資訊,幫我省時間</p>
                 </div>
-               <% end %>
+                <div id="test"></div>
+               <%# end %>
+               <!-- remember to remove above comment -->
              <% end %>
+             <br>
+                <% if params[:fcaebookbuy]=="true" %>
+               <script>
+               $( document ).ready(function() {
+                 $("#mymodal").modal('show')
+                });
+               </script>
+            <% end %>
               <!-- end of qty define -->
             <div class="col-sm-2"></div>
 
-<!-- above is for menu content format -->
+
+          <!-- above is for menu content format -->
               <!-- For book button -->
               <div id="modal_container">
                 <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -273,7 +284,6 @@
           <%= image_tag( @menu.mompic(:small), :class => "img-circle img-responsive" ) %>
           <p class="storyCon"><%= @story.momcontents_3 %></p>
         </div>
-
         <div class="col-xs-12 text-center">
           <a href="https://www.facebook.com/pages/Bento-Banto-%E5%B8%B6%E4%BE%BF%E7%95%B6/926937394017505" class="btn btn-primary btn-lg fa fa-facebook-square"> 更多家與料理故事</a>
         </div>
@@ -281,11 +291,14 @@
     </div>
   </section>
 
+
+
+
+
 <!-- JavaScript gose here -->
 
 <script>
 $(document).ready(function(){
-
   var $window = $(window);
   $('section[data-type="background"]').each(function(){
       var $bgobj = $(this); // assigning the object
