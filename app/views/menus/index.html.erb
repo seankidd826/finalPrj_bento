@@ -130,14 +130,14 @@
                   <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-lg fa fa-facebook-square", :disabled=>"disabled" do %>
                   Facebook登入購買
                   <% end %>
-                  <p>記住寄送資訊,幫我省時間</p>
+                  <p>帶入上次填寫資訊，訂購更快速！</p>
                 </div>
              <% else %>
               <!-- To lock the order if date is Sun/Sat or other hours than 9~11 -->
-               <% unless @Time_constraint %>
+               <%# unless @Time_constraint %>
                 <div class="col-xs-12 col-sm-4 text-center">
-                 <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-primary btn-lg fa fa-pencil" do %>
-                 訂購
+                 <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-warning" do %>
+                 直接購買
                  <% end %>
                  </div>
                  <div class="col-xs-12 col-sm-6  text-center">
@@ -149,9 +149,10 @@
                   Facebook登入購買
                   <% end %>
                  <% end %>
-                  <p>記住寄送資訊,幫我省時間</p>
+                  <div class="order_phase">帶入上次填寫資訊</div>
+                  <div>訂購更快速！</div>
                 </div>
-               <% end %>
+               <%# end %>
              <% end %>
              <br>
                 <% if params[:facebookbuy]=="true" %>
