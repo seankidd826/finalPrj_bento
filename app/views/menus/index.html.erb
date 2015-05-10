@@ -44,7 +44,8 @@
       <div class="row">
 
         <div class="col-x-12 col-sm-12 text-center orderBento">
-          <h2><%= @menu.menu_date %> 午餐菜單</h2>
+          <h2><%= @Time_now %> 午餐菜單</h2>
+          <!-- <h2><%#= @menu.menu_date %> 午餐菜單</h2> -->
           <h4><%= @menu.title %></h4>
         </div>
 
@@ -87,31 +88,46 @@
             </ul>
             <div class="text-center"><h3>便當價格<%= @menu.price %></h3></div>
             <br>
-            <div class="col-xs-12 col-sm-4 text-center">
-              <% qty = @menu.in_stock_qty %>
-              <% if qty == 0 %>
+            <% qty = @menu.in_stock_qty %>
+             <% if qty == 0 %>
+              <div class="col-xs-12 col-sm-4 text-center">
                 <%= link_to "#", :class => "btn btn-danger btn-lg fa fa-minus-circle",:disabled =>"disabled" do %>
                 限量是殘酷的
                 <% end %>
-              <% else %>
-                <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-primary btn-lg fa fa-pencil" do %>
-                訂購
-                <% end %>
-              <% end %>
-            </div>
-            <div class="col-xs-12 col-sm-6  text-center">
-              <% if current_user %>
-                <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
-                <%= image_tag( current_user.fb_image,:class => "img-circle" ) %>
+              </div>
+              <!-- div end for guest order button -->
+                <!-- div start for facebook order button -->
+                <div class="col-xs-12 col-sm-6  text-center">
                 <!-- disable 修改密碼選項 -->
                 <%#= link_to('修改密碼', edit_registration_path(:user)) %>
-                <% else %>
+                  <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-lg fa fa-facebook-square", :disabled=>"disabled" do %>
+                  Facebook登入購買
+                  <% end %>
+                  <p>記住寄送資訊,幫我省時間</p>
+                </div>
+             <% else %>
+              <!-- To lock the order if date is Sun/Sat or other hours than 9~11 -->
+               <% unless @Time_constraint %>
+                <div class="col-xs-12 col-sm-4 text-center">
+                 <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-primary btn-lg fa fa-pencil" do %>
+                 訂購
+                 <% end %>
+                 </div>
+                 <!-- End of guest order button when available -->
+                 <div class="col-xs-12 col-sm-6  text-center">
+                 <% if current_user %>
+                  <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
+                  <%= image_tag( current_user.fb_image,:class => "img-circle" ) %>
+                 <% else %>
                   <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-lg fa fa-facebook-square" do %>
                   Facebook登入購買
                   <% end %>
-                <% end %>
-                <p>記住寄送資訊,幫我省時間</p>
-            </div>
+                 <% end %>
+                  <p>記住寄送資訊,幫我省時間</p>
+                </div>
+               <% end %>
+             <% end %>
+              <!-- end of qty define -->
             <div class="col-sm-2"></div>
 
 <!-- above is for menu content format -->
@@ -131,7 +147,7 @@
 
             <ul>
             <!-- 可以將內容分段並排版 -->
-               <h2><%= @menu.menu_date %> 午餐菜單</h2>
+               <h2><%= @Time_now %> 午餐菜單</h2>
                <div class="test">
                  <div class="border text-center text-align check dish"><%= @menu.menu_cuisine_1 %></div>
                  <div class="border text-center text-align dish"><%= @menu.menu_cuisine_2 %></div>

@@ -2,7 +2,7 @@
   background-color: ivory;
 }
 .order_confirmed {
- min-height: 800px;
+ min-height: 640px;
 }
 .image {
   border:black solid 4px;
@@ -62,5 +62,5 @@
   color:red;
 }
 .vertical {
-  margin-top: 400px;
+  margin-top: 300px;
 }
