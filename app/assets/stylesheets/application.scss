@@ -51,7 +51,7 @@
 }
 
 .scroll-down {
-  margin-top: 560px;
+  margin-top: 360px;
   bottom: 20px;
   width: 100%;
   text-align: center;
@@ -78,8 +78,39 @@
   color: rgba(255,255,255,.5);
 }
 
-#order {
+#info {
   padding-top: 80px;
+  padding-bottom: 30px;
+  background-color: #F9F1E4;
+}
+
+.storyInfo {
+  display:block;
+  margin:auto;
+}
+
+#story {
+  background: image-url("story_WEB.png") no-repeat center 80px;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  min-height: 100%;
+}
+
+.storyTitle {
+  margin-top: 80px;
+  position: relative;
+  color: white;
+}
+
+.storyParagraph {
+  position: relative;
+  color: white;
+}
+
+#order {
+  background-color: white;
+  max-height: 100vh;
 }
 
 .storyImg {
@@ -109,70 +140,4 @@
 
 .chefInfo {
   margin-top: 0px;
-}
-
-#info {
-  padding-top: 80px;
-  padding-bottom: 30px;
-  background-color: #F9F1E4;
-}
-
-#footer {
-  padding-top: 80px;
-  min-height: 150px;
-  background-color: white;
-  padding-bottom: 20px;
-}
-
-.momConts {
-  font-size: 30px;
-  color: white;
-}
-
-.storyCon {
-  font-size: 20px;
-}
-
-.momsTalk {
-  position:relative;
-  padding:30px 60px;
-  margin:40px 0 1em;
-  color:#000;
-  background:#FDBA2C;
-  border-radius:10px;
-  text-shadow: #444 0 1px 1px;
-}
-
-.momsTalk:after{
-  content: "";
-  position: absolute;
-  border-style: solid;
-  display: block;
-  width: 0;
-}
-
-.right {
-  margin-right: 50px;
-  background: #FDBA2C;
-}
-
-.momsTalk.right:after{
-  top: 16px;
-  right: -48px;
-  bottom: auto;
-  left: auto;
-  border-width: 10px 0 10px 50px;
-  border-color: transparent #FDBA2C;
-}
-
-.momConts1{
-  font-size: 20px;
-}
-
-.momConts2{
-  font-size: 20px;
-}
-
-.vcenter {
-  vertical-align: middle;
 }

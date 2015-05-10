@@ -1,9 +1,7 @@
-.banner {
-  background-color: ivory;
-}
 .order_confirmed {
  min-height: 640px;
 }
+
 .image {
   border:black solid 4px;
   height:300px;

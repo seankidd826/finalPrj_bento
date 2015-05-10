@@ -13,9 +13,9 @@
             </button>
             <a class="navbar-brand" href="#home"><%= image_tag("web_logo.png", :height => "10%", :width => "10%", class: "img-responsive", alt: "bento banto") %></a>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#order">我要訂便當</a></li>
               <li><a href="#info">簡單三步驟</a></li>
-              <li><a href="#footer">媽媽料理故事</a></li>
+              <li><a href="#story">媽媽料理故事</a></li>
+              <li><a href="#order">我要帶便當</a></li>
             </ul>
           </div>
         </div>
@@ -31,11 +31,38 @@
           <h1 class="mainArticle text-center">帶一份 來自家的便當</h1>
           <br>
           <p class="mainParagraph text-center">向媽媽們預訂豐盛、均衡的午餐，給忙碌又總是外食的你，更有溫度的選擇</p>
-                    <div class="col-xs-12 col-md-12 scroll-down">
+          <div class="col-xs-12 col-md-12 scroll-down">
             <p class="btn"><i class="fa fa-angle-down fa-fw"></i></p>
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="info">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12">
+          <h2 class="text-center">帶便當好輕鬆</h2>
+          <h4 class="text-center">簡單三步驟</h4>
+          <%= image_tag("info.png", class: "img-responsive storyInfo", :height => "70%", :width => "70%", alt: "bento banto") %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="story">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12">
+          <h2 class="storyTitle text-center">媽媽們的料理故事</h2>
+          <h4 class="storyParagraph text-center">給孩子的愛</h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-12 text-center">
+      <a href="https://www.facebook.com/pages/Bento-Banto-%E5%B8%B6%E4%BE%BF%E7%95%B6/926937394017505" class="btn btn-primary btn-lg fa fa-facebook-square"> 更多家與料理故事</a>
     </div>
   </section>
 
@@ -44,7 +71,7 @@
       <div class="row">
 
         <div class="col-x-12 col-sm-12 text-center orderBento">
-          <h2><%= @Time_now %> 午餐菜單</h2>
+          <h2><%= @Time_now %> 午餐便當</h2>
           <!-- <h2><%#= @menu.menu_date %> 午餐菜單</h2> -->
           <h4><%= @menu.title %></h4>
         </div>
@@ -155,7 +182,7 @@
 
             <ul>
             <!-- 可以將內容分段並排版 -->
-               <h2><%= @Time_now %> 午餐菜單</h2>
+               <h2><%= @Time_now %> 午餐便當</h2>
                <div class="test">
                  <div class="border text-center text-align check dish"><%= @menu.menu_cuisine_1 %></div>
                  <div class="border text-center text-align dish"><%= @menu.menu_cuisine_2 %></div>
@@ -240,58 +267,6 @@
     </div>
   </section>
 
-  <section id="info">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-12">
-          <h2 class="text-center">帶便當好輕鬆</h2>
-          <h4 class="text-center">簡單3步驟</h4>
-          <%= image_tag("info.png", class: "img-responsive text-center storyInfo", :height => "100%", :width => "100%", alt: "bento banto") %>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-12 col-sm-12">
-          <h2 class="text-center">媽媽們的料理故事</h2>
-          <h4 class="text-center">給孩子的愛</h4>
-        </div>
-      </div>
-    </div>
-
-    <div class="container">
-      <div class="row">
-
-        <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 vcenter">
-          <div class="momsTalk text-center right">
-            <p class="momConts"><%= @story.momcontents %></p>
-          </div>
-          <div class="momConts1 text-center">
-            <%= @story.momcontents_1 %>
-          </div>
-          <div class="momConts2 text-center">
-            <%= @story.momcontents_2 %>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
-          <%= image_tag( @menu.mompic(:small), :class => "img-circle img-responsive" ) %>
-          <p class="storyCon"><%= @story.momcontents_3 %></p>
-        </div>
-        <div class="col-xs-12 text-center">
-          <a href="https://www.facebook.com/pages/Bento-Banto-%E5%B8%B6%E4%BE%BF%E7%95%B6/926937394017505" class="btn btn-primary btn-lg fa fa-facebook-square"> 更多家與料理故事</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-
-
-
 <!-- JavaScript gose here -->
 
 <script>
@@ -313,7 +288,7 @@ $(document).ready(function(){
 
   $("p").click(function() {
       $('html,body').animate({
-          scrollTop: $("#order").offset().top},
+          scrollTop: $("#info").offset().top},
           'slow');
   });
 
