@@ -34,7 +34,7 @@
 #home .mainArticle {
   height: 400px;
   position: absolute;
-  margin-top: 180px;
+  margin-top: 140px;
   width: 100%;
   font-size: 64px;
   color: white;
@@ -42,7 +42,7 @@
 }
 
 #home .mainParagraph {
-  margin-top: 250px;
+  margin-top: 210px;
   position: absolute;
   width: 100%;
   font-size: 24px;
@@ -50,8 +50,12 @@
   text-shadow: #444 0 1px 1px;
 }
 
+.centerLogo {
+  margin-top: 20px;
+}
+
 .scroll-down {
-  margin-top: 360px;
+  margin-top: 340px;
   bottom: 20px;
   width: 100%;
   text-align: center;
@@ -89,16 +93,20 @@
   margin:auto;
 }
 
+#preStory {
+  min-height: 80px;
+  background-color: #F9F1E4;
+}
+
 #story {
-  background: image-url("story_WEB.png") no-repeat center 80px;
+  background: image-url("story_WEB.png") no-repeat center center;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: scroll;
   height: 100vh;
   min-height: 100%;
 }
 
 .storyTitle {
-  margin-top: 80px;
   position: relative;
   color: white;
 }
@@ -106,6 +114,19 @@
 .storyParagraph {
   position: relative;
   color: white;
+}
+
+.btn {
+  padding: 12px 18px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.btn-outline-light {
+  border: 1px solid #fff;
+  color: #fff;
+  background: 0 0;
+  transition: all .5s;
 }
 
 #order {
@@ -140,4 +161,16 @@
 
 .chefInfo {
   margin-top: 0px;
+}
+
+.priceInfo {
+  font-size: 20px;
+}
+
+.price {
+  font-size: 30px;
+}
+
+.rememberMe {
+  font-size: 12px;
 }

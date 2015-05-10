@@ -14,7 +14,7 @@
             <a class="navbar-brand" href="#home"><%= image_tag("web_logo.png", :height => "10%", :width => "10%", class: "img-responsive", alt: "bento banto") %></a>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#info">簡單三步驟</a></li>
-              <li><a href="#story">媽媽料理故事</a></li>
+              <li><a href="#preStory">媽媽料理故事</a></li>
               <li><a href="#order">我要帶便當</a></li>
             </ul>
           </div>
@@ -51,18 +51,20 @@
     </div>
   </section>
 
+  <section id="preStory"></section>
+
   <section id="story">
     <div class="container">
       <div class="row">
         <div class="col-xs-12 col-sm-12">
           <h2 class="storyTitle text-center">媽媽們的料理故事</h2>
-          <h4 class="storyParagraph text-center">給孩子的愛</h4>
+          <h4 class="storyParagraph text-center">給家人的愛</h4>
         </div>
       </div>
     </div>
 
     <div class="col-xs-12 text-center">
-      <a href="https://www.facebook.com/pages/Bento-Banto-%E5%B8%B6%E4%BE%BF%E7%95%B6/926937394017505" class="btn btn-primary btn-lg fa fa-facebook-square"> 更多家與料理故事</a>
+      <a href="https://www.facebook.com/pages/Bento-Banto-%E5%B8%B6%E4%BE%BF%E7%95%B6/926937394017505" class="btn btn-outline-light" target="_blank"> 更多家與料理故事</a>
     </div>
   </section>
 
@@ -87,7 +89,7 @@
           <!-- 要加 使用者判斷式 -->
         </div>
 
-        <div class="col-xs-12 col-sm-5 col-sm-offset-3 myOder out">
+        <div class="col-xs-12 col-sm-5 col-sm-offset-2 myOder out">
           <div class="form-group">
             <ul>
             <!-- 可以將內容分段並排版 -->
@@ -113,12 +115,15 @@
                </div>
               </div>
             </ul>
-            <div class="text-center"><h3>便當價格<%= @menu.price %></h3></div>
+            <div class="col-xs-12 text-right">
+              <span class="priceInfo">試營運 含運價</span>
+              <span class="price">$<%= @menu.price %></span>
+            </div>
             <br>
             <% qty = @menu.in_stock_qty %>
              <% if qty == 0 %>
               <div class="col-xs-12 col-sm-4 text-center">
-                <%= link_to "#", :class => "btn btn-danger btn-lg fa fa-minus-circle",:disabled =>"disabled" do %>
+                <%= link_to "#", :class => "btn btn-danger",:disabled =>"disabled" do %>
                 限量是殘酷的
                 <% end %>
               </div>
@@ -127,30 +132,30 @@
                 <div class="col-xs-12 col-sm-6  text-center">
                 <!-- disable 修改密碼選項 -->
                 <%#= link_to('修改密碼', edit_registration_path(:user)) %>
-                  <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-lg fa fa-facebook-square", :disabled=>"disabled" do %>
+                  <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary", :disabled=>"disabled" do %>
                   Facebook登入購買
                   <% end %>
-                  <p>記住寄送資訊,幫我省時間</p>
+                  <p class="rememberMe">記住寄送資訊,幫我省時間</p>
                 </div>
              <% else %>
               <!-- To lock the order if date is Sun/Sat or other hours than 9~11 -->
               <!-- remember to remove below line  -->
                <%# unless @Time_constraint %>
-                <div class="col-xs-12 col-sm-4 text-center">
-                 <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-primary btn-lg fa fa-pencil" do %>
-                 訂購
+                <div class="col-xs-12 col-sm-3 col-sm-offset-1 text-center">
+                 <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-warning" do %>
+                 直接購買
                  <% end %>
                  </div>
-                 <div class="col-xs-12 col-sm-6  text-center">
+                 <div class="col-xs-12 col-sm-5 col-sm-offset-2 text-center">
                  <% if current_user %>
                   <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
                   <%#= image_tag( current_user.fb_image,:class => "img-circle" ) %>
                  <% else %>
-                  <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary btn-lg fa fa-facebook-square" do %>
+                  <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary" do %>
                   Facebook登入購買
                   <% end %>
                  <% end %>
-                  <p>記住寄送資訊,幫我省時間</p>
+                  <p class="rememberMe">記住寄送資訊,幫我省時間</p>
                 </div>
                 <div id="test"></div>
                <%# end %>
@@ -182,23 +187,22 @@
                       <div class="modal-body text-center">
                         <%= form_for @order,:remote => true, :url => confirm_menu_orders_path(@menu) do |order| %>
 <!-- ....................................................................... -->
-
-            <ul>
-            <!-- 可以將內容分段並排版 -->
-               <h2><%= @Time_now %> 午餐便當</h2>
-               <div class="test">
-                 <div class="border text-center text-align check dish"><%= @menu.menu_cuisine_1 %></div>
-                 <div class="border text-center text-align dish"><%= @menu.menu_cuisine_2 %></div>
-               </div>
-              <div class="test">
-                <div class="border text-center text-align check dish"><%= @menu.menu_cuisine_3 %></div>
-                <div class="border text-center text-align dish"><%= @menu.menu_cuisine_4 %></div>
-              </div>
-              <div class="test">
-                <div class="border text-center text-align check dish"><%= @menu.menu_cuisine_5 %></div>
-                <div class="border text-center text-align dish"><%= @menu.menu_cuisine_6 %></div>
-              </div>
-            </ul>
+                        <ul>
+                        <!-- 可以將內容分段並排版 -->
+                           <h2><%= @Time_now %> 午餐便當</h2>
+                           <div class="test">
+                             <div class="border text-center text-align check dish"><%= @menu.menu_cuisine_1 %></div>
+                             <div class="border text-center text-align dish"><%= @menu.menu_cuisine_2 %></div>
+                           </div>
+                          <div class="test">
+                            <div class="border text-center text-align check dish"><%= @menu.menu_cuisine_3 %></div>
+                            <div class="border text-center text-align dish"><%= @menu.menu_cuisine_4 %></div>
+                          </div>
+                          <div class="test">
+                            <div class="border text-center text-align check dish"><%= @menu.menu_cuisine_5 %></div>
+                            <div class="border text-center text-align dish"><%= @menu.menu_cuisine_6 %></div>
+                          </div>
+                        </ul>
 <!-- ....................................................................... -->
                         <div class="form-group">
                           <div class="text-left">
