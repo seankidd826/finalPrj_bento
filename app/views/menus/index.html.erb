@@ -75,7 +75,7 @@
         <div class="col-x-12 col-sm-12 text-center orderBento">
           <h2><%= @Time_now %> 午餐便當</h2>
           <!-- <h2><%#= @menu.menu_date %> 午餐菜單</h2> -->
-          <h4>開放訂購時間：早上9:00-11:00</h4>
+          <h4>早上9:00-11:00開放訂購，11:45-12:15送達</h4>
           <!-- <h4><%#= @menu.title %></h4> -->
         </div>
 
@@ -122,7 +122,7 @@
             </div>
             <br>
             <% qty = @menu.in_stock_qty %>
-             <% if qty == 0 %>
+             <% if qty <= 0 %>
               <div class="col-xs-12 col-sm-4 text-center">
                 <%= link_to "#", :class => "btn btn-danger",:disabled =>"disabled" do %>
                 已售完
@@ -141,7 +141,7 @@
                 </div>
              <% else %>
               <!-- To lock the order if date is Sun/Sat or other hours than 9~11 -->
-               <%# unless @Time_constraint %>
+               <% unless @Time_constraint %>
                 <div class="col-xs-12 col-sm-3 col-sm-offset-1 text-center">
                  <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-warning" do %>
                  直接購買
@@ -159,7 +159,7 @@
                   <div class="order_phase">帶入上次填寫資訊</div>
                   <div>訂購更快速！</div>
                 </div>
-               <%# end %>
+               <% end %>
              <% end %>
              <br>
                 <% if params[:facebookbuy]=="true" %>
@@ -223,7 +223,7 @@
                          <% if current_user.try(:address) %>
                           <%= order.text_area :order_address, :rows => 2, :placeholder => "",:class => "form-control" %>
                          <% else %>
-                         <%= order.select :address_area, %w[大安區 中正區 文山區], {}, :class => "form-control form-width" %>
+                         <%= order.select :address_area, %w[大安區 信義區 松山區], {}, :class => "form-control form-width" %>
 
                           <%= order.text_area :address_road, :rows => 2, :placeholder => "",:class => "form-control" %>
                           <% end %>
