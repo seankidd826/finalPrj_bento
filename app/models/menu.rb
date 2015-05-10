@@ -22,7 +22,7 @@ class Menu < ActiveRecord::Base
   end
 
   def chef_name
-    mominfo.at(0..5)
+    mominfo.at(0..6)
   end
 
   def chef_experience

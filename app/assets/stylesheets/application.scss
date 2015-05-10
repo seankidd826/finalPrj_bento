@@ -34,7 +34,7 @@
 #home .mainArticle {
   height: 400px;
   position: absolute;
-  margin-top: 180px;
+  margin-top: 140px;
   width: 100%;
   font-size: 64px;
   color: white;
@@ -42,7 +42,7 @@
 }
 
 #home .mainParagraph {
-  margin-top: 250px;
+  margin-top: 210px;
   position: absolute;
   width: 100%;
   font-size: 24px;
@@ -50,8 +50,12 @@
   text-shadow: #444 0 1px 1px;
 }
 
+.centerLogo {
+  margin-top: 20px;
+}
+
 .scroll-down {
-  margin-top: 560px;
+  margin-top: 340px;
   bottom: 20px;
   width: 100%;
   text-align: center;
@@ -78,8 +82,58 @@
   color: rgba(255,255,255,.5);
 }
 
-#order {
+#info {
   padding-top: 80px;
+  padding-bottom: 30px;
+  background-color: #F9F1E4;
+}
+
+.storyInfo {
+  display:block;
+  margin:auto;
+}
+
+#preStory {
+  min-height: 80px;
+  background-color: #F9F1E4;
+}
+
+#story {
+  background: image-url("story_WEB.png") no-repeat center center;
+  background-size: cover;
+  background-attachment: scroll;
+  height: 100vh;
+  width: 100vw;
+  min-height: 100%;
+}
+
+.storyTitle {
+  position: relative;
+  color: white;
+}
+
+.storyParagraph {
+  position: relative;
+  color: white;
+}
+
+.btn {
+  padding: 12px 18px;
+  font-weight: 900;
+  letter-spacing: 1px;
+}
+
+.btn-outline-light {
+  border: 1px solid #fff;
+  color: #fff;
+  background: 0 0;
+  transition: all .5s;
+}
+
+#order {
+  background-color: white;
+  max-height: 100vh;
+  margin-bottom: 30px;
 }
 
 .storyImg {
@@ -111,68 +165,25 @@
   margin-top: 0px;
 }
 
-#info {
-  padding-top: 80px;
-  padding-bottom: 30px;
-  background-color: #F9F1E4;
+.pricePlace {
+  margin-top: 40px;
+  margin-bottom: 10px;
 }
 
-#footer {
-  padding-top: 80px;
-  min-height: 150px;
-  background-color: white;
-  padding-bottom: 20px;
-}
-
-.momConts {
-  font-size: 30px;
-  color: white;
-}
-
-.storyCon {
+.priceInfo {
   font-size: 20px;
 }
 
-.momsTalk {
-  position:relative;
-  padding:30px 60px;
-  margin:40px 0 1em;
-  color:#000;
-  background:#FDBA2C;
-  border-radius:10px;
-  text-shadow: #444 0 1px 1px;
+.price {
+  font-size: 35px;
 }
 
-.momsTalk:after{
-  content: "";
-  position: absolute;
-  border-style: solid;
-  display: block;
-  width: 0;
-}
-
-.right {
-  margin-right: 50px;
-  background: #FDBA2C;
-}
-
-.momsTalk.right:after{
-  top: 16px;
-  right: -48px;
-  bottom: auto;
-  left: auto;
-  border-width: 10px 0 10px 50px;
-  border-color: transparent #FDBA2C;
-}
-
-.momConts1{
-  font-size: 20px;
-}
-
-.momConts2{
-  font-size: 20px;
-}
-
-.vcenter {
-  vertical-align: middle;
+.thankslogo {
+ background: image-url("thanks_logo.png") no-repeat;
+ background-size: 80% 80%;
+ height:300px;
+ width:600px;
+ margin-top: -60px;
+ margin-left:auto;
+ margin-right:auto;
 }

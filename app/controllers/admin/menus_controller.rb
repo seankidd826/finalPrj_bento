@@ -11,6 +11,7 @@ class Admin::MenusController < AdminController
   # GET /admin/menus/1
   # GET /admin/menus/1.json
   def show
+    @menu = Menu.find(params[:id])
   end
 
   # GET /admin/menus/new

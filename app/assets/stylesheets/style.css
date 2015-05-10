@@ -1,9 +1,7 @@
-.banner {
-  background-color: ivory;
-}
 .order_confirmed {
- min-height: 800px;
+ min-height: 640px;
 }
+
 .image {
   border:black solid 4px;
   height:300px;
@@ -46,6 +44,7 @@
 .confirm {
   font-size: 20px;
 }
+
 .border {
   border-radius: 60px;
   width:150px;
@@ -62,5 +61,8 @@
   color:red;
 }
 .vertical {
-  margin-top: 400px;
+  margin-top: 100px;
+}
+.order_phase {
+  margin-top: 10px;
 }

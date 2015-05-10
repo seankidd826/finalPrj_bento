@@ -2,8 +2,9 @@ class OrdersController < ApplicationController
 
   def confirm
     @menu = Menu.find(params[:menu_id])
+    @Time_now = Time.now.strftime("%_m /%_d")
     # combine select menu and text_field
-    full_order_address = params[:order][:address_area] + params[:order][:address_road]
+    full_order_address = params[:order][:order_address] || params[:order][:address_area] + params[:order][:address_road]
     @order = @menu.orders.new(order_params)
     # re-assign order_address with new combined address
     @order.order_address = full_order_address
