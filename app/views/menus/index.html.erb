@@ -116,8 +116,8 @@
                </div>
               </div>
             </ul>
-            <div class="col-xs-12 text-right">
-              <span class="priceInfo">試營運 含運價</span>
+            <div class="col-xs-12 pricePlace text-center">
+              <span class="priceInfo">試營運期間<u>免運價</u>：</span>
               <span class="price">$<%= @menu.price %></span>
             </div>
             <br>
@@ -147,7 +147,7 @@
                  直接購買
                  <% end %>
                 </div>
-                <div class="col-xs-12 col-sm-5 col-sm-offset-2 text-center">
+                <div class="col-xs-12 col-sm-5 col-sm-offset-1 text-center">
                 <% if current_user %>
                   <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
                   <%#= image_tag( current_user.fb_image,:class => "img-circle" ) %>
