@@ -10,5 +10,10 @@ module MenusHelper
      return [cuisine_1,cuisine_2,cuisine_3,cuisine_4,cuisine_5,cuisine_6]
   end
 
+  # def access_address_area
+
+  # end
+
+
 
 end

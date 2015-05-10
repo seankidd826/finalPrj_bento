@@ -11,45 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508075747) do
-
-  create_table "carts", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "confirms", force: :cascade do |t|
-    t.string   "confirm_name",        limit: 255
-    t.string   "confirm_phone",       limit: 255
-    t.text     "confirm_address",     limit: 65535
-    t.integer  "confirm_menu_count",  limit: 4
-    t.integer  "confirm_menu_id",     limit: 4
-    t.integer  "confirm_user_id",     limit: 4
-    t.integer  "confirm_total_price", limit: 4
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
-  end
-
-  add_index "confirms", ["confirm_menu_id"], name: "index_confirms_on_confirm_menu_id", using: :btree
-  add_index "confirms", ["confirm_user_id"], name: "index_confirms_on_confirm_user_id", using: :btree
+ActiveRecord::Schema.define(version: 20150508130857) do
 
   create_table "likes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  create_table "line_items", force: :cascade do |t|
-    t.integer  "menu_id",    limit: 4
-    t.integer  "cart_id",    limit: 4
-    t.integer  "qty",        limit: 4
-    t.integer  "order_id",   limit: 4
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-  end
-
-  add_index "line_items", ["cart_id"], name: "index_line_items_on_cart_id", using: :btree
-  add_index "line_items", ["menu_id"], name: "index_line_items_on_menu_id", using: :btree
-  add_index "line_items", ["order_id"], name: "index_line_items_on_order_id", using: :btree
 
   create_table "menus", force: :cascade do |t|
     t.string   "title",               limit: 255

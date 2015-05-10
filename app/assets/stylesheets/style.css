@@ -1,3 +1,7 @@
+.order_confirmed {
+ min-height: 640px;
+}
+
 .image {
   border:black solid 4px;
   height:300px;
@@ -54,4 +58,7 @@
   margin-bottom: -18px;
   font-size: 20px;
   color:red;
+}
+.vertical {
+  margin-top: 300px;
 }

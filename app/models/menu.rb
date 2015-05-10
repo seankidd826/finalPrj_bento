@@ -26,9 +26,31 @@ class Menu < ActiveRecord::Base
   end
 
   def chef_experience
-    mominfo.at(7..13)
+    mominfo.at(6..20)
   end
 
+  def menu_cuisine_1
+    contents.at(0..3)
+  end
 
+  def menu_cuisine_2
+    contents.at(4..7)
+  end
+
+  def menu_cuisine_3
+    contents.at(8..11)
+  end
+
+  def menu_cuisine_4
+    contents.at(12..14)
+  end
+
+  def menu_cuisine_5
+    contents.at(15..17)
+  end
+
+  def menu_cuisine_6
+    contents.at(18..19)
+  end
 
 end
