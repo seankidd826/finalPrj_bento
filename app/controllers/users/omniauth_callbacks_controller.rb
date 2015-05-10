@@ -7,8 +7,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in(@user, :event => :authentication)
       # , :event => :authentication #this will throw if @user is not activated
       redirect_to root_path(:facebookbuy => "true")
-
-      # render :template => "menus/wrong"
       # set_flash_message(:notice, :success, :kind => "Facebook") if is_navigational_format?
 
     else

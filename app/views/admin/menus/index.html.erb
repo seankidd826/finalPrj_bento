@@ -11,7 +11,6 @@
         <th>喜歡的人數</th>
         <th>便當庫存</th>
         <th>媽媽資訊</th>
-        <th>媽媽圖片</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -26,8 +25,7 @@
           <td><%= admin_menu.likes_count %></td>
           <td><%= admin_menu.in_stock_qty %></td>
           <td><%= admin_menu.mominfo %></td>
-          <td><%= admin_menu.mompic_file_name %></td>
-          <!-- <td><%#= admin_menu.file_field :mompic %></td> -->
+          <!-- <td><%#= image_tag(admin_menu.mompic(:small)) %></td> -->
           <td><%= link_to 'Show', admin_menu,:class => "btn btn-primary"  %>
               <%= link_to 'Edit', edit_admin_menu_path(admin_menu),:class => "btn btn-primary"  %>
               <%= link_to 'Destroy', admin_menu, method: :delete, data: { confirm: 'Are you sure?' },:class => "btn btn-danger"  %></td>
