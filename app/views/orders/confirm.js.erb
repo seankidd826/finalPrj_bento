@@ -1,8 +1,16 @@
 <% if @order.valid? %>
-$('#modal_container').html("<%= j(render :partial => "confirm")%>");
-$('.modal-backdrop.fade.in').remove();
-$('#modal_container #myconfirmModal').modal('show');
+  $('#modal_container').html("<%= j(render :partial => "confirm")%>");
+  $('.modal-backdrop.fade.in').remove();
+  $('#modal_container #myconfirmModal').modal('show');
 <% else %>
-$('#error').empty();
-$('#error').append('請檢查您的資料');
+  $('#error').empty();
+  $('#error').append('請確認資料是否漏填或不符格式');
+  <% @order.errors.keys.each do |column_name| %>
+    $("[name*='[<%= column_name.to_s %>]']").css({"box-shadow":"0 0 5px crimson","border":"1px solid crimson"})
+    // match 所有input field底下有name裡面叫做column_name...改變其css style
+    <% Rails.logger.info(column_name) %>
+  <% end %>
+  // <%# Rails.logger.info('==============') %>
+  // <%# Rails.logger.info(@order.errors.messages.keys) %>
+  // <%# Rails.logger.info('==============') %>
 <% end %>
