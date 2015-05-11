@@ -66,3 +66,7 @@
 .order_phase {
   margin-top: 10px;
 }
+#error {
+  font-size: 18px;
+  color:crimson;
+}

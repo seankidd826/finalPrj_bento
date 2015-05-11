@@ -117,7 +117,7 @@
               </div>
             </ul>
             <div class="col-xs-12 pricePlace text-center">
-              <span class="priceInfo">試營運期間<u>免運價</u>：</span>
+              <span class="priceInfo">試營運期間<u><b>免運價</b></u>：</span>
               <span class="price">$<%= @menu.price %></span>
             </div>
             <br>
@@ -141,25 +141,39 @@
                 </div>
              <% else %>
               <!-- To lock the order if date is Sun/Sat or other hours than 9~11 -->
-               <% unless @Time_constraint %>
+               <%# unless @Time_constraint %>
+                <!-- <div class="col-xs-12 col-sm-3 col-sm-offset-1 text-center"> -->
+                 <%#= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-warning" do %>
+                 <!-- 直接購買 -->
+                 <%# end %>
+                <!-- </div> -->
+
+                <% if current_user %>
+                 <div class="col-xs-12 col-sm-3 col-sm-offset-1 text-center">
+                  <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-warning" do %>
+                  購買
+                  <% end %>
+                 </div>
+                 <div class="col-xs-12 col-sm-5 col-sm-offset-1 text-center">
+                  <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
+                  <%#= image_tag( current_user.fb_image,:class => "img-circle" ) %>
+                 </div>
+                <% else %>
                 <div class="col-xs-12 col-sm-3 col-sm-offset-1 text-center">
                  <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-warning" do %>
                  直接購買
                  <% end %>
                 </div>
                 <div class="col-xs-12 col-sm-5 col-sm-offset-1 text-center">
-                <% if current_user %>
-                  <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
-                  <%#= image_tag( current_user.fb_image,:class => "img-circle" ) %>
-                <% else %>
                   <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary" do %>
                   Facebook登入購買
                   <% end %>
-                <% end %>
-                  <div class="order_phase">帶入上次填寫資訊</div>
-                  <div>訂購更快速！</div>
+                <div class="order_phase">帶入上次填寫資訊</div>
+                <div>訂購更快速！</div>
                 </div>
-               <% end %>
+                <% end %>
+
+               <%# end %>
              <% end %>
              <br>
                 <% if params[:facebookbuy]=="true" %>
@@ -212,7 +226,7 @@
                         </div>
                         <div class="form-group">
                           <div class="text-left">
-                            <%= order.label :order_phone,"電話"%>
+                            <%= order.label :order_phone,"電話",:class=>"error"%>
                           </div>
                           <%= order.text_field :order_phone,:placeholder => "您的電話",:class => "form-control form-width" %>
                         </div>
@@ -236,8 +250,8 @@
                           </div>
 
                           <%= order.select :menu_count, 1..qty, {}, :class => "form-control form-width" %>
-
                         </div>
+                        <div id="error"></div>
                         <hr>
                           <%= order.submit "建立訂單",:class => "btn btn-success",:id =>"dismiss"%>
                          <% end %>
