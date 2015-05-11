@@ -4,10 +4,13 @@ class Order < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :menu
-  validates_presence_of :order_name, :order_address, :order_phone, :menu_id, :menu_count
+  validates_presence_of :order_name, :order_address, :menu_id, :menu_count
   validates_numericality_of :menu_count, :only_integer => true
+  validates_numericality_of :order_phone, :only_integer => true
+  validates_length_of :order_phone, :is => 10
 
   before_save :setup_total
+  before_create :setup_total
   after_create :consume_stock
   after_create :fill_user_data
 

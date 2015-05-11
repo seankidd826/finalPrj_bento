@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
     @order = @menu.orders.new(order_params)
 
     @order.user = current_user
-    if @menu.in_stock_qty > 0
+    if (@menu.in_stock_qty - @order.menu_count) >= 0
      if @order.save
       redirect_to menu_path(@menu)
      else

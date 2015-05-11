@@ -5,7 +5,8 @@ class MenusController < ApplicationController
     @order = Order.new
     @story = Story.last
     @Time_now = Time.now.strftime("%_m /%_d")
-    @Time_constraint = Time.now.strftime("%A") == "Saturday" || Time.now.strftime("%A") == "Sunday" || Time.now.strftime("%H")!="9" || Time.now.strftime("%H")!="10" || Time.now.strftime("%H")!="11"
+    @Time_constraint = Time.now.strftime("%A") == "Saturday" || Time.now.strftime("%A") == "Sunday" || Time.now.strftime("%_H")!=" 9" && Time.now.strftime("%H")!="10" && Time.now.strftime("%H")!="11"
+    # @Time_constraint = Time.now.strftime("%_H")!=" 9" && Time.now.strftime("%H")!="10" && Time.now.strftime("%H")!="11"
 
     if current_user
       @order.order_name = current_user.name
