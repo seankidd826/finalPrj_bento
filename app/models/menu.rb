@@ -26,7 +26,7 @@ class Menu < ActiveRecord::Base
   end
 
   def chef_experience
-    mominfo.at(6..20)
+    mominfo.at(7..20)
   end
 
   def menu_cuisine_1

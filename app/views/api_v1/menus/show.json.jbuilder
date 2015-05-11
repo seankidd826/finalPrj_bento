@@ -6,6 +6,6 @@ json.contents split_menu_content(@menu.contents)
 # json.address @menu.address_area
 json.price @menu.price
 json.in_stock_qty @menu.in_stock_qty
-json.mominfo [@menu.mominfo[0,2],@menu.mominfo[2,4]]
+json.mominfo [@menu.mominfo[0..2],@menu.mominfo[4..6]]
 json.created_at @menu.created_at
 json.updated_at @menu.updated_at
