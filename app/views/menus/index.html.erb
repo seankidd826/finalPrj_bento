@@ -151,7 +151,7 @@
                 </div>
              <% else %>
               <!-- To lock the order if date is Sun/Sat or other hours than 9~11 -->
-               <%# unless @Time_constraint %>
+               <% unless @Time_constraint %>
                 <!-- <div class="col-xs-12 col-sm-3 col-sm-offset-1 text-center"> -->
                  <%#= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-warning" do %>
                  <!-- 直接購買 -->
@@ -183,7 +183,7 @@
                 </div>
                 <% end %>
 
-               <%# end %>
+               <% end %>
              <% end %>
              <br>
                 <% if params[:facebookbuy]=="true" %>
