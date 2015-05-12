@@ -1,5 +1,11 @@
-<h1>New Admin Menu</h1>
+<div class="container">
+  <div class="row">
+   <h1>New Admin Menu</h1>
 
-<%= render 'form' %>
+    <%= render 'form' %>
 
-<%= link_to 'Back', admin_menus_path %>
+    <table class="table">
+    <th><%= link_to 'Back', admin_menus_path,:class=>"btn btn-primary" %></th>
+    </table>
+  </div>
+</div>

@@ -16,7 +16,7 @@
     </thead>
 
     <tbody>
-      <% @admin_orders.each do |admin_order| %>
+      <% @admin_orders.order(:created_at => :desc).each do |admin_order| %>
         <tr>
           <td><%= admin_order.menu_id %></td>
           <td><%= admin_order.total_price %></td>

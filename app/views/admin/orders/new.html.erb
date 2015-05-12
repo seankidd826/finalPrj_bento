@@ -1,5 +1,11 @@
-<h1>New Admin Order</h1>
+<div class="container">
+  <div class="row">
+  <h1>New Admin Order</h1>
 
-<%= render 'form' %>
+    <%= render 'form' %>
 
-<%= link_to 'Back', admin_orders_path %>
+   <table class="table">
+    <th><%= link_to 'Back', admin_orders_path,:class=>"btn btn-primary" %></th>
+   </table>
+  </div>
+</div>
