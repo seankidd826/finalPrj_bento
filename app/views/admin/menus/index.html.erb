@@ -20,7 +20,10 @@
         <tr>
           <td><%= admin_menu.id %></td>
           <td><%= admin_menu.title %></td>
-          <td><%= admin_menu.contents %></td>
+          <td>
+          <%= admin_menu.contents[0..10] %><br>
+          <%= admin_menu.contents[11..-1] %>
+          </td>
           <td><%= admin_menu.price %></td>
           <td><%= admin_menu.likes_count %></td>
           <td><%= admin_menu.in_stock_qty %></td>
@@ -33,8 +36,8 @@
       <% end %>
     </tbody>
   </table>
-
   <br>
+  <%= paginate @admin_menus %>
 
   <%= link_to '新增便當', new_admin_menu_path, :class => "btn btn-success" %>
   <%= link_to '訂單管理', admin_orders_path, :class => "btn btn-primary" %>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :orders
+    # get 'orders_all', :to => 'orders'
   end
   namespace :admin do
     resources :menus
@@ -21,6 +22,7 @@ end
   resources :menus do
     resources :orders do
       post :confirm, :on => :collection
+
     end
   end
 

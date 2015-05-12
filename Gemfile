@@ -49,7 +49,7 @@ gem 'paperclip'
 # gem 'unicorn'
 gem "letter_opener", :group => :development
 gem 'font-awesome-sass'
-
+gem 'rack-mini-profiler', require: false
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

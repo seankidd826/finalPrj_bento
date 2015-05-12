@@ -1,5 +1,3 @@
-<!-- <p id="notice"><%= notice %></p> -->
-
 <div class="container">
 <h1>後台訂單管理頁面</h1>
 
@@ -13,7 +11,7 @@
         <th>訂購者電話</th>
         <th>訂購者地址</th>
         <th>訂購者email</th>
-        <th colspan="3"></th>
+        <th colspan="4"></th>
       </tr>
     </thead>
 
@@ -25,7 +23,10 @@
           <td><%= admin_order.menu_count %></td>
           <td><%= admin_order.order_name %></td>
           <td><%= admin_order.order_phone %></td>
-          <td><%= admin_order.order_address %></td>
+          <td>
+          <%= admin_order.order_address[0..10] %><br>
+          <%= admin_order.order_address[11..-1] %>
+          </td>
           <td><%= admin_order.order_email %></td>
           <td><%= link_to 'Show', admin_order,:class => "btn btn-primary" %>
               <%= link_to 'Edit', edit_admin_order_path(admin_order),:class => "btn btn-primary" %>
@@ -34,6 +35,7 @@
       <% end %>
     </tbody>
   </table>
+  <%= paginate @admin_orders %>
 
   <br>
   <%= link_to '新增訂單', new_admin_order_path, :class => "btn btn-success" %>

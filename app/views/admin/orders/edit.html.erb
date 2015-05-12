@@ -1,6 +1,10 @@
-<h1>Editing Admin Order</h1>
+<div class="container">
+  <div class="row">
+    <h1>Editing Orders</h1>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @admin_order %> |
-<%= link_to 'Back', admin_orders_path %>
+    <%= render 'form' %>
+    <hr>
+    <%= link_to 'Show', @admin_order,:class=>"btn btn-primary"  %>
+    <%= link_to 'Back', admin_orders_path,:class=>"btn btn-primary"  %>
+  </div>
+</div>
