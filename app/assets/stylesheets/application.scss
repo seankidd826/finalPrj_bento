@@ -1,7 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "bootstrap-social";
-@import "style";
 @import "font-awesome-sprockets";
 @import "font-awesome";
 
@@ -32,7 +31,6 @@
 }
 
 #home .mainArticle {
-  height: 400px;
   position: absolute;
   margin-top: 140px;
   width: 100%;
@@ -133,6 +131,10 @@
   transition: all .5s;
 }
 
+.fbFanPageMobile {
+  visibility: hidden;
+}
+
 #order {
   background-color: white;
   max-height: 100vh;
@@ -149,10 +151,17 @@
   margin-bottom: 20px;
 }
 
+.myOder {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
 .dish {
   color: white;
   font-size: 25px;
   background-color: tan;
+  border-radius: 60px;
+  width:150px;
 }
 
 .chefTitle {
@@ -168,6 +177,26 @@
   margin-top: 0px;
 }
 
+.star {
+  margin-bottom: -18px;
+  font-size: 20px;
+  color:red;
+}
+
+.starInOrder {
+  margin-bottom: -18px;
+  font-size: 20px;
+  color:red;
+}
+
+.blankInOrder {
+  margin-top:20px;
+}
+
+.checkOrder {
+  margin-right: 20px;
+}
+
 .pricePlace {
   margin-top: 40px;
   margin-bottom: 10px;
@@ -179,6 +208,48 @@
 
 .price {
   font-size: 35px;
+}
+
+.order_confirmed {
+ min-height: 640px;
+}
+
+.form-width {
+  width: auto;
+}
+
+.form-width-small {
+  width: 50px;
+}
+
+.text-align {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.menu_title {
+  font-size: 30px;
+  font-weight: bold;
+}
+.confirm {
+  font-size: 20px;
+}
+
+.vertical {
+  margin-top: 100px;
+}
+
+.order_phase {
+  margin-top: 10px;
+}
+
+#error {
+  font-size: 25px;
+  color:crimson;
+}
+
+.no_order{
+  font-size: 20px;
 }
 
 .thankslogo {
@@ -230,13 +301,13 @@
   }
 
   #story {
-    background: image-url("story_WEB.png") no-repeat top center;
+    background: image-url("mom_story_mobile.png") no-repeat top center;
     background-size: 100%;
     background-attachment: fixed;
   }
 
   .storyTitle {
-    text-align: right;
+    display: none;
   }
 
   .storyParagraph {
@@ -244,8 +315,24 @@
   }
 
   .fbFanPage {
+    display: none;
+  }
+
+  .fbFanPageMobile {
     margin-top: 60px;
     text-align: right;
+  }
+
+  .dish {
+    margin-left: 10px;
+  }
+
+  .buyBtn {
+    margin-bottom: 10px;
+  }
+
+  .checkOrder {
+    margin-bottom: 20px;
   }
 
 }
