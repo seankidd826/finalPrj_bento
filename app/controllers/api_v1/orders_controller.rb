@@ -7,7 +7,6 @@ class ApiV1::OrdersController < ApiController
                         order_phone: params[:phone],
                         order_address: params[:address],
                         order_email: params[:email] )
-
     @order.user = current_user
 
     if @order.save
