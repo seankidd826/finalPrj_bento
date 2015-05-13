@@ -191,6 +191,7 @@
   margin-bottom: -18px;
   font-size: 20px;
   color:red;
+  margin-left:-300px;
 }
 
 .blankInOrder {
@@ -265,6 +266,29 @@
  margin-left:auto;
  margin-right:auto;
 }
+.history {
+  font-size:20px;
+  width:50px;
+}
+.history_name {
+  font-size:16px;
+  width:50px;
+  font-weight: bold;
+
+}
+.history_chef {
+  font-size:15px;
+  width:220px;
+}
+.history_contents {
+  font-size:15px;
+  width:280px;
+}
+.space {
+  line-height: 3;
+}
+
+
 
 @media screen and (max-width: 767px) {
   #home {

@@ -16,7 +16,7 @@ class ApiV1::AuthController < ApiController
         auth_hash = OmniAuth::AuthHash.new({
           uid: fb_data["id"],
           info: {
-            email: fb_data["email"]
+            email: fb_data["email"],
           },
           credentials: {
             token: params[:access_token],
