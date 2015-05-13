@@ -90,9 +90,21 @@
   background-color: #F9F1E4;
 }
 
+.fadeInBlock {
+  opacity:0;
+}
+
 .storyInfo {
   display:block;
   margin:auto;
+}
+
+.infoTitle {
+  margin-bottom: 10px;
+}
+
+.infoH1 {
+  color: #3AAEA0;
 }
 
 #preStory {
@@ -132,7 +144,7 @@
 }
 
 .fbFanPageMobile {
-  visibility: hidden;
+  /*visibility: hidden;*/
 }
 
 #order {
@@ -179,19 +191,21 @@
 }
 
 .star {
+  margin-left: 40px;
   margin-bottom: -18px;
   font-size: 20px;
   margin-left:40px;
   color:red;
-  z-index:2;
-  position:relative;
+  position: relative;
+  z-index: 2;
 }
 
 .starInOrder {
+  margin-right: 300px;
   margin-bottom: -18px;
   font-size: 20px;
-  color:red;
-  margin-left:-300px;
+  color: red;
+  position: relative;
 }
 
 .blankInOrder {
@@ -292,15 +306,13 @@
   margin-top:15px;
 }
 
-
-
 @media screen and (max-width: 767px) {
   #home {
     background: image-url("mainBanner_WEB.JPG") no-repeat center center;
     background-size: cover;
     background-attachment: scroll;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
   }
 
   #home .mainArticle {
@@ -322,18 +334,17 @@
   }
 
   .scroll-down {
-     visibility:hidden;
+    visibility: hidden;
   }
 
-  .storyInfo {
-    width: 100%;
-    height: 100%;
+  .infoH1 {
+    margin-bottom: 10px;
   }
 
   #story {
     background: image-url("mom_story_mobile.png") no-repeat top center;
     background-size: 100%;
-    background-attachment: fixed;
+    background-attachment: scroll;
   }
 
   .storyTitle {
@@ -353,6 +364,27 @@
     text-align: right;
   }
 
+  .orderBento {
+    margin-top: -200px;
+  }
+
+  .star {
+    margin-left: 15px;
+    margin-bottom: -18px;
+    font-size: 20px;
+    color:red;
+    position: relative;
+    z-index: 2;
+  }
+
+  .starInOrder {
+    margin-left: 90px;
+    margin-bottom: -18px;
+    font-size: 20px;
+    color: red;
+    position: relative;
+  }
+
   .dish {
     margin-left: 10px;
   }
@@ -362,7 +394,11 @@
   }
 
   .checkOrder {
+    margin-left: 32px;
     margin-bottom: 20px;
   }
 
 }
+
+
+

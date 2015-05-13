@@ -37,7 +37,7 @@
         </div>
         <br>
         <div class="col-xs-12 col-md-12">
-          <p class="mainParagraph text-center">向媽媽們預訂豐盛、均衡的午餐，給忙碌又總是外食的你，更有溫度的選擇</p>
+          <h3 class="mainParagraph text-center">向媽媽們預訂豐盛、均衡的午餐，給忙碌又總是外食的你，更有溫度的選擇</h3>
         </div>
         <div class="col-xs-12 col-md-12 scroll-down">
           <p class="btn"><i class="fa fa-angle-down fa-fw"></i></p>
@@ -51,10 +51,26 @@
   <section id="info">
     <div class="container">
       <div class="row">
-        <div class="col-xs-12 col-sm-12">
+        <div class="col-xs-12 col-sm-12 infoTitle">
           <h2 class="text-center">帶便當好輕鬆</h2>
           <h4 class="text-center">簡單三步驟</h4>
-          <%= image_tag("info.png", class: "img-responsive storyInfo", :height => "70%", :width => "70%", alt: "bento banto") %>
+        </div>
+        <div class="col-xs-12 col-sm-4 text-center infoFood fadeInBlock">
+          <%= image_tag("food.png", class: "img-responsive storyInfo", :height => "60%", :width => "60%", alt: "bento banto") %>
+          <h1 class="infoH1">瞧瞧好料</h1>
+          <h4>看看今天登場的</h4>
+          <h4>媽媽準備了什麼驚喜</h4>
+        </div>
+        <div class="col-xs-12 col-sm-4 text-center infoMac fadeInBlock">
+          <%= image_tag("mac.png", class: "img-responsive storyInfo", :height => "60%", :width => "60%", alt: "bento banto") %>
+          <h1 class="infoH1">預定便當</h1>
+          <h4>填寫配送及聯絡方式</h4>
+        </div>
+        <div class="col-xs-12 col-sm-4 text-center infoCar fadeInBlock">
+          <%= image_tag("car.png", class: "img-responsive storyInfo", :height => "60%", :width => "60%", alt: "bento banto") %>
+          <h1 class="infoH1">飯來張口</h1>
+          <h4>我們會將便當直接</h4>
+          <h4>送到您指定的地點</h4>
         </div>
       </div>
     </div>
@@ -72,11 +88,11 @@
       </div>
     </div>
 
-    <div class="col-xs-12 text-center fbFanPage">
+    <div class="col-xs-12 text-center fbFanPage fadeInBlock">
       <a href="https://www.facebook.com/pages/Bento-Banto-%E5%B8%B6%E4%BE%BF%E7%95%B6/926937394017505" class="btn btn-outline-light" target="_blank">更多家與料理故事</a>
     </div>
 
-    <div class="col-xs-12 text-center fbFanPageMobile">
+    <div class="col-xs-12 text-center fbFanPageMobile visible-xs">
       <a href="https://www.facebook.com/pages/Bento-Banto-%E5%B8%B6%E4%BE%BF%E7%95%B6/926937394017505" class="btn btn-outline-light" target="_blank">媽媽們的料理故事</a>
     </div>
   </section>
@@ -142,8 +158,9 @@
             <div class="col-xs-12 col-sm-3 col-sm-offset-1 text-center buyBtn">
             <%= link_to "#", :class => "btn btn-danger",:disabled =>"disabled" do %>
             已售完
-           <% end %>
-          </div>
+          <% end %>
+            </div>
+
           <div class="col-xs-12 col-sm-6  text-center">
           <!-- disable 修改密碼選項 -->
           <%#= link_to('修改密碼', edit_registration_path(:user)) %>
@@ -214,16 +231,16 @@
                         <h2><%= @Time_now %> 午餐便當</h2>
                         <div class="blankInOrder">
                           <div class="starInOrder"><%= icon("star") %></div>
-                          <div class="border text-center text-align checkOrder dish"><%= @menu.menu_cuisine_1 %></div>
-                          <div class="border text-center text-align dish"><%= @menu.menu_cuisine_2 %></div>
+                          <div class="text-center text-align checkOrder dish"><%= @menu.menu_cuisine_1 %></div>
+                          <div class="text-center text-align dish"><%= @menu.menu_cuisine_2 %></div>
                         </div>
                         <div class="blankInOrder">
-                          <div class="border text-center text-align checkOrder dish"><%= @menu.menu_cuisine_3 %></div>
-                          <div class="border text-center text-align dish"><%= @menu.menu_cuisine_4 %></div>
+                          <div class="text-center text-align checkOrder dish"><%= @menu.menu_cuisine_3 %></div>
+                          <div class="text-center text-align dish"><%= @menu.menu_cuisine_4 %></div>
                         </div>
-                        <div class="blankInOrder check">
-                          <div class="border text-center text-align checkOrder dish"><%= @menu.menu_cuisine_5 %></div>
-                          <div class="border text-center text-align dish"><%= @menu.menu_cuisine_6 %></div>
+                        <div class="blankInOrder">
+                          <div class="text-center text-align checkOrder dish"><%= @menu.menu_cuisine_5 %></div>
+                          <div class="text-center text-align dish"><%= @menu.menu_cuisine_6 %></div>
                         </div>
 <!-- ....................................................................... -->
                         <div class="form-group">
@@ -309,6 +326,29 @@ $(document).ready(function(){
       navbar.css('display', "inline-block");
     }
 
+  });
+
+  $('a').click(function(){
+      $('html, body').animate({
+          scrollTop: $( $(this).attr('href') ).offset().top
+      }, 500);
+      return false;
+  });
+
+  $(window).scroll( function(){
+    $('.fadeInBlock').each( function(i){
+      var bottom_of_object = $('.infoFood, .infoMac, .infoCar, .fbFanPage').position().top + $('.infoFood, .infoMac, .infoCar').outerHeight();
+      var bottom_of_window = $(window).scrollTop() + $(window).height();
+
+      bottom_of_window = bottom_of_window + 200;
+
+      if( bottom_of_window > bottom_of_object ){
+        $('.infoFood').animate({'opacity':'1'},1200);
+        $('.infoMac').animate({'opacity':'1'},1600);
+        $('.infoCar').animate({'opacity':'1'},1800);
+        $('.fbFanPage').animate({'opacity':'1'},3000);
+      }
+    });
   });
 
 });
