@@ -33,9 +33,9 @@ class Order < ActiveRecord::Base
   def fill_user_data
     u = self.user
     if u
-      u.name ||= self.order_name
-      u.phone ||= self.order_phone
-      u.address ||= self.order_address
+      u.name = self.order_name
+      u.phone = self.order_phone
+      u.address = self.order_address
       u.save!
     end
   end

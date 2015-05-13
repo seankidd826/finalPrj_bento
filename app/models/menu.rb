@@ -5,7 +5,7 @@ class Menu < ActiveRecord::Base
 
   # create many to many (likes) relation
   has_many :likes
-  has_many :user_likes, :through => :likes, :source => "user"
+  has_many :user_likes, :through => :likes, :source => "user", :dependent => :destroy
 
   # create one to many (orders) relation
   has_many :orders, :dependent => :destroy

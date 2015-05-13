@@ -136,7 +136,7 @@
           <div class="clearfix"></div> <br>
 
           <!-- To lock the order if date is Sun/Sat or other hours than 9~11 -->
-          <%   unless @Time_constraint %>
+          <%  unless @Time_constraint %>
           <% qty = @menu.in_stock_qty %>
           <% if qty <= 0 %>
             <div class="col-xs-12 col-sm-3 col-sm-offset-1 text-center buyBtn">
@@ -165,9 +165,6 @@
             <%= link_to('過往訂單', user_orders_path(current_user),:class =>"btn btn-success") %>
             <%#= image_tag( current_user.fb_image,:class => "img-circle" ) %>
           </div>
-          <!-- <div class="col-xs-12 col-sm-1 col-sm-offset-1 text-center"> -->
-
-          <!-- </div> -->
             <% else %>
           <div class="col-xs-12 col-sm-3 col-sm-offset-1 text-center buyBtn">
             <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-warning" do %>
@@ -185,11 +182,12 @@
           <% end %>
           <% else %>
             <div class="col-xs-12 col-sm-6 col-sm-offset-4 text-center">
-              <div class="label label-danger no_order">現在不是訂購時間喔</div>
+             <div class="label label-danger no_order">
+             現在不是訂購時間喔
+             </div>
             </div>
           <% end %>
            <!-- end of qty define -->
-          <!-- <br> -->
           <% if params[:facebookbuy]=="true" %>
             <script>
               $( document ).ready(function() {
@@ -199,8 +197,7 @@
           <% end %>
         </div>
 
-          <!-- above is for menu content format -->
-              <!-- For book button -->
+          <!-- Below is for ordering form -->
               <div id="modal_container">
                 <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
