@@ -55,18 +55,18 @@
           <h2 class="text-center">帶便當好輕鬆</h2>
           <h4 class="text-center">簡單三步驟</h4>
         </div>
-        <div class="col-xs-12 col-sm-4 text-center">
+        <div class="col-xs-12 col-sm-4 text-center infoFood fadeInBlock">
           <%= image_tag("food.png", class: "img-responsive storyInfo", :height => "60%", :width => "60%", alt: "bento banto") %>
           <h1 class="infoH1">瞧瞧好料</h1>
           <h4>看看今天登場的</h4>
           <h4>媽媽準備了什麼驚喜</h4>
         </div>
-        <div class="col-xs-12 col-sm-4 text-center">
+        <div class="col-xs-12 col-sm-4 text-center infoMac fadeInBlock">
           <%= image_tag("mac.png", class: "img-responsive storyInfo", :height => "60%", :width => "60%", alt: "bento banto") %>
           <h1 class="infoH1">預定便當</h1>
           <h4>填寫配送及聯絡方式</h4>
         </div>
-        <div class="col-xs-12 col-sm-4 text-center">
+        <div class="col-xs-12 col-sm-4 text-center infoCar fadeInBlock">
           <%= image_tag("car.png", class: "img-responsive storyInfo", :height => "60%", :width => "60%", alt: "bento banto") %>
           <h1 class="infoH1">飯來張口</h1>
           <h4>我們會將便當直接</h4>
@@ -88,7 +88,7 @@
       </div>
     </div>
 
-    <div class="col-xs-12 text-center fbFanPage">
+    <div class="col-xs-12 text-center fbFanPage fadeInBlock">
       <a href="https://www.facebook.com/pages/Bento-Banto-%E5%B8%B6%E4%BE%BF%E7%95%B6/926937394017505" class="btn btn-outline-light" target="_blank">更多家與料理故事</a>
     </div>
 
@@ -152,7 +152,7 @@
           <div class="clearfix"></div> <br>
 
           <!-- To lock the order if date is Sun/Sat or other hours than 9~11 -->
-          <%# unless @Time_constraint %>
+          <% unless @Time_constraint %>
           <% qty = @menu.in_stock_qty %>
           <% if qty <= 0 %>
             <div class="col-xs-12 col-sm-3 col-sm-offset-1 text-center buyBtn">
@@ -200,11 +200,11 @@
           </div>
             <% end %>
           <% end %>
-<!--           <%# else %>
+          <% else %>
             <div class="col-xs-12 col-sm-6 col-sm-offset-4 text-center">
               <div class="label label-danger no_order">現在不是訂購時間喔</div>
             </div>
-          <%# end %> -->
+          <% end %>
            <!-- end of qty define -->
           <!-- <br> -->
           <% if params[:facebookbuy]=="true" %>
@@ -338,8 +338,23 @@ $(document).ready(function(){
       return false;
   });
 
-});
+  $(window).scroll( function(){
+    $('.fadeInBlock').each( function(i){
+      var bottom_of_object = $('.infoFood, .infoMac, .infoCar, .fbFanPage').position().top + $('.infoFood, .infoMac, .infoCar').outerHeight();
+      var bottom_of_window = $(window).scrollTop() + $(window).height();
 
+      bottom_of_window = bottom_of_window + 200;
+
+      if( bottom_of_window > bottom_of_object ){
+        $('.infoFood').animate({'opacity':'1'},1200);
+        $('.infoMac').animate({'opacity':'1'},1600);
+        $('.infoCar').animate({'opacity':'1'},1800);
+        $('.fbFanPage').animate({'opacity':'1'},3000);
+      }
+    });
+  });
+
+});
 </script>
 
 <!-- JavaScript END -->
