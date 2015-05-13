@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150508130857) do
+ActiveRecord::Schema.define(version: 20150513065030) do
 
   create_table "likes", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20150508130857) do
     t.string   "fb_image",               limit: 255
     t.string   "fb_uid",                 limit: 255
     t.string   "authentication_token",   limit: 255
-    t.string   "fb_access_token",        limit: 255
+    t.text     "fb_access_token",        limit: 65535
     t.datetime "fb_expires_at"
   end
 
