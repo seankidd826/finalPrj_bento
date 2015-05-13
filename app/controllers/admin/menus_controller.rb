@@ -5,7 +5,7 @@ class Admin::MenusController < AdminController
   # GET /admin/menus
   # GET /admin/menus.json
   def index
-    @admin_menus = Admin::Menu.all
+    @admin_menus = Admin::Menu.all.page(params[:page]).per(5)
   end
 
   # GET /admin/menus/1

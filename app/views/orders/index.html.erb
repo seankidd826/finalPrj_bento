@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="row">
+    <h1><%= image_tag( current_user.fb_image,:class => "img-circle" ) %>  訂購歷史紀錄</h1>
+
+      <table class="table table-hover">
+       <thead>
+        <tr class="history">
+          <th>媽媽資訊</th>
+          <th>便當內容</th>
+          <th class="text-center">訂購個數</th>
+          <th class="text-center">訂購總價</th>
+        </tr>
+       </thead>
+       <tbody>
+        <% @orders.each do |order| %>
+         <tr>
+           <!-- <td><div class="history_name"><%#= order.order_name %></div></td> -->
+           <td class="history_chef">
+            <%= image_tag( order.menu.mompic(:thumb), :class => "img-circle img-responsive" ) %>
+            <div class="label label-primary history_chef history_image"><%= order.menu.chef_name %></div><br>
+            <div class="label label-primary history_chef"><%= order.menu.chef_experience %></div>
+           </td>
+           <td class="history_contents">
+            <div class="label label-warning history_contents">
+            <%= order.menu.menu_cuisine_1 %></div>
+            <div class="label label-warning history_contents">
+            <%= order.menu.menu_cuisine_2 %></div>
+            <div class="label label-warning history_contents">
+            <%= order.menu.menu_cuisine_3 %></div><br>
+            <div class="label label-warning history_contents space">
+            <%= order.menu.menu_cuisine_4 %></div>
+            <div class="label label-warning history_contents">
+            <%= order.menu.menu_cuisine_5 %></div>
+            <div class="label label-warning history_contents" id="last_cuisine">
+            <%= order.menu.menu_cuisine_6 %></div>
+            <% if order.menu.menu_cuisine_6=="" %>
+              <script>
+                $('#last_cuisine').remove();
+              </script>
+            <% end %>
+           </td>
+           <td class="text-center"><span class="badge" style="font-size:13px;"><%= order.menu_count %></span></td>
+           <td class="text-center"><b><%= order.total_price %></b></td>
+         </tr>
+        <% end %>
+
+       </tbody>
+      </table>
+      <!-- <div class="col-xs-4"> -->
+      <%= paginate @orders %><br>
+      <%=link_to "回首頁",root_path,:class=>"btn btn-default"  %>
+      <!-- </div> -->
+  </div>
+</div>

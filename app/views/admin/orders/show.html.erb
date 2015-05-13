@@ -1,34 +1,58 @@
 <!-- <p id="notice"><%= notice %></p> -->
+<div class="container">
+ <div class="row"><!-- <p id="notice"><%= notice %></p> -->
+  <table class="table table-striped">
+    <hr>
+      <tr>
+        <th>
+          <strong>Total price:</strong>
+        </th>
+        <td><%= @admin_order.total_price %></td>
+      </tr>
 
-<p>
-  <strong>Total price:</strong>
-  <%= @admin_order.total_price %>
-</p>
+      <tr>
+        <th>
+          <strong>Menu count:</strong>
+        </th>
+        <td><%= @admin_order.menu_count %></td>
+      </tr>
 
-<p>
-  <strong>Menu count:</strong>
-  <%= @admin_order.menu_count %>
-</p>
+      <tr>
+        <th>
+          <strong>Order name:</strong>
+        </th>
+        <td><%= @admin_order.order_name %></td>
+      </tr>
 
-<p>
-  <strong>Order name:</strong>
-  <%= @admin_order.order_name %>
-</p>
+      <tr>
+        <th>
+          <strong>Order phone:</strong>
+        </th>
+        <td><%= @admin_order.order_phone %></td>
+      </tr>
 
-<p>
-  <strong>Order phone:</strong>
-  <%= @admin_order.order_phone %>
-</p>
+      <tr>
+        <th>
+          <strong>Order address:</strong>
+        </th>
+        <td><%= @admin_order.order_address %></td>
+      </tr>
 
-<p>
-  <strong>Order address:</strong>
-  <%= @admin_order.order_address %>
-</p>
+      <tr>
+        <th>
+          <strong>Order email:</strong>
+        </th>
+        <td><%= @admin_order.order_email %></td>
+      </tr>
 
-<p>
-  <strong>Order email:</strong>
-  <%= @admin_order.order_email %>
-</p>
+      <tr>
+        <th><%= link_to 'Edit', edit_admin_order_path(@admin_order),:class=>"btn btn-primary" %>
+          <%= link_to 'Back', admin_orders_path,:class=>"btn btn-primary" %>
+        </th>
+        <td></td>
+      </tr>
+  </table>
+ </div>
+</div>
 
-<%= link_to 'Edit', edit_admin_order_path(@admin_order) %> |
-<%= link_to 'Back', admin_orders_path %>
+

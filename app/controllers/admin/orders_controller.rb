@@ -2,10 +2,16 @@ class Admin::OrdersController < AdminController
 # class Admin::OrdersController < ApplicationController
   before_action :set_admin_order, only: [:show, :edit, :update, :destroy]
 
+  def orders_all
+    @admin_orders = Admin::Menu::Order.find(params[:menu_id])
+  end
+
+
   # GET /admin/orders
   # GET /admin/orders.json
   def index
-    @admin_orders = Admin::Order.all
+    @admin_orders = Admin::Order.all.page(params[:page]).per(7)
+    @admin_menus = Admin::Menu.all.page(params[:page]).per(5)
   end
 
   # GET /admin/orders/1
@@ -70,6 +76,6 @@ class Admin::OrdersController < AdminController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def admin_order_params
-      params.require(:admin_order).permit(:total_price, :menu_count, :order_name, :order_phone, :order_address, :order_email)
+      params.require(:admin_order).permit(:total_price, :menu_count, :order_name, :order_phone, :order_address, :order_email,:menu_id,:id)
     end
 end

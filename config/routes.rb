@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   end
   namespace :admin do
     resources :orders
+    # get 'orders_all', :to => 'orders'
   end
   namespace :admin do
     resources :menus
@@ -17,10 +18,14 @@ end
 
   # You can have the root of your site routed with "root"
   root 'menus#index'
-  resources :users
+  resources :users do
+    resources :orders
+  end
+
   resources :menus do
     resources :orders do
       post :confirm, :on => :collection
+
     end
   end
 

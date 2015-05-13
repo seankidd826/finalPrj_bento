@@ -5,8 +5,9 @@
   <!--Facebook og-->
   <meta property="og:title" content="BentoBanto帶便當" />
   <meta property="og:description" content="帶一份，來自家的便當！向媽媽們預訂豐盛、均衡的午餐，給忙碌又總是外食的你，更有溫度的選擇！媽媽元氣便當，售價100元，試營運期間免運費！" />
-  <meta property='og:image' content="http://www.bentobanto.com/app/assets/images/logo.png" />
-  <meta property='og:url' content="http://www.bentobanto.com/" />
+  <meta property="og:image" content="http://www.bentobanto.com/app/assets/images/logo.png" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="http://www.bentobanto.com/" />
   <!--Facebook og end-->
   <div id="headNav">
     <nav class="navbar navbar-default navbar-fixed-top hidden-xs hidden-sm" role="navigation">
@@ -151,7 +152,7 @@
           <div class="clearfix"></div> <br>
 
           <!-- To lock the order if date is Sun/Sat or other hours than 9~11 -->
-          <% unless @Time_constraint %>
+          <%# unless @Time_constraint %>
           <% qty = @menu.in_stock_qty %>
           <% if qty <= 0 %>
             <div class="col-xs-12 col-sm-3 col-sm-offset-1 text-center buyBtn">
@@ -176,10 +177,14 @@
             購買
             <% end %>
           </div>
-          <div class="col-xs-12 col-sm-5 col-sm-offset-1 text-center">
+          <div class="col-xs-12 col-sm-7 col-sm-offset-1 text-center">
             <%= link_to('登出', destroy_user_session_path, :method => :delete,:class =>"btn btn-primary") %>
+            <%= link_to('過往訂單', user_orders_path(current_user),:class =>"btn btn-success") %>
             <%#= image_tag( current_user.fb_image,:class => "img-circle" ) %>
           </div>
+          <!-- <div class="col-xs-12 col-sm-1 col-sm-offset-1 text-center"> -->
+
+          <!-- </div> -->
             <% else %>
           <div class="col-xs-12 col-sm-3 col-sm-offset-1 text-center buyBtn">
             <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-warning" do %>
@@ -194,14 +199,14 @@
             <div>訂購更快速！</div>
           </div>
             <% end %>
-            <% end %>
-          <% else %>
+          <% end %>
+<!--           <%# else %>
             <div class="col-xs-12 col-sm-6 col-sm-offset-4 text-center">
               <div class="label label-danger no_order">現在不是訂購時間喔</div>
             </div>
-          <% end %>
+          <%# end %> -->
            <!-- end of qty define -->
-          <br>
+          <!-- <br> -->
           <% if params[:facebookbuy]=="true" %>
             <script>
               $( document ).ready(function() {
@@ -287,6 +292,8 @@
     </div>
   </section>
 
+
+
 <!-- JavaScript gose here -->
 
 <script>
@@ -348,7 +355,7 @@ $(document).ready(function(){
 
 </script>
 <!-- Google Analytics Tracking code end -->
-<!-- Facebook Conversion Code for bentobanto-website-landingpage -->
+<!-- Facebook Conversion Code for bentobanto-website-landingpage
 <script>(function() {
   var _fbq = window._fbq || (window._fbq = []);
   if (!_fbq.loaded) {
@@ -364,4 +371,4 @@ window._fbq = window._fbq || [];
 window._fbq.push(['track', '6028582381840', {'value':'0.00','currency':'TWD'}]);
 </script>
 <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?ev=6028582381840&amp;cd[value]=0.00&amp;cd[currency]=TWD&amp;noscript=1" /></noscript>
-<!-- Facebook Conversion Code for bentobanto-website-landingpage end-->
+Facebook Conversion Code for bentobanto-website-landingpage end-->

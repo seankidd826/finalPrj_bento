@@ -16,7 +16,7 @@ class ApiV1::AuthController < ApiController
         auth_hash = OmniAuth::AuthHash.new({
           uid: fb_data["id"],
           info: {
-            email: fb_data["email"]
+            email: fb_data["email"],
           },
           credentials: {
             token: params[:access_token],
@@ -31,7 +31,8 @@ class ApiV1::AuthController < ApiController
     end
 
     if success
-      render :json => { :message => "Ok",
+      render :json => { :status => 200,
+                        :message => "Login OK",
                         :auth_token => user.authentication_token,
                         :user_name => user.name,
                         :user_email => user.email,
@@ -39,7 +40,7 @@ class ApiV1::AuthController < ApiController
                         :user_address => user.address,
                         :user_id => user.id }
     else
-      render :json => { :message => "Failed" }, :status => 401
+      render :json => { :message => "Login Failed" }, :status => 401
     end
   end
 
@@ -47,7 +48,7 @@ class ApiV1::AuthController < ApiController
     current_user.generate_authentication_token
     current_user.save!
 
-    render :json => { :message => "Ok" }
+    render :json => { :message => "Logout OK" }
   end
 
 end

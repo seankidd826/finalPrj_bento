@@ -168,8 +168,9 @@
   color: white;
   font-size: 25px;
   background-color: tan;
-  border-radius: 60px;
+  border-radius: 70px;
   width:150px;
+  min-height:0px !important;
 }
 
 .chefTitle {
@@ -189,6 +190,7 @@
   margin-left: 40px;
   margin-bottom: -18px;
   font-size: 20px;
+  margin-left:40px;
   color:red;
   position: relative;
   z-index: 2;
@@ -198,7 +200,7 @@
   margin-right: 300px;
   margin-bottom: -18px;
   font-size: 20px;
-  color:red;
+  color: red;
   position: relative;
 }
 
@@ -274,6 +276,31 @@
  margin-left:auto;
  margin-right:auto;
 }
+.history {
+  font-size:20px;
+  width:50px;
+}
+.history_name {
+  font-size:16px;
+  width:50px;
+  font-weight: bold;
+
+}
+.history_chef {
+  font-size:15px;
+  width:220px;
+}
+.history_contents {
+  font-size:15px;
+  width:280px;
+}
+.space {
+  line-height: 3;
+}
+.history_image {
+  line-height: 2.5;
+  margin-top:15px;
+}
 
 @media screen and (max-width: 767px) {
   #home {
@@ -338,12 +365,20 @@
   }
 
   .star {
-    margin-left: 20px;
+    margin-left: 15px;
     margin-bottom: -18px;
     font-size: 20px;
     color:red;
     position: relative;
     z-index: 2;
+  }
+
+  .starInOrder {
+    margin-left: 90px;
+    margin-bottom: -18px;
+    font-size: 20px;
+    color: red;
+    position: relative;
   }
 
   .dish {
@@ -355,6 +390,7 @@
   }
 
   .checkOrder {
+    margin-left: 32px;
     margin-bottom: 20px;
   }
 
