@@ -16,8 +16,9 @@
          <tr>
            <!-- <td><div class="history_name"><%#= order.order_name %></div></td> -->
            <td class="history_chef">
-            <div class="label label-primary history_chef"><%= order.menu.chef_name %></div><br>
-            <div class="label label-primary history_chef space"><%= order.menu.chef_experience %></div>
+            <%= image_tag( order.menu.mompic(:thumb), :class => "img-circle img-responsive" ) %>
+            <div class="label label-primary history_chef history_image"><%= order.menu.chef_name %></div><br>
+            <div class="label label-primary history_chef"><%= order.menu.chef_experience %></div>
            </td>
            <td class="history_contents">
             <div class="label label-warning history_contents">
