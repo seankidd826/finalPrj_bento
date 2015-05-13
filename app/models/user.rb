@@ -17,7 +17,15 @@ class User < ActiveRecord::Base
   # create one to many (orders) relation
   has_many :orders
 
+  validates_presence_of :friendly_id
+  validates_uniqueness_of :friendly_id
+
+  before_validation :setup_friendly_id
   before_save :ensure_authentication_token
+
+  def to_param
+    self.friendly_id
+  end
 
   def self.from_omniauth(auth)
     user = where( fb_uid: auth.uid ).first
@@ -69,6 +77,10 @@ class User < ActiveRecord::Base
     end
 
     self.authentication_token = token
+  end
+
+  def setup_friendly_id
+    self.friendly_id ||= SecureRandom.hex(8)
   end
 
   protected

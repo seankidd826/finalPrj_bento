@@ -34,7 +34,8 @@ class OrdersController < ApplicationController
 
 
   def index
-    @orders = Order.where(:user_id => params[:user_id]).page(params[:page]).per(5)
+    # @orders = Order.where(:user_id => params[:user_id]).page(params[:page]).per(5)
+    @orders = current_user.orders.page(params[:page]).per(5)
   end
 
 
