@@ -95,6 +95,14 @@
   margin:auto;
 }
 
+.infoTitle {
+  margin-bottom: 10px;
+}
+
+.infoH1 {
+  color: #3AAEA0;
+}
+
 #preStory {
   min-height: 80px;
   background-color: #F9F1E4;
@@ -132,7 +140,7 @@
 }
 
 .fbFanPageMobile {
-  visibility: hidden;
+  /*visibility: hidden;*/
 }
 
 #order {
@@ -267,15 +275,13 @@
  margin-right:auto;
 }
 
-
-
 @media screen and (max-width: 767px) {
   #home {
     background: image-url("mainBanner_WEB.JPG") no-repeat center center;
     background-size: cover;
     background-attachment: scroll;
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
   }
 
   #home .mainArticle {
@@ -297,18 +303,17 @@
   }
 
   .scroll-down {
-     visibility:hidden;
+    visibility: hidden;
   }
 
-  .storyInfo {
-    width: 100%;
-    height: 100%;
+  .infoH1 {
+    margin-bottom: 10px;
   }
 
   #story {
     background: image-url("mom_story_mobile.png") no-repeat top center;
     background-size: 100%;
-    background-attachment: fixed;
+    background-attachment: scroll;
   }
 
   .storyTitle {
@@ -320,15 +325,26 @@
   }
 
   .fbFanPage {
-    /*display: none;*/
+    display: none;
+  }
+
+  .fbFanPageMobile {
     margin-top: 60px;
     text-align: right;
   }
 
-/*  .fbFanPageMobile {
-    margin-top: 60px;
-    text-align: right;
-  }*/
+  .orderBento {
+    margin-top: -200px;
+  }
+
+  .star {
+    margin-left: 20px;
+    margin-bottom: -18px;
+    font-size: 20px;
+    color:red;
+    position: relative;
+    z-index: 2;
+  }
 
   .dish {
     margin-left: 10px;
@@ -343,3 +359,6 @@
   }
 
 }
+
+
+
