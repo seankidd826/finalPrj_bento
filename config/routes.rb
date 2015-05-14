@@ -25,8 +25,8 @@ end
   resources :menus do
     resources :orders do
       post :confirm, :on => :collection
-
     end
+    resources :likes
   end
 
   resource :cart

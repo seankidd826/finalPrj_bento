@@ -151,6 +151,7 @@
   background-color: white;
   max-height: 100vh;
   margin-bottom: 30px;
+  position:relative;
 }
 
 .storyImg {
@@ -182,7 +183,7 @@
 }
 
 .todayChef {
-  margin-top: 3px;
+  margin-top: 2px;
   font-weight: bolder;
 }
 
@@ -322,6 +323,33 @@
 .history_image {
   line-height: 2.5;
   margin-top:15px;
+}
+.likes_label {
+  font-size: 18px;
+  margin-left:auto;
+  margin-right:auto;
+}
+.heart {
+  font-size: 50px;
+  position: absolute;
+  right: 488px;
+  top: -10px;
+  color:red;
+
+}
+
+.badge_heart {
+ position:absolute;
+ right: 500px;
+ top:8px;
+ z-index: 2;
+ background-color: red;
+}
+.badge_order_record {
+  background-color: deeppink;
+}
+.btn-color {
+  background-color: royalblue;
 }
 
 @media screen and (max-width: 767px) and (orientation : portrait) {

@@ -5,7 +5,7 @@ class Menu < ActiveRecord::Base
 
   # create many to many (likes) relation
   has_many :likes
-  has_many :user_likes, :through => :likes, :source => "user"
+  has_many :user_likes, :through => :likes, :source => "user", :dependent => :destroy
 
   # create one to many (orders) relation
   has_many :orders, :dependent => :destroy
@@ -16,6 +16,10 @@ class Menu < ActiveRecord::Base
   validates_attachment_content_type :mompic, :content_type => /\Aimage\/.*\Z/
   validates_numericality_of :in_stock_qty, :only_integer => true
   validates_numericality_of :price, :only_integer => true, :greater_than => 1
+
+  def find_like_by_user(user)
+    self.likes.where(:user_id => user.id).first
+  end
 
   def menu_date
     self.created_at.strftime("%_m /%_d")

@@ -11,12 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513124705) do
+ActiveRecord::Schema.define(version: 20150513172121) do
 
   create_table "likes", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.integer  "menu_id",    limit: 4
+    t.integer  "user_id",    limit: 4
   end
+
+  add_index "likes", ["menu_id"], name: "index_likes_on_menu_id", using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "menus", force: :cascade do |t|
     t.string   "title",               limit: 255
@@ -45,6 +50,8 @@ ActiveRecord::Schema.define(version: 20150513124705) do
     t.string   "order_phone",   limit: 255
     t.text     "order_address", limit: 65535
     t.string   "order_email",   limit: 255
+    t.string   "road",          limit: 255
+    t.string   "area",          limit: 255
   end
 
   create_table "stories", force: :cascade do |t|

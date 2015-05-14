@@ -110,14 +110,27 @@
         <div class="col-xs-11 col-xs-offset-1 col-sm-3 col-sm-offset-2 todayMenu text-center">
           <%= image_tag( @menu.mompic(:medium), :class => "img-circle img-responsive" ) %>
           <ul class="list-inline">
-            <li><h4 class="chefTitle">今日主廚</h4></li><br>
+            <li><h4 class="chefTitle">今日主廚</h4></li>
+            <br>
             <li><h3 class="todayChef"><%= @menu.chef_name %></h3></li><br>
-            <li><h4 class="chefInfo"><%= @menu.chef_experience %></h4></li>
+            <li><h4 class="chefInfo"><%= @menu.chef_experience %></h4></li><br>
+            <% if current_user %>
+              <% like = @menu.find_like_by_user(current_user)%>
+              <div id="like-<%= @menu.id %>">
+                <%= render :partial => "likes/show", :locals => {:menu => @menu, :like => like} %>
+              </div>
+            <% else %>
+             <%= link_to "like","#",:class => "btn btn-primary btn-color likes_label", :disabled =>true %>
+             <% end %>
           </ul>
         </div>
 
+
 <!-- .................................................................................... -->
+
         <div class="col-xs-12 col-sm-5 myOder">
+          <div class="badge badge_heart"><%= @menu.likes_count %></div>
+          <div class="heart"><%= icon("heart") %></div>
           <div class="star"><%= icon("star") %></div>
           <div class="col-xs-6 col-sm-5 col-sm-offset-1 text-center dish fixW320">
             <%= @menu.menu_cuisine_1 %>
@@ -151,8 +164,7 @@
 
           <div class="clearfix"></div> <br>
 
-          <!-- To lock the order if date is Sun/Sat or other hours than 9~11 -->
-          <%# unless @Time_constraint %>
+          <% unless @Time_constraint %>
           <% qty = @menu.in_stock_qty %>
           <% if qty <= 0 %>
             <div class="col-xs-12 col-sm-3 col-sm-offset-1 text-center buyBtn">
@@ -182,9 +194,6 @@
             <%= link_to('過往訂單', user_orders_path(current_user),:class =>"btn btn-success") %>
             <%#= image_tag( current_user.fb_image,:class => "img-circle" ) %>
           </div>
-          <!-- <div class="col-xs-12 col-sm-1 col-sm-offset-1 text-center"> -->
-
-          <!-- </div> -->
             <% else %>
           <div class="col-xs-12 col-sm-3 col-sm-offset-1 text-center buyBtn">
             <%= link_to "#", :data => {:toggle=>"modal", :target => "#mymodal"}, :class => "btn btn-warning" do %>
@@ -200,13 +209,15 @@
           </div>
             <% end %>
           <% end %>
-<!--           <%# else %>
+          <% else %>
             <div class="col-xs-12 col-sm-6 col-sm-offset-4 text-center">
-              <div class="label label-danger no_order">現在不是訂購時間喔</div>
+             <div class="label label-danger no_order">
+             現在不是訂購時間喔
+             </div>
             </div>
-          <%# end %> -->
+          <% end %>
+
            <!-- end of qty define -->
-          <!-- <br> -->
           <% if params[:facebookbuy]=="true" %>
             <script>
               $( document ).ready(function() {
@@ -216,8 +227,7 @@
           <% end %>
         </div>
 
-          <!-- above is for menu content format -->
-              <!-- For book button -->
+          <!-- Below is for ordering form -->
               <div id="modal_container">
                 <div class="modal fade" id="mymodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
