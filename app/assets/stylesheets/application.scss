@@ -22,12 +22,30 @@
   margin-top: -30px;
 }
 
-#home {
+/*#home {
   background: image-url("mainBanner_WEB.JPG") no-repeat center center;
   background-size: cover;
   background-attachment: fixed;
   height: 100vh;
   width: 100vw;
+}*/
+
+#home {
+  background: image-url("mainBanner_clear.png") no-repeat center center;
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+}
+
+#home::before {
+  background-color: rgba(255, 99, 71, 0.4);
+  content: '';
+  display: block;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
 }
 
 #home .mainArticle {
@@ -324,41 +342,62 @@
   line-height: 2.5;
   margin-top:15px;
 }
+
 .likes_label {
   font-size: 18px;
   margin-left:auto;
   margin-right:auto;
 }
+
 .heart {
   font-size: 50px;
   position: absolute;
   right: 488px;
   top: -10px;
   color:red;
-
 }
 
 .badge_heart {
- position:absolute;
+ position: absolute;
  right: 500px;
- top:8px;
+ top: 8px;
  z-index: 2;
  background-color: red;
 }
+
 .badge_order_record {
   background-color: deeppink;
 }
+
 .btn-color {
   background-color: royalblue;
 }
 
 @media screen and (max-width: 767px) and (orientation : portrait) {
-  #home {
+/*  #home {
     background: image-url("mainBanner_WEB.JPG") no-repeat center center;
     background-size: cover;
     background-attachment: scroll;
     height: 100%;
     width: 100%;
+  }*/
+
+  #home {
+    background: image-url("mainBanner_clear.png") no-repeat center center;
+    background-size: cover;
+    background-attachment: scroll;
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+
+  #home::before {
+    background-color: rgba(255, 99, 71, 0.4);
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
   }
 
   #home .mainArticle {
@@ -377,6 +416,10 @@
     font-size: 12px;
     color: white;
     text-shadow: #444 0 1px 1px;
+  }
+
+  .centerLogo {
+    visibility: hidden;
   }
 
   .scroll-down {
@@ -447,12 +490,30 @@
 }
 
 @media screen and (max-width: 767px) {
-  #home {
+/*  #home {
     background: image-url("mainBanner_WEB.JPG") no-repeat center center;
     background-size: cover;
     background-attachment: scroll;
     height: 100%;
     width: 100%;
+  }*/
+
+  #home {
+    background: image-url("mainBanner_clear.png") no-repeat center center;
+    background-size: cover;
+    background-attachment: scroll;
+    height: 100%;
+    width: 100%;
+    position: relative;
+  }
+
+  #home::before {
+    background-color: rgba(255, 99, 71, 0.4);
+    content: '';
+    display: block;
+    height: 100%;
+    width: 100%;
+    position: absolute;
   }
 
   #home .mainArticle {
