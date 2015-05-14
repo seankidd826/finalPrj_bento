@@ -54,11 +54,11 @@ class Menu < ActiveRecord::Base
   end
 
   def menu_cuisine_5
-    contents.at(15..17)
+    contents.at(15..17).blank?? "":contents.at(15..17)
   end
 
   def menu_cuisine_6
-    contents.at(18..19)
+    contents.at(18..19).blank?? "":contents.at(18..19)
   end
 
 end

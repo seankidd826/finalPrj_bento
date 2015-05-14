@@ -11,7 +11,7 @@ class LikesController < ApplicationController
     end
 
     respond_to do |format|
-      # format.html {redirect_to :back}
+      format.html {redirect_to :back}
       format.js {
         @menu.reload
         render :template => "likes/ajax"
@@ -25,7 +25,7 @@ class LikesController < ApplicationController
     @like = nil
 
     respond_to do |format|
-      # format.html {redirect_to :back}
+      format.html {redirect_to :back}
       format.js {
         @menu.reload
         render :template => "likes/ajax"
@@ -36,10 +36,6 @@ class LikesController < ApplicationController
 
 
   private
-
-  def likes_param
-    params.require(:like).permit(:menu_id,:user_id,:user)
-  end
 
   def set_menu
     @menu = Menu.find(params[:menu_id])
