@@ -21,6 +21,10 @@ class Menu < ActiveRecord::Base
     self.likes.where(:user_id => user.id).first
   end
 
+  def enough?(qty)
+    self.in_stock_qty - qty >= 0
+  end
+
   def menu_date
     self.created_at.strftime("%_m /%_d")
   end

@@ -1,1 +1,2 @@
 $("#like-<%= @menu.id %>").html("<%= j(render :partial => "show", :locals => {:menu => @menu, :like => @like}) %>")
+$("#heart-<%= @menu.id %>").html("<%= j(render :partial => "heart", :locals => {:menu => @menu}) %>")

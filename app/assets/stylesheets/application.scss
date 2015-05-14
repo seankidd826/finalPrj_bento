@@ -350,17 +350,16 @@
 }
 
 .heart {
-  font-size: 50px;
+  font-size: 55px;
   position: absolute;
-  right: 488px;
-  top: -10px;
+  right: 0px;
+  top: 0px;
   color:red;
 }
-
 .badge_heart {
- position: absolute;
- right: 500px;
- top: 8px;
+ position:absolute;
+ right: 11px;
+ top:19px;
  z-index: 2;
  background-color: red;
 }

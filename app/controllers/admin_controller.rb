@@ -1,8 +1,9 @@
 class AdminController < ApplicationController
-  admin_config = YAML.load(File.read("#{Rails.root}/config/admin.yml"))[Rails.env]
+
+  admin_config = Rails.application.config_for(:admin)
+
   if Rails.env.development?
     http_basic_authenticate_with(
-      # name: '12345', password: '12345'
       name: admin_config["name"],
       password: admin_config["passwords"]
     )

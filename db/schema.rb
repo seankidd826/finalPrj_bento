@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150513172121) do
+ActiveRecord::Schema.define(version: 20150514102102) do
 
   create_table "likes", force: :cascade do |t|
     t.datetime "created_at",           null: false
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20150513172121) do
     t.string   "order_email",   limit: 255
     t.string   "road",          limit: 255
     t.string   "area",          limit: 255
+    t.string   "from_phone",    limit: 255
   end
 
   create_table "stories", force: :cascade do |t|

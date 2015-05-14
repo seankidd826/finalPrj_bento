@@ -1,6 +1,7 @@
 class LikesController < ApplicationController
 
-  before_action :authenticate_user!, :set_menu
+  before_action :authenticate_user!
+  before_action :set_menu
 
   def create
     liked = @menu.find_like_by_user(current_user)
@@ -37,7 +38,7 @@ class LikesController < ApplicationController
   private
 
   def likes_param
-    params.require(:like).permit(:menu_id,:user_id,:user,@menu)
+    params.require(:like).permit(:menu_id,:user_id,:user)
   end
 
   def set_menu
