@@ -83,6 +83,7 @@ class User < ActiveRecord::Base
     self.friendly_id ||= SecureRandom.hex(8)
   end
 
+
   protected
 
   def ensure_authentication_token

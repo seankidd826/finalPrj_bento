@@ -9,6 +9,7 @@
           <th>便當內容</th>
           <th class="text-center">訂購個數</th>
           <th class="text-center">訂購總價</th>
+          <th class="text-center">訂購日期</th>
         </tr>
        </thead>
        <tbody>
@@ -39,8 +40,9 @@
               </script>
             <% end %>
            </td>
-           <td class="text-center"><span class="badge" style="font-size:13px;"><%= order.menu_count %></span></td>
+           <td class="text-center"><span class="badge badge_order_record" style="font-size:13px;"><%= order.menu_count %></span></td>
            <td class="text-center"><b><%= order.total_price %></b></td>
+           <td class="text-center"><b><%= order.created_at.localtime.strftime("%Y/%m/%d") %></b></td>
          </tr>
         <% end %>
 

@@ -18,6 +18,7 @@ class ApiV1::OrdersController < ApiController
 
   def index
     @orders = Menu.last.orders.order(:created_at => :desc).page(params[:page]).per(5)
+    # @orders = Menu.last.orders.order_sort
   end
 
 

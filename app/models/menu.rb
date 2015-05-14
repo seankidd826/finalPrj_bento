@@ -17,6 +17,10 @@ class Menu < ActiveRecord::Base
   validates_numericality_of :in_stock_qty, :only_integer => true
   validates_numericality_of :price, :only_integer => true, :greater_than => 1
 
+  def find_like_by_user(user)
+    self.likes.where(:user_id => user.id).first
+  end
+
   def menu_date
     self.created_at.strftime("%_m /%_d")
   end
