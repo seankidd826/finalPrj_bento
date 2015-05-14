@@ -6,7 +6,8 @@ class ApiV1::OrdersController < ApiController
                         order_name: params[:name],
                         order_phone: params[:phone],
                         order_address: params[:address],
-                        order_email: params[:email] )
+                        order_email: params[:email],
+                        from_phone: params[:from_phone] )
     @order.user = current_user
 
     if @order.save
@@ -17,8 +18,7 @@ class ApiV1::OrdersController < ApiController
   end
 
   def index
-    @orders = Menu.last.orders.order(:created_at => :desc).page(params[:page]).per(5)
-    # @orders = Menu.last.orders.order_sort
+    @orders = Menu.last.orders.order(:id => :desc).page(params[:page]).per(5)
   end
 
 

@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :menu_likes, :through => :likes, :source => "menu"
 
   # create one to many (orders) relation
-  has_many :orders
+  has_many :orders, -> { order("id DESC") }
 
   validates_presence_of :friendly_id
   validates_uniqueness_of :friendly_id
