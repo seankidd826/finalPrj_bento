@@ -1,5 +1,9 @@
 <% if like %>
- <%= link_to "unlike",menu_like_path(menu, like),:method => :delete, :class => "btn btn-primary btn-color likes_label", :remote =>true %>
+ <%= link_to menu_like_path(menu, like),:method => :delete, :class => "btn btn-default likes_label", :remote =>true do%>
+ <%= icon("thumbs-up") %>
+ <% end %>
 <% else %>
- <%= link_to "like", menu_likes_path(menu), :method => :post, :class => "btn btn-primary btn-color likes_label", :remote =>true %>
+ <%= link_to menu_likes_path(menu), :method => :post, :class => "btn btn-primary btn-color likes_label", :remote =>true do %>
+ <%= icon("thumbs-up") %>
+ <% end %>
 <% end %>

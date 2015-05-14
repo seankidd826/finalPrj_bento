@@ -30,15 +30,20 @@
             <%= order.menu.menu_cuisine_3 %></div><br>
             <div class="label label-warning history_contents space">
             <%= order.menu.menu_cuisine_4 %></div>
-            <div class="label label-warning history_contents">
+            <div class="label label-warning history_contents " id="cuisine_5">
             <%= order.menu.menu_cuisine_5 %></div>
-            <div class="label label-warning history_contents" id="last_cuisine">
+             <% if order.menu.menu_cuisine_5=="" %>
+               <script>
+                $('#cuisine_5').remove();
+               </script>
+             <% end %>
+            <div class="label label-warning history_contents" id="cuisine_6">
             <%= order.menu.menu_cuisine_6 %></div>
-            <% if order.menu.menu_cuisine_6=="" %>
+             <% if order.menu.menu_cuisine_6=="" %>
               <script>
-                $('#last_cuisine').remove();
+                $('#cuisine_6').remove();
               </script>
-            <% end %>
+             <% end %>
            </td>
            <td class="text-center"><span class="badge badge_order_record" style="font-size:13px;"><%= order.menu_count %></span></td>
            <td class="text-center"><b><%= order.total_price %></b></td>

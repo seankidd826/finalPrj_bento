@@ -328,6 +328,7 @@
   font-size: 18px;
   margin-left:auto;
   margin-right:auto;
+  border-radius: 50%;
 }
 .heart {
   font-size: 55px;
@@ -335,11 +336,11 @@
   right: 0px;
   top: 0px;
   color:red;
-
 }
+
 .badge_heart {
  position:absolute;
- right: 11px;
+ right: 13px;
  top:19px;
  z-index: 2;
  background-color: red;
