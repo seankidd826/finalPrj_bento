@@ -22,13 +22,20 @@
   margin-top: -30px;
 }
 
-/*#home {
-  background: image-url("mainBanner_WEB.JPG") no-repeat center center;
-  background-size: cover;
-  background-attachment: fixed;
-  height: 100vh;
-  width: 100vw;
-}*/
+.downArrow {
+  width: 0;
+  height: 0;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-top: 7px solid lightgray;
+  display: inline-block;
+  margin-left: 3px;
+}
+
+.dropdown-toggle {
+  height: 80px;
+  margin-top: -21px;
+}
 
 #home {
   background: image-url("mainBanner_clear.png") no-repeat center center;
@@ -161,10 +168,6 @@
   transition: all .5s;
 }
 
-.fbFanPageMobile {
-  /*visibility: hidden;*/
-}
-
 #order {
   background-color: white;
   max-height: 100vh;
@@ -246,6 +249,12 @@
 
 .price {
   font-size: 35px;
+}
+
+.fbBuy {
+  padding-left: 120px;
+  padding-right: 120px;
+  margin-right: 42px;
 }
 
 .order_confirmed {
@@ -360,8 +369,8 @@
 
 .badge_heart {
  position:absolute;
- right: 13px;
- top:19px;
+ right: 14px;
+ top: 20px;
  z-index: 2;
  background-color: red;
 }
@@ -381,14 +390,6 @@
 
 
 @media screen and (max-width: 767px) and (orientation : portrait) {
-/*  #home {
-    background: image-url("mainBanner_WEB.JPG") no-repeat center center;
-    background-size: cover;
-    background-attachment: scroll;
-    height: 100%;
-    width: 100%;
-  }*/
-
   #home {
     background: image-url("mainBanner_clear.png") no-repeat center center;
     background-size: cover;
@@ -497,14 +498,6 @@
 }
 
 @media screen and (max-width: 767px) {
-/*  #home {
-    background: image-url("mainBanner_WEB.JPG") no-repeat center center;
-    background-size: cover;
-    background-attachment: scroll;
-    height: 100%;
-    width: 100%;
-  }*/
-
   #home {
     background: image-url("mainBanner_clear.png") no-repeat center center;
     background-size: cover;
@@ -602,6 +595,22 @@
     margin-bottom: 20px;
   }
 
+  .heart {
+    font-size: 55px;
+    position: absolute;
+    right: 9px;
+    top: 0px;
+    color:red;
+  }
+
+  .badge_heart {
+   position:absolute;
+   right: 23px;
+   top: 20px;
+   z-index: 2;
+   background-color: red;
+  }
+
 }
 
 @media only screen and (max-device-width : 320px) {
@@ -642,6 +651,22 @@
 
   .fixOW320 {
     margin-right: 20px;
+  }
+
+  .heart {
+    font-size: 55px;
+    position: absolute;
+    right: 9px;
+    top: 0px;
+    color:red;
+  }
+
+  .badge_heart {
+   position:absolute;
+   right: 23px;
+   top: 20px;
+   z-index: 2;
+   background-color: red;
   }
 
 }
