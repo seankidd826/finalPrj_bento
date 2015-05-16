@@ -1,6 +1,6 @@
 <div class="container">
   <div class="row">
-    <h1><%= image_tag( current_user.fb_image,:class => "img-circle" ) %>  訂購歷史紀錄</h1>
+    <div class=""><h1 class="text-center"><%=image_tag( current_user.fb_image,:class => "img-circle" ) %>    訂購歷史紀錄</h1></div>
 
       <table class="table table-hover">
        <thead>
@@ -10,6 +10,8 @@
           <th class="text-center">訂購個數</th>
           <th class="text-center">訂購總價</th>
           <th class="text-center">訂購日期</th>
+          <th class="text-center">訂單狀態</th>
+          <th class="text-center">結帳</th>
         </tr>
        </thead>
        <tbody>
@@ -48,14 +50,17 @@
            <td class="text-center"><span class="badge badge_order_record" style="font-size:13px;"><%= order.menu_count %></span></td>
            <td class="text-center"><b><%= order.total_price %></b></td>
            <td class="text-center"><b><%= order.created_at.localtime.strftime("%Y/%m/%d") %></b></td>
+           <td class="text-center"><%= order.paid? ? :付款成功 : :未付款 %></td>
+           <td class="text-center"><%= link_to '結帳', menu_order_checkout_path(order.menu, order), :class=> "btn btn-success" %></td>
          </tr>
         <% end %>
-
        </tbody>
+
       </table>
-      <!-- <div class="col-xs-4"> -->
+
       <%= paginate @orders %><br>
-      <%=link_to "回首頁",root_path,:class=>"btn btn-default"  %>
-      <!-- </div> -->
+      <%=link_to "回首頁",root_path,:class=>"btn btn-default "  %>
+      <div class="line"></div>
+
   </div>
 </div>

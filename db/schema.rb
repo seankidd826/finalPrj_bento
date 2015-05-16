@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514102102) do
+ActiveRecord::Schema.define(version: 20150515071625) do
 
   create_table "likes", force: :cascade do |t|
     t.datetime "created_at",           null: false
@@ -40,19 +40,21 @@ ActiveRecord::Schema.define(version: 20150514102102) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.integer  "menu_id",       limit: 4
-    t.integer  "user_id",       limit: 4
-    t.integer  "total_price",   limit: 4,     default: 0
-    t.integer  "menu_count",    limit: 4,     default: 0
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.string   "order_name",    limit: 255
-    t.string   "order_phone",   limit: 255
-    t.text     "order_address", limit: 65535
-    t.string   "order_email",   limit: 255
-    t.string   "road",          limit: 255
-    t.string   "area",          limit: 255
-    t.string   "from_phone",    limit: 255
+    t.integer  "menu_id",        limit: 4
+    t.integer  "user_id",        limit: 4
+    t.integer  "total_price",    limit: 4,     default: 0
+    t.integer  "menu_count",     limit: 4,     default: 0
+    t.datetime "created_at",                                   null: false
+    t.datetime "updated_at",                                   null: false
+    t.string   "order_name",     limit: 255
+    t.string   "order_phone",    limit: 255
+    t.text     "order_address",  limit: 65535
+    t.string   "order_email",    limit: 255
+    t.string   "road",           limit: 255
+    t.string   "area",           limit: 255
+    t.string   "from_phone",     limit: 255
+    t.string   "payment_method", limit: 255
+    t.string   "status",         limit: 255,   default: "新訂單", null: false
   end
 
   create_table "stories", force: :cascade do |t|
@@ -68,6 +70,18 @@ ActiveRecord::Schema.define(version: 20150514102102) do
     t.text     "momcontents_2",    limit: 65535
     t.text     "momcontents_3",    limit: 65535
   end
+
+  create_table "trades", force: :cascade do |t|
+    t.integer  "order_id",     limit: 4
+    t.string   "trade_number", limit: 255
+    t.boolean  "paid",         limit: 1
+    t.text     "params",       limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "trades", ["order_id"], name: "index_trades_on_order_id", using: :btree
+  add_index "trades", ["trade_number"], name: "index_trades_on_trade_number", using: :btree
 
   create_table "user_menus", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -106,4 +120,5 @@ ActiveRecord::Schema.define(version: 20150514102102) do
   add_index "users", ["friendly_id"], name: "index_users_on_friendly_id", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "trades", "orders"
 end

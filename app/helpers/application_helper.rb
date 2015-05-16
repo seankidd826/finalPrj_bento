@@ -7,7 +7,7 @@ module ApplicationHelper
   def bento_available?
     t = Time.now
     !( t.saturday? || t.sunday? || t.hour < 9 || t.hour > 11 )
-    false
+    true
   end
 
   def icon(name)

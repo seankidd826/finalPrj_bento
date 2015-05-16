@@ -4,6 +4,7 @@ class Order < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :menu
+  has_many :trades, :dependent => :destroy
   validates_presence_of :order_name, :order_address, :menu_id, :menu_count
   validates_numericality_of :menu_count, :only_integer => true
   validates_numericality_of :order_phone, :only_integer => true
@@ -13,6 +14,10 @@ class Order < ActiveRecord::Base
   before_create :setup_total
   after_create :consume_stock
   after_create :fill_user_data
+
+  def paid?
+    trades.exists?(paid: true)
+  end
 
   def total
     self.menu_count.to_i * self.menu.price

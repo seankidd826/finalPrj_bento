@@ -11,6 +11,7 @@
         <th>訂購者電話</th>
         <th>訂購者地址</th>
         <th>訂購時間</th>
+        <th>訂單狀態</th>
         <!-- <th>訂購者email</th> -->
         <th colspan="4"></th>
       </tr>
@@ -31,7 +32,7 @@
           <td>
           <%= admin_order.created_at.localtime.strftime("%Y/%m/%d") %><br><%= admin_order.created_at.localtime.strftime("%_I:%M %P") %>
           </td>
-          <!-- <td><%#= Time.zone.name %></td> -->
+          <td><%= admin_order.paid? ? :已付款 : :未付款 %></td>
           <!-- <td><%#= admin_order.order_email %></td> -->
           <td><%= link_to 'Show', admin_order,:class => "btn btn-primary" %>
               <%= link_to 'Edit', edit_admin_order_path(admin_order),:class => "btn btn-primary" %>

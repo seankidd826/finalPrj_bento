@@ -179,14 +179,15 @@
           <% end %>
             </div>
 
-          <div class="col-xs-12 col-sm-6  text-center">
+          <div class="col-xs-12 col-sm-8  text-center">
           <!-- disable 修改密碼選項 -->
           <%#= link_to('修改密碼', edit_registration_path(:user)) %>
             <%= link_to user_omniauth_authorize_path(:facebook), :class => "btn btn-primary", :disabled=>"disabled" do %>
             Facebook登入購買
             <% end %>
-            <div class="order_phase">帶入上次填寫資訊</div>
-            <div>訂購更快速！</div>
+            <%= link_to('過往訂單', user_orders_path(current_user),:class =>"btn btn-success") %>
+            <div class="order_phase text-left">帶入上次填寫資訊</div>
+            <div class="text-left">訂購更快速！</div>
           </div>
             <% else %>
             <% if current_user %>
@@ -228,6 +229,9 @@
           <% if params[:facebookbuy]=="true" %>
             <script>
               $( document ).ready(function() {
+               $('html,body').animate({
+                   scrollTop: $("#order").offset().top},
+                   10);
                 $("#mymodal").modal('show')
               });
             </script>
@@ -267,7 +271,7 @@
                           <div class="text-left">
                             <%= order.label :order_name,"姓名 ＊"%>
                           </div>
-                          <%= order.text_field :order_name,:placeholder => "您的名字",:class => "form-control form-width" %>
+                          <%= order.text_field :order_name,:placeholder => "您的名字", :class => "form-control form-width" %>
                         </div>
                         <div class="form-group">
                           <div class="text-left">

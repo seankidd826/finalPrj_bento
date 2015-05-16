@@ -22,9 +22,13 @@ end
     resources :orders
   end
 
+  post 'allpay/result'
+  post 'allpay/return'
+
   resources :menus do
     resources :orders do
       post :confirm, :on => :collection
+      get :checkout
     end
     resources :likes
   end
