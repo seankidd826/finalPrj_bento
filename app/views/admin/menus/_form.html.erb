@@ -13,31 +13,27 @@
 
       <table class="table table-hover">
         <tr class="field">
-          <td><%= f.label :title %></td>
-          <td><%= f.text_field :title,:class=>"form-control form-width" %></td>
-        </tr>
-        <tr class="field">
-          <td><%= f.label :contents %></td>
+          <td><%= f.label :contents, "便當內容" %></td>
           <td><%= f.text_area :contents,:class=>"form-control form-width" %></td>
         </tr>
         <tr class="field">
-          <td><%= f.label :price %></td>
+          <td><%= f.label :price, "便當價格" %></td>
           <td><%= f.text_field :price,:class=>"form-control form-width" %></td>
         </tr>
         <tr class="field">
-          <td><%= f.label :likes_count %></td>
+          <td><%= f.label :likes_count, "按讚數" %></td>
           <td><%= f.text_field :likes_count,:class=>"form-control form-width" %></td>
         </tr>
         <tr class="field">
-          <td><%= f.label :in_stock_qty %></td>
+          <td><%= f.label :in_stock_qty, "便當庫存" %></td>
           <td><%= f.text_field :in_stock_qty,:class=>"form-control form-width" %></td>
         </tr>
         <tr class="field">
-          <td><%= f.label :mominfo %></td>
+          <td><%= f.label :mominfo, "媽媽資訊" %></td>
           <td><%= f.text_field :mominfo,:class=>"form-control form-width" %></td>
         </tr>
         <tr class="field">
-          <td><%= f.label :mompic, "Upload pic" %></td>
+          <td><%= f.label :mompic, "上傳媽媽照片" %></td>
           <td><%= f.file_field :mompic %></td>
         </tr>
         <tr class="actions">

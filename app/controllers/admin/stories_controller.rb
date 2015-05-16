@@ -1,4 +1,4 @@
-class Admin::StoriesController < ApplicationController
+class Admin::StoriesController < AdminController
   before_action :set_admin_story, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/stories

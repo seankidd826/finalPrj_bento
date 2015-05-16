@@ -11,32 +11,28 @@
     </div>
   <% end %>
  <table class="table-hover table">
-    <tr class="field">
-     <td><%= f.label :total_price %></td>
-     <td><%= f.hidden_field :total_price %></td>
-   </tr>
    <tr class="field">
-     <td><%= f.label :menu_id %></td>
+     <td><%= f.label :menu_id, "便當編號" %></td>
      <td><%= f.text_field :menu_id,:class=>"form-control form-width" %></td>
    </tr>
    <tr class="field">
-     <td><%= f.label :menu_count %></td>
+     <td><%= f.label :menu_count, "便當個數" %></td>
      <td><%= f.text_field :menu_count,:class=>"form-control form-width" %></td>
    </tr>
    <tr class="field">
-     <td><%= f.label :order_name %></td>
+     <td><%= f.label :order_name, "訂購者姓名" %></td>
      <td><%= f.text_field :order_name,:class=>"form-control form-width" %></td>
    </tr>
    <tr class="field">
-     <td><%= f.label :order_phone %></td>
+     <td><%= f.label :order_phone, "訂購者電話" %></td>
      <td><%= f.text_field :order_phone,:class=>"form-control form-width" %></td>
    </tr>
    <tr class="field">
-     <td><%= f.label :order_address %></td>
+     <td><%= f.label :order_address, "訂購者地址" %></td>
      <td><%= f.text_area :order_address,:class=>"form-control" %></td>
    </tr>
    <tr class="field">
-     <td><%= f.label :order_email %></td>
+     <td><%= f.label :order_email, "訂購者email" %></td>
      <td><%= f.text_field :order_email,:class=>"form-control form-width" %></td>
    </tr>
    <tr class="actions">
