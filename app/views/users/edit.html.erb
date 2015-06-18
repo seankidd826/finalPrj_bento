@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <h2>儲值系統</h2>
+
+    <table class="table table-striped">
+      <tbody>
+       <%= form_for @user do |f| %>
+
+       <tr>
+        <td><%= f.label :storage_money,"儲值金額"  %>
+            <%= f.text_field :storage_money,:class=>"form-control form-width"%></td>
+       </tr>
+       <tr>
+         <td><%= f.submit "儲值",:class=>"btn btn-primary"  %></td>
+       </tr>
+       <% end %>
+      </tbody>
+    </table>
+
+  </div>
+</div>

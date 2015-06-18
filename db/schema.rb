@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150515071625) do
+ActiveRecord::Schema.define(version: 20150516074708) do
 
   create_table "likes", force: :cascade do |t|
     t.datetime "created_at",           null: false
@@ -94,12 +94,12 @@ ActiveRecord::Schema.define(version: 20150515071625) do
     t.string   "name",                   limit: 255
     t.string   "phone",                  limit: 255
     t.text     "address",                limit: 65535
-    t.string   "email",                  limit: 255,   default: "", null: false
-    t.string   "encrypted_password",     limit: 255,   default: "", null: false
+    t.string   "email",                  limit: 255,                  default: "", null: false
+    t.string   "encrypted_password",     limit: 255,                  default: "", null: false
     t.string   "reset_password_token",   limit: 255
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,     default: 0,  null: false
+    t.integer  "sign_in_count",          limit: 4,                    default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip",     limit: 255
@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20150515071625) do
     t.text     "fb_access_token",        limit: 65535
     t.datetime "fb_expires_at"
     t.string   "friendly_id",            limit: 255
+    t.decimal  "storage_money",                        precision: 10, default: 0
   end
 
   add_index "users", ["authentication_token"], name: "index_users_on_authentication_token", unique: true, using: :btree

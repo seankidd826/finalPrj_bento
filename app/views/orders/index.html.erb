@@ -12,6 +12,7 @@
           <th class="text-center">訂購日期</th>
           <th class="text-center">訂單狀態</th>
           <th class="text-center">結帳</th>
+          <th class="text-center"></th>
         </tr>
        </thead>
        <tbody>
@@ -52,6 +53,7 @@
            <td class="text-center"><b><%= order.created_at.localtime.strftime("%Y/%m/%d") %></b></td>
            <td class="text-center"><%= order.paid? ? :付款成功 : :未付款 %></td>
            <td class="text-center"><%= link_to '結帳', menu_order_checkout_path(order.menu, order), :class=> "btn btn-success" %></td>
+
          </tr>
         <% end %>
        </tbody>
@@ -60,7 +62,9 @@
 
       <%= paginate @orders %><br>
       <%=link_to "回首頁",root_path,:class=>"btn btn-default "  %>
+      <%= link_to '儲值', edit_user_path(current_user), :class=> "btn btn-success" %>
       <div class="line"></div>
+
 
   </div>
 </div>

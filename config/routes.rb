@@ -48,6 +48,10 @@ end
 
   # resources :confirms
 
+  resources :people
+
+
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
