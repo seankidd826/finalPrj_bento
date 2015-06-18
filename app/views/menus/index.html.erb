@@ -25,6 +25,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%=image_tag( current_user.fb_image, :class => "img-circle" ) %><b class="downArrow"></b></a>
                 <ul class="dropdown-menu">
                   <li><%= link_to('過往訂單', user_orders_path(current_user)) %></li>
+                  <li><%= link_to('User_profile', user_path(current_user)) %></li>
                   <li><%= link_to('登出', destroy_user_session_path, :method => :delete) %></li>
                 </ul>
               </li>
